@@ -1,0 +1,612 @@
+{
+  "schema": "dkc3.animation-initialization-proof.v1",
+  "counts": {
+    "initialization": 480,
+    "rng": 3328,
+    "leaves": {
+      "11991535": 96,
+      "11991678": 96,
+      "11991696": 96,
+      "11991215": 96
+    },
+    "guard_rejections": 15,
+    "authorized": 384
+  },
+  "records": [
+    {
+      "target": 12165120,
+      "scope": "dependency-abi",
+      "status": "equivalent",
+      "native_symbol": "dkc3::romAnimationInitializeReviewed",
+      "span": {
+        "start": 12165120,
+        "end": 12165123
+      },
+      "span_fingerprint": "3929a550ad635e3f",
+      "evidence_spans": [
+        {
+          "start": 12165306,
+          "end": 12165346,
+          "name": "initializer first update",
+          "fingerprint": "e47a43b30817ab56"
+        },
+        {
+          "start": 12165402,
+          "end": 12165439,
+          "name": "initializer first update",
+          "fingerprint": "8d7b1e86e652e1ab"
+        },
+        {
+          "start": 12165455,
+          "end": 12165466,
+          "name": "initializer first update",
+          "fingerprint": "96c6a738ff975c91"
+        }
+      ],
+      "contract": {
+        "indirect_calls": [
+          {
+            "site": 12165463,
+            "targets": [
+              12165814,
+              12165855
+            ]
+          }
+        ],
+        "input_values": [
+          457,
+          459,
+          516,
+          572,
+          594
+        ],
+        "read_only_data": [
+          {
+            "start": 16318464,
+            "end": 16384000,
+            "fingerprint": "74d1a8c37775baec"
+          },
+          {
+            "start": 12165466,
+            "end": 12165520,
+            "fingerprint": "e311ef723a06f04e"
+          }
+        ],
+        "entry": "Sprite base in $0600..$1F10 (240-byte local window entirely below $2000). ID $023C requires an even queue cursor in $0000..$000E. Immutable F9 directory/script profile.",
+        "effects": [
+          "sprite animation state + first frame",
+          "sound queue for ID 023C"
+        ],
+        "excluded": "IDs outside this set, scratch $1A/$42/$70, CPU residue and cycle timing. Any unknown route rejects atomically."
+      },
+      "verification": {
+        "result": "PASS",
+        "cases": 288,
+        "initialization_cases": 480,
+        "original_dependencies_executed": true,
+        "input_cases": 480,
+        "input_target_cases": [
+          {
+            "input": 457,
+            "cases": 96,
+            "targets": [
+              {
+                "site": 12165463,
+                "target": 12165814,
+                "cases": 96
+              }
+            ]
+          },
+          {
+            "input": 459,
+            "cases": 96,
+            "targets": [
+              {
+                "site": 12165463,
+                "target": 12165814,
+                "cases": 96
+              }
+            ]
+          },
+          {
+            "input": 516,
+            "cases": 96,
+            "targets": []
+          },
+          {
+            "input": 572,
+            "cases": 96,
+            "targets": [
+              {
+                "site": 12165463,
+                "target": 12165855,
+                "cases": 96
+              }
+            ]
+          },
+          {
+            "input": 594,
+            "cases": 96,
+            "targets": []
+          }
+        ],
+        "indirect_calls": [
+          {
+            "site": 12165463,
+            "targets": [
+              12165814,
+              12165855
+            ]
+          }
+        ],
+        "target_cases": [
+          {
+            "site": 12165463,
+            "target": 12165814,
+            "cases": 192
+          },
+          {
+            "site": 12165463,
+            "target": 12165855,
+            "cases": 96
+          }
+        ],
+        "input_values": [
+          457,
+          459,
+          516,
+          572,
+          594
+        ],
+        "read_only_data": [
+          {
+            "start": 16318464,
+            "end": 16384000,
+            "fingerprint": "74d1a8c37775baec"
+          },
+          {
+            "start": 12165466,
+            "end": 12165520,
+            "fingerprint": "e311ef723a06f04e"
+          }
+        ],
+        "method": "original-ROM-initializer-and-first-update-vs-native-cpp"
+      },
+      "dependencies": [
+        {
+          "target": 12165814
+        },
+        {
+          "target": 12165855
+        }
+      ]
+    },
+    {
+      "target": 11894790,
+      "scope": "dependency-abi",
+      "status": "equivalent",
+      "native_symbol": "dkc3::romAnimationRandomRange",
+      "span": {
+        "start": 11894790,
+        "end": 11894793
+      },
+      "span_fingerprint": "391f8550ad5ad35a",
+      "evidence_spans": [
+        {
+          "start": 11924153,
+          "end": 11924236,
+          "name": "bounded RNG",
+          "fingerprint": "f67d8530dc8c5a8f"
+        },
+        {
+          "start": 11923838,
+          "end": 11923843,
+          "name": "bounded RNG",
+          "fingerprint": "9fb3d47faaeaab96"
+        }
+      ],
+      "contract": {
+        "effects": [
+          "WRAM:$0002..$0005",
+          "A=scaledRemainder"
+        ],
+        "postconditions": [
+          "X=callerX",
+          "$1A=callerScratch"
+        ],
+        "excluded": "CPU flags and hardware cycle timing; carry is an explicit input."
+      },
+      "verification": {
+        "result": "PASS",
+        "cases": 3328,
+        "method": "original-ROM-RNG-with-division-semantics-vs-native-cpp",
+        "postconditions": [
+          "X=callerX",
+          "$1A=callerScratch"
+        ]
+      },
+      "dependencies": []
+    },
+    {
+      "target": 11991535,
+      "status": "equivalent",
+      "scope": "external-leaf-abi",
+      "native_symbol": "dkc3::romAnimationApplyReviewedExternalLeafSemantics",
+      "span": {
+        "start": 11991535,
+        "end": 11991581
+      },
+      "span_fingerprint": "8d108ef555e6a6df",
+      "evidence_spans": [],
+      "contract": {
+        "effects": [
+          "sprite animation state/first frame",
+          "RNG seed",
+          "sound queue"
+        ],
+        "shared_state": [
+          "WRAM:$0002..$0005",
+          "WRAM:$0436/$043A..$0449"
+        ],
+        "excluded": "Scratch $1A/$42/$70, CPU residue and timing. Requires F9 immutable profile and valid logical sprite ABI."
+      },
+      "verification": {
+        "result": "PASS",
+        "cases": 96,
+        "method": "original-ROM-full-leaf-with-real-initializer-vs-native-cpp",
+        "callback_target": 12172354,
+        "accumulator": 30,
+        "structural_hits": 42,
+        "family": "animation-initialization",
+        "shared_state": [
+          "WRAM:$0002..$0005",
+          "WRAM:$0436/$043A..$0449"
+        ]
+      },
+      "dependencies": [
+        {
+          "target": 12165120,
+          "required_input_values": [
+            457,
+            459
+          ]
+        },
+        {
+          "target": 11894790,
+          "required_postconditions": [
+            "X=callerX",
+            "$1A=callerScratch"
+          ]
+        }
+      ]
+    },
+    {
+      "target": 11991678,
+      "status": "equivalent",
+      "scope": "external-leaf-abi",
+      "native_symbol": "dkc3::romAnimationApplyReviewedExternalLeafSemantics",
+      "span": {
+        "start": 11991678,
+        "end": 11991684
+      },
+      "span_fingerprint": "141de53ee0e6e14a",
+      "evidence_spans": [
+        {
+          "start": 11991218,
+          "end": 11991237,
+          "name": "shared animation-selection tail",
+          "fingerprint": "cb345bd4bd309735"
+        }
+      ],
+      "contract": {
+        "effects": [
+          "sprite animation state/first frame",
+          "RNG seed",
+          "sound queue"
+        ],
+        "shared_state": [
+          "WRAM:$0002..$0005",
+          "WRAM:$0436/$043A..$0449"
+        ],
+        "excluded": "Scratch $1A/$42/$70, CPU residue and timing. Requires F9 immutable profile and valid logical sprite ABI."
+      },
+      "verification": {
+        "result": "PASS",
+        "cases": 96,
+        "method": "original-ROM-full-leaf-with-real-initializer-vs-native-cpp",
+        "callback_target": 12172354,
+        "accumulator": 37,
+        "structural_hits": 20,
+        "family": "animation-initialization",
+        "shared_state": [
+          "WRAM:$0002..$0005",
+          "WRAM:$0436/$043A..$0449"
+        ]
+      },
+      "dependencies": [
+        {
+          "target": 12165120,
+          "required_input_values": [
+            572
+          ]
+        }
+      ]
+    },
+    {
+      "target": 11991696,
+      "status": "equivalent",
+      "scope": "external-leaf-abi",
+      "native_symbol": "dkc3::romAnimationApplyReviewedExternalLeafSemantics",
+      "span": {
+        "start": 11991696,
+        "end": 11991702
+      },
+      "span_fingerprint": "1c72251a92cc62e0",
+      "evidence_spans": [
+        {
+          "start": 11991218,
+          "end": 11991237,
+          "name": "shared animation-selection tail",
+          "fingerprint": "cb345bd4bd309735"
+        }
+      ],
+      "contract": {
+        "effects": [
+          "sprite animation state/first frame",
+          "RNG seed",
+          "sound queue"
+        ],
+        "shared_state": [
+          "WRAM:$0002..$0005",
+          "WRAM:$0436/$043A..$0449"
+        ],
+        "excluded": "Scratch $1A/$42/$70, CPU residue and timing. Requires F9 immutable profile and valid logical sprite ABI."
+      },
+      "verification": {
+        "result": "PASS",
+        "cases": 96,
+        "method": "original-ROM-full-leaf-with-real-initializer-vs-native-cpp",
+        "callback_target": 12172354,
+        "accumulator": 40,
+        "structural_hits": 12,
+        "family": "animation-initialization",
+        "shared_state": [
+          "WRAM:$0002..$0005",
+          "WRAM:$0436/$043A..$0449"
+        ]
+      },
+      "dependencies": [
+        {
+          "target": 12165120,
+          "required_input_values": [
+            594
+          ]
+        }
+      ]
+    },
+    {
+      "target": 11991215,
+      "status": "equivalent",
+      "scope": "external-leaf-abi",
+      "native_symbol": "dkc3::romAnimationApplyReviewedExternalLeafSemantics",
+      "span": {
+        "start": 11991215,
+        "end": 11991237
+      },
+      "span_fingerprint": "c9275c2cf992a9f8",
+      "evidence_spans": [],
+      "contract": {
+        "effects": [
+          "sprite animation state/first frame",
+          "RNG seed",
+          "sound queue"
+        ],
+        "shared_state": [
+          "WRAM:$0002..$0005",
+          "WRAM:$0436/$043A..$0449"
+        ],
+        "excluded": "Scratch $1A/$42/$70, CPU residue and timing. Requires F9 immutable profile and valid logical sprite ABI."
+      },
+      "verification": {
+        "result": "PASS",
+        "cases": 96,
+        "method": "original-ROM-full-leaf-with-real-initializer-vs-native-cpp",
+        "callback_target": 12172354,
+        "accumulator": 18,
+        "structural_hits": 6,
+        "family": "animation-initialization",
+        "shared_state": [
+          "WRAM:$0002..$0005",
+          "WRAM:$0436/$043A..$0449"
+        ]
+      },
+      "dependencies": [
+        {
+          "target": 12165120,
+          "required_input_values": [
+            516
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewed_instruction_targets": [
+    11698194,
+    11698468,
+    11698469,
+    11698470,
+    11698471,
+    11698472,
+    11698473,
+    11698476,
+    11698478,
+    11698481,
+    11698484,
+    11698486,
+    11698487,
+    11698488,
+    11698489,
+    11698490,
+    11698493,
+    11698494,
+    11698497,
+    11698499,
+    11698500,
+    11698503,
+    11698506,
+    11698507,
+    11698508,
+    11698509,
+    11894790,
+    11923838,
+    11923842,
+    11924153,
+    11924154,
+    11924156,
+    11924157,
+    11924158,
+    11924161,
+    11924165,
+    11924167,
+    11924169,
+    11924172,
+    11924178,
+    11924179,
+    11924181,
+    11924184,
+    11924185,
+    11924187,
+    11924190,
+    11924192,
+    11924196,
+    11924199,
+    11924202,
+    11924208,
+    11924209,
+    11924210,
+    11924212,
+    11924213,
+    11924214,
+    11924216,
+    11924217,
+    11924219,
+    11924220,
+    11924221,
+    11924223,
+    11924225,
+    11924227,
+    11924228,
+    11924229,
+    11924231,
+    11924233,
+    11924235,
+    11991215,
+    11991218,
+    11991220,
+    11991221,
+    11991223,
+    11991225,
+    11991227,
+    11991228,
+    11991230,
+    11991232,
+    11991236,
+    11991535,
+    11991536,
+    11991538,
+    11991540,
+    11991543,
+    11991545,
+    11991547,
+    11991550,
+    11991552,
+    11991555,
+    11991559,
+    11991560,
+    11991563,
+    11991565,
+    11991568,
+    11991572,
+    11991573,
+    11991576,
+    11991580,
+    11991678,
+    11991681,
+    11991696,
+    11991699,
+    12165120,
+    12165306,
+    12165307,
+    12165310,
+    12165311,
+    12165312,
+    12165314,
+    12165316,
+    12165317,
+    12165318,
+    12165319,
+    12165321,
+    12165324,
+    12165327,
+    12165329,
+    12165332,
+    12165334,
+    12165335,
+    12165338,
+    12165340,
+    12165342,
+    12165344,
+    12165402,
+    12165403,
+    12165406,
+    12165408,
+    12165409,
+    12165410,
+    12165413,
+    12165414,
+    12165416,
+    12165418,
+    12165424,
+    12165427,
+    12165429,
+    12165430,
+    12165431,
+    12165432,
+    12165434,
+    12165435,
+    12165437,
+    12165439,
+    12165455,
+    12165456,
+    12165457,
+    12165458,
+    12165461,
+    12165462,
+    12165463,
+    12165814,
+    12165817,
+    12165820,
+    12165821,
+    12165823,
+    12165824,
+    12165825,
+    12165828,
+    12165829,
+    12165830,
+    12165832,
+    12165833,
+    12165835,
+    12165855,
+    12165858,
+    12165859,
+    12165860,
+    12165861,
+    12165862,
+    12165866,
+    12165867,
+    12165868,
+    12165869,
+    12165870,
+    12165872
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "dkc3.consolidated-handler-coverage.v1",
+  "whole_handlers": 21,
+  "guarded_callbacks": 102,
+  "external_leaves": 39,
+  "command_hits_with_native_or_guarded_callback": {
+    "3": 433,
+    "4": 211,
+    "0": 334,
+    "6": 2
+  },
+  "external_leaf_hits": 162,
+  "commands_3_4_eligible_hits": 806,
+  "commands_3_4_total_hits": 1490,
+  "whole_handler_hits": 5843,
+  "all_eligible_structural_hits_with_guards": 6985,
+  "total_structural_hits": 7709,
+  "limits": "Static closed bytecode grammar, eligible only with the concrete ABI and pointer/profile guards. Not gameplay frequency, FPS or whole-game fidelity."
+}

@@ -1,0 +1,437 @@
+{
+  "schema": "dkc3.zero.progression.v024",
+  "baseline": "DKC3 ZERO v0.23 / Forja65 v0.3.78",
+  "forja_version": "0.3.79-replay-input-ownership",
+  "execution": "reference",
+  "requested_frames": 13500,
+  "final_replay_frames": 13500,
+  "final_qa": {
+    "rom": "3a574807afbad761",
+    "runtime_started": "PASS",
+    "frames": "13500",
+    "instructions": "81598195",
+    "nmi_services": "12484",
+    "irq_services": "0",
+    "ppu_forced_blank": "0",
+    "framebuffer_hash": "935b7a1a2ea3113",
+    "wram_hash": "cf2a7d6bbd5f46d9",
+    "new_oracle_hints": "NO",
+    "ppu_virtual_accesses": "25056637",
+    "ppu_accesses": "25056637",
+    "ppu_native_accesses": "0",
+    "ppu_fallback_accesses": "25056637",
+    "apu_virtual_accesses": "1741744",
+    "apu_accesses": "1741744",
+    "apu_native_master_cycles": "0",
+    "apu_fallback_master_cycles": "4824468002",
+    "dsp_native_samples": "0",
+    "dsp_fallback_samples": "7189967",
+    "rom_runtime_reads": "10922074",
+    "rom_native_reads": "0",
+    "rom_fallback_reads": "10922074",
+    "dma_bytes": "17624718",
+    "dma_native_bytes": "0",
+    "dma_fallback_bytes": "17624718",
+    "hdma_bytes": "6985012",
+    "hdma_native_bytes": "0",
+    "hdma_fallback_bytes": "6985012"
+  },
+  "next_blocker": null,
+  "milestones": {
+    "schema": "dkc3.zero.milestones.v024",
+    "funky": {
+      "verified": true,
+      "source_frame": 6670,
+      "evidence": "funky-room-before-dialogue-v024/capture",
+      "description": "Actual PPU shows Funky cabin menu MOTOR BOAT / LEAVE CABIN."
+    },
+    "boat": {
+      "verified": true,
+      "source_frame": 9300,
+      "evidence": "boat-confirm-v024/capture",
+      "description": "Motor Boat option confirmed with a second B press; ROM returns to overworld. Readback at9401 shows primary transport state $38=9 (previously1), $05E7=2 and new position $0244/$029F.",
+      "readback_evidence": "readback-boat-map-v024/wram.bin",
+      "limits": "Read-only RAM evidence and real map capture; sprite rendering remains imperfect."
+    },
+    "region": {
+      "verified": true,
+      "name": "Lake Orangatanga",
+      "source_frame": 12000,
+      "evidence": "lake-region-v024/capture",
+      "description": "Actual PPU shows the first regional map, with central lake/island, mills, lower entry path and northern snow area. Replay PASS12100 from RESET.",
+      "readback": {
+        "frame": 12101,
+        "region": 1,
+        "node": 1,
+        "actor_address": "0x878",
+        "position": [
+          70,
+          116
+        ],
+        "mode": 1
+      },
+      "readback_evidence": "readback-region-map-v024/wram.bin"
+    },
+    "first_level": {
+      "verified": true,
+      "name": "Lakeside Limbo",
+      "source_frame": 13400,
+      "evidence": "first-level-v024/capture",
+      "description": "Actual PPU shows the stilt village level scene with wooden huts, platforms, water and sky. Selection is corroborated by the prior readback region=1/node=1 and unmodified ROM first-node type $25. Normal executable replay PASS13500 from RESET.",
+      "selection_readback": {
+        "frame": 12831,
+        "region": 1,
+        "node": 1,
+        "scene_mode_hex": "0000",
+        "actor_mode": 1,
+        "position": [
+          70,
+          116
+        ]
+      },
+      "readback_evidence": "readback-first-level-command-v024/wram.bin",
+      "limits": "Arrival/scene load only. Sprites are missing or malformed; level completion and visual equivalence are not established."
+    },
+    "no_state_injection": true
+  },
+  "navigation_diagnosis": {
+    "cause": "Direction inputs were applied while the ROM fade/input lock was active.",
+    "observed_at_frame": 5841,
+    "held_right_input": {
+      "io_joy1": "0100",
+      "wram_04ca": "0100",
+      "wram_04d6": "0100"
+    },
+    "gate": {
+      "wram_04ec": "820e",
+      "rom_routine": "B2D379",
+      "condition": "BIT #FF00; BNE skips LDA $04D6 movement."
+    },
+    "after_frame": 6001,
+    "after_gate": "000f",
+    "delayed_input_frame": 6200,
+    "position_before": {
+      "x": 228,
+      "y": 453
+    },
+    "position_after_6401": {
+      "x": 504,
+      "y": 625
+    },
+    "no_state_injection": true,
+    "evidence": [
+      "readback-right-held-v024",
+      "readback-no-right-v024",
+      "readback-map-directions-v023",
+      "map-late-right-v024"
+    ],
+    "next_observed_blocker": {
+      "frame": 6633,
+      "from": "80836D",
+      "target": "B4813A",
+      "kind": "FLOW"
+    },
+    "shore_navigation": {
+      "initial_attempt": {
+        "position": [
+          621,
+          648
+        ],
+        "outside_hotspot": true
+      },
+      "northern_hotspot": {
+        "rom": "B2C846",
+        "rectangle": {
+          "x": [
+            623,
+            632
+          ],
+          "y": [
+            616,
+            624
+          ]
+        },
+        "destination": "0018",
+        "effect": "Disembarks to land node 0x14, not the requested region.",
+        "readback_frame": 12401,
+        "position": [
+          627,
+          604
+        ],
+        "transport_mode": 1
+      },
+      "southern_hotspot": {
+        "rom": "B2C7E6",
+        "rectangle": {
+          "x": [
+            639,
+            649
+          ],
+          "y": [
+            722,
+            736
+          ]
+        },
+        "destination": "000F",
+        "aligned_readback_frame": 10081,
+        "position": [
+          639,
+          728
+        ],
+        "transport_mode": 9,
+        "land_readback": {
+          "frame": 11001,
+          "position": [
+            723,
+            737
+          ],
+          "mode": 1,
+          "overworld_node": 4,
+          "node_type": "41",
+          "target_region": 1
+        }
+      },
+      "geometry_source": "Unmodified ROM bytes and decoded routines B2C70E/B2C753/B4BA36/B4B804.",
+      "inputs_only": true
+    }
+  },
+  "input_replay": "input/to-first-level-v024.trace",
+  "new_accepted_hints": 65,
+  "new_observed_hints": [
+    "rom=3a574807afbad761 target=B2CB3E from=B2CB37 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B2D624 from=B2D60F kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B2E802 from=BBB8EB kind=STACK-RTL e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B2E811 from=B2E802 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B2E9AC from=BBB8EB kind=STACK-RTL e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B2E9B5 from=B2E9AC kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B38076 from=80835F kind=FLOW e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=B3813E from=B3807A kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B3A6C1 from=B38090 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B3A6F7 from=B3A6D9 kind=FLOW e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=B3DB6D from=B3DA76 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B3DC67 from=B3D885 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B3ECBF from=B3D9A2 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B4813A from=80836D kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B48274 from=B481DF kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B482DE from=B481E7 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B48338 from=B481EC kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B483FD from=B481AC kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B4846B from=B4846B kind=STATE e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=B4B043 from=B481CD kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B4B391 from=B4B37D kind=FLOW e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=B4B60B from=B4B26E kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B4BEB3 from=B4BBE2 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B4C6EF from=B4BBFC kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B4CC56 from=B4BC16 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B7B00C from=B3A6DC kind=FLOW e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=B7D2EA from=B7D078 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B7D673 from=B7D797 kind=STACK-RTS e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B7D687 from=B7D797 kind=STACK-RTS e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B7D78E from=B7D670 kind=FLOW e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=B7DAC5 from=B7D925 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B7E56F from=B7E788 kind=STACK-RTS e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=B7E784 from=B7E56C kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B89F2C from=BBB8EB kind=STACK-RTL e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B89F34 from=BBB8EB kind=STACK-RTL e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B8A39C from=B89F4D kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B8AEB5 from=B89F4D kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B8D227 from=B8CD37 kind=STATE e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B8D5BE from=B8CD1E kind=FLOW e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=B8D96C from=B8CD50 kind=FLOW e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=B8DC77 from=B8CD61 kind=FLOW e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=B9A59B from=B9A20F kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B9A9B3 from=B9A1AD kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B9AB97 from=B9A149 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B9ABA2 from=B9A149 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B9BD14 from=B9A149 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B9BD9B from=B9A1D0 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B9BDC8 from=B9A20F kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B9EB3D from=B9E03C kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=B9F57F from=B9F4D6 kind=FLOW e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=BB8582 from=B3A6CD kind=STATE e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BB85BB from=B3A6E4 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BB9B73 from=BB9A48 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BB9C32 from=BB9A77 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BBA12E from=BBA114 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BBA85F from=BBA6E8 kind=FLOW e=0 m=0 x=0 c=1 observed=2",
+    "rom=3a574807afbad761 target=BBA9AE from=BBA6E1 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BBB59C from=BBB523 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BBD015 from=BBB8EB kind=STACK-RTL e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BBD01C from=BBD015 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BBD1B9 from=BBB8EB kind=STACK-RTL e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BBD1C2 from=BBD1B9 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BCE59E from=BEC17F kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BCF8F8 from=B48692 kind=FLOW e=0 m=0 x=0 c=0 observed=2",
+    "rom=3a574807afbad761 target=BEC182 from=BCE67F kind=STACK-RTL e=0 m=0 x=0 c=0 observed=2"
+  ],
+  "total_hints": 320,
+  "generation_options": {
+    "schema": 1,
+    "rom": "3a574807afbad761",
+    "max": 65536,
+    "cacheLimit": 262144
+  },
+  "post_save_regression": {
+    "exit_code": 0,
+    "qa": {
+      "rom": "3a574807afbad761",
+      "runtime_started": "PASS",
+      "frames": "3466",
+      "instructions": "21818590",
+      "nmi_services": "3083",
+      "irq_services": "0",
+      "ppu_forced_blank": "0",
+      "framebuffer_hash": "24298b2db6200383",
+      "wram_hash": "b4b82e1e798fa16e",
+      "new_oracle_hints": "NO",
+      "ppu_virtual_accesses": "7921299",
+      "ppu_accesses": "7921299",
+      "ppu_native_accesses": "0",
+      "ppu_fallback_accesses": "7921299",
+      "apu_virtual_accesses": "722505",
+      "apu_accesses": "722505",
+      "apu_native_master_cycles": "0",
+      "apu_fallback_master_cycles": "1238637506",
+      "dsp_native_samples": "0",
+      "dsp_fallback_samples": "1845957",
+      "rom_runtime_reads": "2258701",
+      "rom_native_reads": "0",
+      "rom_fallback_reads": "2258701",
+      "dma_bytes": "7202600",
+      "dma_native_bytes": "0",
+      "dma_fallback_bytes": "7202600",
+      "hdma_bytes": "451323",
+      "hdma_native_bytes": "0",
+      "hdma_fallback_bytes": "451323"
+    },
+    "save_confirmation_frame": "3350",
+    "save_confirmation_hash": "74af7db43797c0a6",
+    "required_frames": 3466,
+    "frame_hash_count": 3466,
+    "limits": "Checks this post-save boundary only; does not prove map or level arrival.",
+    "passed": true
+  },
+  "deterministic_prefix": {
+    "frames_compared": 3489,
+    "identical": true,
+    "hashes": "framebuffer, WRAM, PC"
+  },
+  "title": {
+    "source_frame": 1400,
+    "framebuffer_hash": "db6735d05cfb3359",
+    "verified": true
+  },
+  "compiler_suite": {
+    "passed": 127,
+    "failed": 0,
+    "exit_code": 0
+  },
+  "ctest": {
+    "passed": 9,
+    "skipped": 1,
+    "failed": 0,
+    "skip_reason": "No supplied equivalence vectors"
+  },
+  "cfg": {
+    "schema": "forja65.cfg-verification.v2",
+    "rom": "3a574807afbad761",
+    "totalHints": 320,
+    "covered": 320,
+    "missing": [],
+    "passed": true,
+    "limits": "Static CPU state presence only; no semantic or visual equivalence guarantee."
+  },
+  "preservation": {
+    "assets/cart-data.bin": {
+      "unchanged": true,
+      "sha256": "2277a2d8dddb01fe5cb0ae9a0fa225d42b3a11adccaeafa18e3c339b3794a32b"
+    },
+    "src/native_hooks.cpp": {
+      "unchanged": true,
+      "sha256": "82ef2b102182c1f67a0362144e6775894c16add326501c46c247115dd3660edf"
+    },
+    "tests/equivalence-cases.txt": {
+      "unchanged": true,
+      "sha256": "a699426ea961abdcef4f0f2c3381840007f619b59c66e7bef07d0c54efa8dc41"
+    },
+    "input/to-map.trace": {
+      "unchanged": true,
+      "sha256": "0ca4a83f30034e22f609a5f327d2986be0cc4af2f6a6260c7473382b3f09b0f5"
+    },
+    "cfg": {
+      "before_functions": 1649,
+      "after_functions": 2315,
+      "before_variants": 129623,
+      "after_variants": 157113,
+      "uncovered_old_instruction_domains": 0,
+      "literal_signatures_refined": [
+        {
+          "pc": "BB926B",
+          "old_state": "000?"
+        },
+        {
+          "pc": "BB926D",
+          "old_state": "000?"
+        },
+        {
+          "pc": "BB9270",
+          "old_state": "000?"
+        }
+      ],
+      "audit_scope": "Decoded instruction bytes/metadata and E/M/X/C state domains. Carry-null expands to both values; not whole-game semantic equivalence."
+    },
+    "runtime_hints": {
+      "old_observations_retained": 255,
+      "old_observations_lost": 0,
+      "comparison": "ROM/source/target/kind/E/M/X/C keys"
+    }
+  },
+  "independent_review": {
+    "scope": "Replay input ownership and immediate predecessor cache compatibility",
+    "verdict": "approved",
+    "findings": [],
+    "independent_focused_regression": "PASS",
+    "core_diff": "VERSION plus pollInput replay guard only; decoder and CFG unchanged",
+    "limits": "Generated Windows body exercised with mocked OS APIs; full Windows application not run. Gameplay and packaging excluded."
+  },
+  "evidence_directories": [
+    "final-v024",
+    "prefix-v024",
+    "prefix-v023",
+    "title-v024",
+    "map-late-right-v024",
+    "readback-right-held-v024",
+    "readback-no-right-v024",
+    "readback-boat-map-v024",
+    "readback-region-alignment-v024",
+    "readback-after-alignment-v024",
+    "readback-lake-shore-v024",
+    "readback-lake-entry-aligned-v024",
+    "readback-lake-land-v024",
+    "readback-first-level-command-v024",
+    "readback-map-directions-v023",
+    "funky-room-before-dialogue-v024",
+    "boat-confirm-v024",
+    "lake-region-v024",
+    "readback-region-map-v024",
+    "first-level-v024"
+  ],
+  "platform": "Linux/GCC; generated Windows polling body tested with mocked APIs; complete Windows application not run",
+  "limits": [
+    "Real replay from RESET with fresh SRAM, no state/WRAM/framebuffer injection.",
+    "Reference execution still uses hardware/ROM fallback; no full native cutover claim.",
+    "State-domain retention is not literal signature retention or full-game equivalence.",
+    "Graphics contain sprite/color artifacts; visual correctness is not established.",
+    "First-level arrival only; level completion and full-game equivalence not claimed."
+  ],
+  "guard_upgrade_route": {
+    "frames_compared": 13500,
+    "identical": true,
+    "versions": [
+      "0.3.78",
+      "0.3.79"
+    ],
+    "hashes": "framebuffer, WRAM, PC",
+    "scope": "This recorded Linux route only; complete Windows application not tested."
+  }
+}

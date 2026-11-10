@@ -1,0 +1,56 @@
+{
+  "source": "work/Forja65-v0.3.91/examples/dkc3-v093/forja65-knowledge.json",
+  "rom": {
+    "fnv1a64": "3a574807afbad761",
+    "sha256": "2277a2d8dddb01fe5cb0ae9a0fa225d42b3a11adccaeafa18e3c339b3794a32b"
+  },
+  "source_sha256": "fb78959fd67a3f9cb01605f22e1cb909539d0f8e7b2d5bd8038b858015fdd242",
+  "entries": 8,
+  "dispatch": [
+    {
+      "site": "b89f4d",
+      "targets": 117
+    },
+    {
+      "site": "b8b126",
+      "targets": 7
+    },
+    {
+      "site": "b8c0d9",
+      "targets": 3
+    },
+    {
+      "site": "b8c186",
+      "targets": 5
+    },
+    {
+      "site": "b9a149",
+      "targets": 1
+    },
+    {
+      "site": "b9a157",
+      "targets": 25
+    },
+    {
+      "site": "b7c76a",
+      "targets": 10
+    },
+    {
+      "site": "b9a20f",
+      "targets": 118
+    },
+    {
+      "site": "b9a1ad",
+      "targets": 22
+    },
+    {
+      "site": "b9a1d0",
+      "targets": 33
+    },
+    {
+      "site": "b9a242",
+      "targets": 5
+    }
+  ],
+  "runtime_equivalence_proven": false
+}

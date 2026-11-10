@@ -1,0 +1,73 @@
+{
+  "schema": "dkc3.crossfeed.be-c69e.v1",
+  "rom": {
+    "fnv1a64": "3a574807afbad761",
+    "sha256": "2277a2d8dddb01fe5cb0ae9a0fa225d42b3a11adccaeafa18e3c339b3794a32b",
+    "bytes": 4194304
+  },
+  "translation": {
+    "entry": "BEC69E",
+    "generated_by": "Forja65 v0.3.96 CFG from ROM",
+    "rom_verified_opcode_addresses": 97,
+    "emitted_state_variant_opcode_traces": 194,
+    "sha256_generated_cpp": "ed0f0a096670e0cc240d0676dbe0edfda7674348eee1789d75907b0f576b93a0",
+    "cpu_modes": [
+      "E0/M0/X0/C0",
+      "E0/M0/X0/C?"
+    ],
+    "integration": "DKC3 ZERO dispatcher, not Native handler implementation"
+  },
+  "runtime": {
+    "schema": "dkc3.be-c69e-replay.v1",
+    "baseline_frames": 14417,
+    "updated_frames": 14417,
+    "identical_prefix_frames": 14417,
+    "framebuffer_wram_pc_hashes_identical": true,
+    "baseline_block": {
+      "from": "BEC3B1",
+      "to": "BEC69E"
+    },
+    "updated_block": {
+      "from": "BEC37C",
+      "to": "BEC774",
+      "x": 6,
+      "flags": {
+        "e": 0,
+        "m": 0,
+        "x": 0,
+        "c": 1
+      }
+    },
+    "same_frame_boundary": true,
+    "additional_complete_frames": 0,
+    "native_semantic_equivalence_proven": false,
+    "compiled_game_replay_completed_to_next_blocker": true,
+    "end_reason": "unresolved-flow",
+    "notes": "BE:C69E C++ translation executed, returned to BE:C359, then BE:C37C dispatched via indexed pointer to BE:C774. Hashes before failed instruction unchanged."
+  },
+  "next_observed_flow": {
+    "schema": "forja65.verified-indexed-flow.v1",
+    "rom": "3a574807afbad761",
+    "site": "BEC37C",
+    "target": "BEC774",
+    "x": 6,
+    "pb": 190,
+    "e": 0,
+    "m": 0,
+    "x8": 0,
+    "c": 1,
+    "opcode": "7C",
+    "pointer_table_base": "C37F",
+    "pointer_address": "BEC385",
+    "pointer_value": 51060,
+    "already_present": false,
+    "static_pointer_verified": true,
+    "semantic_equivalence_proven": false
+  },
+  "limits": [
+    "No additional complete frame reached.",
+    "No proof of Native PC handler semantics.",
+    "Native catalog is structural.",
+    "Return stack semantics validated here only through observed execution."
+  ]
+}

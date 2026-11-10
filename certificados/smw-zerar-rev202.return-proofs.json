@@ -1,0 +1,14 @@
+{
+  "schema": "forja65.rev200.returns.v1",
+  "project": "/home/claude/w/port3",
+  "rom_sha256": "0838e531fe22c077528febe14cb3ff7c492f1f5fa8de354192bdff7137c27f5b",
+  "dispatch_sha256_after": "3163d1b53764200f005aed819fea0646a1e4e9e6348d2cb3cc589fd311b5124c",
+  "observed_count": 0,
+  "already_authorized": 0,
+  "direct_verified": 0,
+  "unproven_count": 0,
+  "applied": true,
+  "verified_offsets": [],
+  "candidates": [],
+  "unproven_are_not_authorized": true
+}

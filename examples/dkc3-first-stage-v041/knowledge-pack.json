@@ -1,0 +1,2919 @@
+{
+  "schema": "forja65.knowledge.v1",
+  "rom": {
+    "fnv1a64": "3a574807afbad761",
+    "sha256": "2277a2d8dddb01fe5cb0ae9a0fa225d42b3a11adccaeafa18e3c339b3794a32b"
+  },
+  "producer": {
+    "tool": "Forja65",
+    "version": "0.3.96-rom-indexed-vector-writers"
+  },
+  "entries": [
+    {
+      "address": 12099405,
+      "name": "OBSERVED_ANIMATION_VECTOR_b89f4d",
+      "aliases": [],
+      "category": "SCRIPT",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": false
+      },
+      "priority": 90,
+      "source": "verified-runtime-source with ROM-bound callback candidates",
+      "evidence": [
+        "Source/state observed in the actual replay; target domain recovered from existing ROM bytecode audit. Whole-game equivalence not proven."
+      ],
+      "span": null
+    },
+    {
+      "address": 12165449,
+      "name": "OBSERVED_ANIMATION_VECTOR_b9a149",
+      "aliases": [],
+      "category": "SCRIPT",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": false
+      },
+      "priority": 90,
+      "source": "verified-runtime-source with ROM-bound callback candidates",
+      "evidence": [
+        "Source/state observed in the actual replay; target domain recovered from existing ROM bytecode audit. Whole-game equivalence not proven."
+      ],
+      "span": null
+    },
+    {
+      "address": 12165549,
+      "name": "OBSERVED_ANIMATION_VECTOR_b9a1ad",
+      "aliases": [],
+      "category": "SCRIPT",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": false
+      },
+      "priority": 90,
+      "source": "verified-runtime-source with ROM-bound callback candidates",
+      "evidence": [
+        "Source/state observed in the actual replay; target domain recovered from existing ROM bytecode audit. Whole-game equivalence not proven."
+      ],
+      "span": null
+    },
+    {
+      "address": 12165584,
+      "name": "OBSERVED_ANIMATION_VECTOR_b9a1d0",
+      "aliases": [],
+      "category": "SCRIPT",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": false
+      },
+      "priority": 90,
+      "source": "verified-runtime-source with ROM-bound callback candidates",
+      "evidence": [
+        "Source/state observed in the actual replay; target domain recovered from existing ROM bytecode audit. Whole-game equivalence not proven."
+      ],
+      "span": null
+    },
+    {
+      "address": 12165647,
+      "name": "OBSERVED_ANIMATION_VECTOR_b9a20f",
+      "aliases": [],
+      "category": "SCRIPT",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": false
+      },
+      "priority": 90,
+      "source": "verified-runtime-source with ROM-bound callback candidates",
+      "evidence": [
+        "Source/state observed in the actual replay; target domain recovered from existing ROM bytecode audit. Whole-game equivalence not proven."
+      ],
+      "span": null
+    },
+    {
+      "address": 12165698,
+      "name": "OBSERVED_ANIMATION_VECTOR_b9a242",
+      "aliases": [],
+      "category": "SCRIPT",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": false
+      },
+      "priority": 90,
+      "source": "verified-runtime-source with ROM-bound callback candidates",
+      "evidence": [
+        "Source/state observed in the actual replay; target domain recovered from existing ROM bytecode audit. Whole-game equivalence not proven."
+      ],
+      "span": null
+    },
+    {
+      "address": 12165607,
+      "name": "ROM_BYTECODE_CONTEXT_b9a1e7",
+      "aliases": [],
+      "category": "SCRIPT",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      },
+      "priority": 80,
+      "source": "ROM bytecode catalog context, decode candidate only",
+      "evidence": [
+        "Context belongs to the recovered audited dispatcher, not a native cutover proof."
+      ],
+      "span": null
+    },
+    {
+      "address": 12165629,
+      "name": "ROM_BYTECODE_CONTEXT_b9a1fd",
+      "aliases": [],
+      "category": "SCRIPT",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      },
+      "priority": 80,
+      "source": "ROM bytecode catalog context, decode candidate only",
+      "evidence": [
+        "Context belongs to the recovered audited dispatcher, not a native cutover proof."
+      ],
+      "span": null
+    }
+  ],
+  "dataRegions": [],
+  "dispatch": [
+    {
+      "site": 12099405,
+      "targets": [
+        12100478,
+        12100508,
+        12100526,
+        12100550,
+        12100666,
+        12100684,
+        12100687,
+        12100690,
+        12100923,
+        12100988,
+        12101009,
+        12101139,
+        12101225,
+        12101238,
+        12101262,
+        12101286,
+        12101307,
+        12101319,
+        12101355,
+        12101412,
+        12101421,
+        12101637,
+        12101727,
+        12101748,
+        12101856,
+        12101891,
+        12101973,
+        12102151,
+        12102191,
+        12102528,
+        12102551,
+        12102579,
+        12102607,
+        12102697,
+        12102718,
+        12102742,
+        12102804,
+        12102825,
+        12102849,
+        12102870,
+        12102906,
+        12102930,
+        12102952,
+        12102970,
+        12103193,
+        12103212,
+        12103246,
+        12103297,
+        12103316,
+        12103349,
+        12103387,
+        12103441,
+        12103463,
+        12103485,
+        12103615,
+        12103640,
+        12103663,
+        12103891,
+        12103957,
+        12105173,
+        12105200,
+        12105236,
+        12105255,
+        12105258,
+        12105264,
+        12105339,
+        12105364,
+        12105389,
+        12105408,
+        12105420,
+        12105565,
+        12105583,
+        12105920,
+        12106108,
+        12106182,
+        12106418,
+        12106424,
+        12106724,
+        12107049,
+        12107223,
+        12107436,
+        12107545,
+        12107552,
+        12107671,
+        12107700,
+        12107703,
+        12107731,
+        12107738,
+        12107831,
+        12107850,
+        12107886,
+        12107900,
+        12107933,
+        12107940,
+        12107988,
+        12108161,
+        12108389,
+        12108427,
+        12108584,
+        12108596,
+        12108794,
+        12108812,
+        12108833,
+        12108851,
+        12108866,
+        12108881,
+        12108893,
+        12108905,
+        12108918,
+        12120763,
+        12120769,
+        12120779,
+        12120782,
+        12120802,
+        12120822,
+        12120889,
+        12120904
+      ],
+      "source": "dkc3-native-map-reviewed-table",
+      "resolution": {
+        "runtime_equivalence_proven": false,
+        "index_bounds_proven": false
+      },
+      "contexts": []
+    },
+    {
+      "site": 12103974,
+      "targets": [
+        12103991,
+        12104028,
+        12104043,
+        12104109,
+        12104136,
+        12104195,
+        12104233
+      ],
+      "source": "dkc3-native-map-reviewed-table",
+      "resolution": {
+        "runtime_equivalence_proven": false,
+        "index_bounds_proven": false
+      },
+      "contexts": []
+    },
+    {
+      "site": 12107993,
+      "targets": [
+        12108002,
+        12108063,
+        12108099
+      ],
+      "source": "dkc3-native-map-reviewed-table",
+      "resolution": {
+        "runtime_equivalence_proven": false,
+        "index_bounds_proven": false
+      },
+      "contexts": []
+    },
+    {
+      "site": 12108166,
+      "targets": [
+        12108181,
+        12108200,
+        12108233,
+        12108264,
+        12108317
+      ],
+      "source": "dkc3-native-map-reviewed-table",
+      "resolution": {
+        "runtime_equivalence_proven": false,
+        "index_bounds_proven": false
+      },
+      "contexts": []
+    },
+    {
+      "site": 12165449,
+      "targets": [
+        12185600
+      ],
+      "source": "forja65-focus-static-candidates",
+      "resolution": {
+        "direct_absolute_sta_covered": 0,
+        "direct_absolute_sta_sites": 0,
+        "direct_absolute_writer_closure": false,
+        "immediate_writers": [],
+        "index_bounds_proven": false,
+        "kind": "ram-vector-candidates",
+        "record_tables": [],
+        "writer_scope": "direct absolute STA byte patterns in the mapped program bank only; indirect/aliased WRAM writes are not disproven",
+        "runtime_equivalence_proven": false
+      },
+      "contexts": []
+    },
+    {
+      "site": 12165463,
+      "targets": [
+        12165520,
+        12165536,
+        12165568,
+        12165598,
+        12165607,
+        12165629,
+        12165670,
+        12165682,
+        12165703,
+        12165719,
+        12165766,
+        12165814,
+        12165838,
+        12165855,
+        12165875,
+        12165913,
+        12165951,
+        12165972,
+        12166035,
+        12166136,
+        12166242,
+        12166309,
+        12166377,
+        12166447,
+        12166537
+      ],
+      "source": "forja65-focus-static-candidates",
+      "resolution": {
+        "entries": 27,
+        "index_bounds_proven": false,
+        "index_domain": {
+          "observed_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26
+          ],
+          "source": "external-bytecode-script-domain-proof",
+          "theoretical_entry_max": 26,
+          "theoretical_entry_min": 0
+        },
+        "index_domain_fits_table": true,
+        "kind": "inline-structural-table",
+        "local_index_domain": {
+          "mask": 127,
+          "scale_bytes": 2,
+          "source": "local-AND-ASL-TAX",
+          "theoretical_entry_max": 127,
+          "theoretical_entry_min": 0
+        },
+        "script_domain": {
+          "closed_entries": 854,
+          "command_hits": {
+            "0": 363,
+            "1": 128,
+            "2": 172,
+            "3": 828,
+            "4": 662,
+            "5": 442,
+            "6": 13,
+            "7": 156,
+            "9": 9,
+            "10": 520,
+            "11": 200,
+            "12": 567,
+            "13": 559,
+            "14": 69,
+            "15": 12,
+            "16": 824,
+            "17": 199,
+            "18": 89,
+            "19": 1,
+            "20": 19,
+            "21": 211,
+            "22": 270,
+            "23": 288,
+            "24": 212,
+            "25": 27,
+            "26": 869
+          },
+          "complete": true,
+          "directory_entries": 877,
+          "directory_start": 16318720,
+          "directory_stride": 4,
+          "dispatcher_site": 12165463,
+          "empty_entries": 23,
+          "index_bounds_proven": true,
+          "invalid_command_ids": {},
+          "invalid_entries": 0,
+          "kind": "bytecode-script-domain-audit",
+          "nonzero_entries": 854,
+          "observed_id_max": 26,
+          "observed_ids_in_closed_entries": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26
+          ],
+          "scope": "ROM-directory structural bytecode audit; all non-empty entries close within the reviewed grammar and the observed command IDs fit the 27-entry dispatcher.",
+          "script_bank": 249,
+          "table_entries": 27,
+          "table_start": 12165466,
+          "unique_script_pointers": 790
+        },
+        "script_domain_closed_entries": 854,
+        "script_domain_complete": true,
+        "script_domain_invalid_entries": 0,
+        "script_domain_observed_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "table_end": 12165520,
+        "table_extent_proven": true,
+        "table_extent_source": "dkc3-recomp-catalog",
+        "table_start": 12165466,
+        "unique_targets": 25,
+        "runtime_equivalence_proven": false
+      },
+      "contexts": []
+    },
+    {
+      "site": 12044138,
+      "targets": [
+        12044141,
+        12044315,
+        12044352,
+        12044460,
+        12044498,
+        12044610,
+        12045099,
+        12045349,
+        12045599,
+        12045891
+      ],
+      "source": "forja65-focus-static-candidates",
+      "resolution": {
+        "direct_absolute_sta_covered": 3,
+        "direct_absolute_sta_sites": 3,
+        "direct_absolute_writer_closure": true,
+        "immediate_writers": [
+          {
+            "kind": "immediate-store",
+            "pc": 12055210,
+            "target": 12044352
+          },
+          {
+            "kind": "immediate-store",
+            "pc": 12055224,
+            "target": 12044141
+          }
+        ],
+        "index_bounds_proven": false,
+        "kind": "ram-vector-writer-domain",
+        "record_tables": [
+          {
+            "companion_start": 12038171,
+            "entries": 21,
+            "stride": 4,
+            "table_start": 12038173,
+            "targets": [
+              12044315,
+              12044460,
+              12044498,
+              12044610,
+              12045099,
+              12045349,
+              12045599,
+              12045891
+            ],
+            "terminator": {
+              "companion": 0,
+              "handler": 0,
+              "index": 21
+            },
+            "unique_targets": 8,
+            "writer_pc": 12055193
+          }
+        ],
+        "writer_scope": "direct absolute STA byte patterns in the mapped program bank only; indirect/aliased WRAM writes are not disproven",
+        "runtime_equivalence_proven": false
+      },
+      "contexts": []
+    },
+    {
+      "site": 12165647,
+      "targets": [
+        12166555,
+        12166560,
+        12166588,
+        12166622,
+        12166624,
+        12166658,
+        12166663,
+        12166667,
+        12166688,
+        12166787,
+        12166898,
+        12167335,
+        12167344,
+        12167743,
+        12167812,
+        12167844,
+        12167954,
+        12168034,
+        12168128,
+        12168136,
+        12168141,
+        12168146,
+        12168166,
+        12168183,
+        12168241,
+        12168453,
+        12168481,
+        12168488,
+        12168495,
+        12168556,
+        12168658,
+        12168699,
+        12168877,
+        12168901,
+        12169070,
+        12169116,
+        12169124,
+        12169140,
+        12169165,
+        12169176,
+        12169183,
+        12169191,
+        12169237,
+        12169276,
+        12169315,
+        12169411,
+        12169711,
+        12169726,
+        12169775,
+        12169940,
+        12170048,
+        12170073,
+        12170098,
+        12170137,
+        12170237,
+        12170259,
+        12170267,
+        12170275,
+        12170298,
+        12170334,
+        12170474,
+        12170509,
+        12170547,
+        12171319,
+        12171340,
+        12171402,
+        12171508,
+        12171533,
+        12171540,
+        12171553,
+        12171559,
+        12171565,
+        12171607,
+        12171658,
+        12171674,
+        12171682,
+        12171730,
+        12171737,
+        12171831,
+        12172034,
+        12172046,
+        12172052,
+        12172057,
+        12172062,
+        12172067,
+        12172094,
+        12172108,
+        12172111,
+        12172116,
+        12172128,
+        12172207,
+        12172227,
+        12172230,
+        12172233,
+        12172321,
+        12172354,
+        12172448,
+        12172712,
+        12172721,
+        12172744,
+        12172803,
+        12172812,
+        12172817,
+        12172884,
+        12172907,
+        12172923,
+        12172933,
+        12172936,
+        12172939,
+        12172947,
+        12172955,
+        12172995,
+        12173012,
+        12173020,
+        12173034,
+        12173043,
+        12173052,
+        12173055
+      ],
+      "source": "dkc3-animation-bytecode-callback-domain",
+      "resolution": {
+        "commands": [
+          3,
+          4
+        ],
+        "complete": true,
+        "contexts": [
+          {
+            "command": 3,
+            "complete": true,
+            "root": 12165629,
+            "structural_hits": 828,
+            "target_hits": [
+              {
+                "hits": 217,
+                "target": 12166588,
+                "unique_sites": 150
+              },
+              {
+                "hits": 102,
+                "target": 12166787,
+                "unique_sites": 94
+              },
+              {
+                "hits": 38,
+                "target": 12171402,
+                "unique_sites": 38
+              },
+              {
+                "hits": 21,
+                "target": 12171340,
+                "unique_sites": 21
+              },
+              {
+                "hits": 20,
+                "target": 12169711,
+                "unique_sites": 16
+              },
+              {
+                "hits": 18,
+                "target": 12166898,
+                "unique_sites": 18
+              },
+              {
+                "hits": 18,
+                "target": 12168136,
+                "unique_sites": 18
+              },
+              {
+                "hits": 17,
+                "target": 12168128,
+                "unique_sites": 17
+              },
+              {
+                "hits": 15,
+                "target": 12167344,
+                "unique_sites": 15
+              },
+              {
+                "hits": 12,
+                "target": 12166622,
+                "unique_sites": 12
+              },
+              {
+                "hits": 12,
+                "target": 12166658,
+                "unique_sites": 12
+              },
+              {
+                "hits": 12,
+                "target": 12167335,
+                "unique_sites": 12
+              },
+              {
+                "hits": 12,
+                "target": 12173012,
+                "unique_sites": 12
+              },
+              {
+                "hits": 11,
+                "target": 12172207,
+                "unique_sites": 11
+              },
+              {
+                "hits": 10,
+                "target": 12168241,
+                "unique_sites": 10
+              },
+              {
+                "hits": 10,
+                "target": 12169191,
+                "unique_sites": 10
+              },
+              {
+                "hits": 10,
+                "target": 12170509,
+                "unique_sites": 10
+              },
+              {
+                "hits": 10,
+                "target": 12173052,
+                "unique_sites": 10
+              },
+              {
+                "hits": 9,
+                "target": 12171730,
+                "unique_sites": 9
+              },
+              {
+                "hits": 9,
+                "target": 12171737,
+                "unique_sites": 9
+              },
+              {
+                "hits": 8,
+                "target": 12168141,
+                "unique_sites": 8
+              },
+              {
+                "hits": 8,
+                "target": 12172233,
+                "unique_sites": 8
+              },
+              {
+                "hits": 7,
+                "target": 12172128,
+                "unique_sites": 7
+              },
+              {
+                "hits": 7,
+                "target": 12172817,
+                "unique_sites": 7
+              },
+              {
+                "hits": 7,
+                "target": 12172939,
+                "unique_sites": 7
+              },
+              {
+                "hits": 6,
+                "target": 12168699,
+                "unique_sites": 6
+              },
+              {
+                "hits": 6,
+                "target": 12171319,
+                "unique_sites": 6
+              },
+              {
+                "hits": 5,
+                "target": 12168146,
+                "unique_sites": 5
+              },
+              {
+                "hits": 5,
+                "target": 12170298,
+                "unique_sites": 5
+              },
+              {
+                "hits": 5,
+                "target": 12172227,
+                "unique_sites": 5
+              },
+              {
+                "hits": 5,
+                "target": 12173055,
+                "unique_sites": 5
+              },
+              {
+                "hits": 4,
+                "target": 12166667,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12167743,
+                "unique_sites": 1
+              },
+              {
+                "hits": 4,
+                "target": 12168034,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12168495,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12168556,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12168658,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169124,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169140,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169237,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169276,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169315,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169940,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12170048,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12170073,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12170237,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12171682,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12172111,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12172230,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12172995,
+                "unique_sites": 4
+              },
+              {
+                "hits": 3,
+                "target": 12168488,
+                "unique_sites": 3
+              },
+              {
+                "hits": 3,
+                "target": 12171533,
+                "unique_sites": 3
+              },
+              {
+                "hits": 3,
+                "target": 12171540,
+                "unique_sites": 3
+              },
+              {
+                "hits": 3,
+                "target": 12172721,
+                "unique_sites": 3
+              },
+              {
+                "hits": 2,
+                "target": 12166624,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12166663,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12167812,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12167844,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12168166,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12168453,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12168481,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12168877,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12168901,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169070,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169165,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169176,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169411,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169726,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169775,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170098,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170137,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170259,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170267,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170275,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170334,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170474,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170547,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12171508,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12171565,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12171674,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12172062,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12172108,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12172116,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12172321,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12172884,
+                "unique_sites": 2
+              },
+              {
+                "hits": 1,
+                "target": 12167954,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12168183,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12169116,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12169183,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12171553,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12171559,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12171607,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12171658,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12171831,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172034,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172046,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172052,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172057,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172067,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172094,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172712,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172744,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172803,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172812,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172907,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172923,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172947,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172955,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12173020,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12173034,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12173043,
+                "unique_sites": 1
+              }
+            ],
+            "targets": [
+              12166588,
+              12166622,
+              12166624,
+              12166658,
+              12166663,
+              12166667,
+              12166787,
+              12166898,
+              12167335,
+              12167344,
+              12167743,
+              12167812,
+              12167844,
+              12167954,
+              12168034,
+              12168128,
+              12168136,
+              12168141,
+              12168146,
+              12168166,
+              12168183,
+              12168241,
+              12168453,
+              12168481,
+              12168488,
+              12168495,
+              12168556,
+              12168658,
+              12168699,
+              12168877,
+              12168901,
+              12169070,
+              12169116,
+              12169124,
+              12169140,
+              12169165,
+              12169176,
+              12169183,
+              12169191,
+              12169237,
+              12169276,
+              12169315,
+              12169411,
+              12169711,
+              12169726,
+              12169775,
+              12169940,
+              12170048,
+              12170073,
+              12170098,
+              12170137,
+              12170237,
+              12170259,
+              12170267,
+              12170275,
+              12170298,
+              12170334,
+              12170474,
+              12170509,
+              12170547,
+              12171319,
+              12171340,
+              12171402,
+              12171508,
+              12171533,
+              12171540,
+              12171553,
+              12171559,
+              12171565,
+              12171607,
+              12171658,
+              12171674,
+              12171682,
+              12171730,
+              12171737,
+              12171831,
+              12172034,
+              12172046,
+              12172052,
+              12172057,
+              12172062,
+              12172067,
+              12172094,
+              12172108,
+              12172111,
+              12172116,
+              12172128,
+              12172207,
+              12172227,
+              12172230,
+              12172233,
+              12172321,
+              12172712,
+              12172721,
+              12172744,
+              12172803,
+              12172812,
+              12172817,
+              12172884,
+              12172907,
+              12172923,
+              12172939,
+              12172947,
+              12172955,
+              12172995,
+              12173012,
+              12173020,
+              12173034,
+              12173043,
+              12173052,
+              12173055
+            ],
+            "unique_sites": 746,
+            "unique_targets": 111
+          },
+          {
+            "command": 4,
+            "complete": true,
+            "root": 12165607,
+            "structural_hits": 662,
+            "target_hits": [
+              {
+                "hits": 218,
+                "target": 12172354,
+                "unique_sites": 190
+              },
+              {
+                "hits": 150,
+                "target": 12172448,
+                "unique_sites": 150
+              },
+              {
+                "hits": 122,
+                "target": 12172933,
+                "unique_sites": 66
+              },
+              {
+                "hits": 72,
+                "target": 12166555,
+                "unique_sites": 72
+              },
+              {
+                "hits": 67,
+                "target": 12166560,
+                "unique_sites": 46
+              },
+              {
+                "hits": 17,
+                "target": 12172936,
+                "unique_sites": 17
+              },
+              {
+                "hits": 16,
+                "target": 12166688,
+                "unique_sites": 16
+              }
+            ],
+            "targets": [
+              12166555,
+              12166560,
+              12166688,
+              12172354,
+              12172448,
+              12172933,
+              12172936
+            ],
+            "unique_arguments": 104,
+            "unique_sites": 557,
+            "unique_targets": 7
+          }
+        ],
+        "kind": "bytecode-callback-target-domain",
+        "scope": "All command-3/4 callback pointers reached by the structurally closed F9 animation-directory grammar. Target-hit counts are static corpus occurrences for prioritization; callback-body semantic equivalence remains a separate proof.",
+        "site": 12165647,
+        "structural_hits": 1490,
+        "target_bank": 185,
+        "target_hits": [
+          {
+            "hits": 218,
+            "target": 12172354
+          },
+          {
+            "hits": 217,
+            "target": 12166588
+          },
+          {
+            "hits": 150,
+            "target": 12172448
+          },
+          {
+            "hits": 122,
+            "target": 12172933
+          },
+          {
+            "hits": 102,
+            "target": 12166787
+          },
+          {
+            "hits": 72,
+            "target": 12166555
+          },
+          {
+            "hits": 67,
+            "target": 12166560
+          },
+          {
+            "hits": 38,
+            "target": 12171402
+          },
+          {
+            "hits": 21,
+            "target": 12171340
+          },
+          {
+            "hits": 20,
+            "target": 12169711
+          },
+          {
+            "hits": 18,
+            "target": 12166898
+          },
+          {
+            "hits": 18,
+            "target": 12168136
+          },
+          {
+            "hits": 17,
+            "target": 12168128
+          },
+          {
+            "hits": 17,
+            "target": 12172936
+          },
+          {
+            "hits": 16,
+            "target": 12166688
+          },
+          {
+            "hits": 15,
+            "target": 12167344
+          },
+          {
+            "hits": 12,
+            "target": 12166622
+          },
+          {
+            "hits": 12,
+            "target": 12166658
+          },
+          {
+            "hits": 12,
+            "target": 12167335
+          },
+          {
+            "hits": 12,
+            "target": 12173012
+          },
+          {
+            "hits": 11,
+            "target": 12172207
+          },
+          {
+            "hits": 10,
+            "target": 12168241
+          },
+          {
+            "hits": 10,
+            "target": 12169191
+          },
+          {
+            "hits": 10,
+            "target": 12170509
+          },
+          {
+            "hits": 10,
+            "target": 12173052
+          },
+          {
+            "hits": 9,
+            "target": 12171730
+          },
+          {
+            "hits": 9,
+            "target": 12171737
+          },
+          {
+            "hits": 8,
+            "target": 12168141
+          },
+          {
+            "hits": 8,
+            "target": 12172233
+          },
+          {
+            "hits": 7,
+            "target": 12172128
+          },
+          {
+            "hits": 7,
+            "target": 12172817
+          },
+          {
+            "hits": 7,
+            "target": 12172939
+          },
+          {
+            "hits": 6,
+            "target": 12168699
+          },
+          {
+            "hits": 6,
+            "target": 12171319
+          },
+          {
+            "hits": 5,
+            "target": 12168146
+          },
+          {
+            "hits": 5,
+            "target": 12170298
+          },
+          {
+            "hits": 5,
+            "target": 12172227
+          },
+          {
+            "hits": 5,
+            "target": 12173055
+          },
+          {
+            "hits": 4,
+            "target": 12166667
+          },
+          {
+            "hits": 4,
+            "target": 12167743
+          },
+          {
+            "hits": 4,
+            "target": 12168034
+          },
+          {
+            "hits": 4,
+            "target": 12168495
+          },
+          {
+            "hits": 4,
+            "target": 12168556
+          },
+          {
+            "hits": 4,
+            "target": 12168658
+          },
+          {
+            "hits": 4,
+            "target": 12169124
+          },
+          {
+            "hits": 4,
+            "target": 12169140
+          },
+          {
+            "hits": 4,
+            "target": 12169237
+          },
+          {
+            "hits": 4,
+            "target": 12169276
+          },
+          {
+            "hits": 4,
+            "target": 12169315
+          },
+          {
+            "hits": 4,
+            "target": 12169940
+          },
+          {
+            "hits": 4,
+            "target": 12170048
+          },
+          {
+            "hits": 4,
+            "target": 12170073
+          },
+          {
+            "hits": 4,
+            "target": 12170237
+          },
+          {
+            "hits": 4,
+            "target": 12171682
+          },
+          {
+            "hits": 4,
+            "target": 12172111
+          },
+          {
+            "hits": 4,
+            "target": 12172230
+          },
+          {
+            "hits": 4,
+            "target": 12172995
+          },
+          {
+            "hits": 3,
+            "target": 12168488
+          },
+          {
+            "hits": 3,
+            "target": 12171533
+          },
+          {
+            "hits": 3,
+            "target": 12171540
+          },
+          {
+            "hits": 3,
+            "target": 12172721
+          },
+          {
+            "hits": 2,
+            "target": 12166624
+          },
+          {
+            "hits": 2,
+            "target": 12166663
+          },
+          {
+            "hits": 2,
+            "target": 12167812
+          },
+          {
+            "hits": 2,
+            "target": 12167844
+          },
+          {
+            "hits": 2,
+            "target": 12168166
+          },
+          {
+            "hits": 2,
+            "target": 12168453
+          },
+          {
+            "hits": 2,
+            "target": 12168481
+          },
+          {
+            "hits": 2,
+            "target": 12168877
+          },
+          {
+            "hits": 2,
+            "target": 12168901
+          },
+          {
+            "hits": 2,
+            "target": 12169070
+          },
+          {
+            "hits": 2,
+            "target": 12169165
+          },
+          {
+            "hits": 2,
+            "target": 12169176
+          },
+          {
+            "hits": 2,
+            "target": 12169411
+          },
+          {
+            "hits": 2,
+            "target": 12169726
+          },
+          {
+            "hits": 2,
+            "target": 12169775
+          },
+          {
+            "hits": 2,
+            "target": 12170098
+          },
+          {
+            "hits": 2,
+            "target": 12170137
+          },
+          {
+            "hits": 2,
+            "target": 12170259
+          },
+          {
+            "hits": 2,
+            "target": 12170267
+          },
+          {
+            "hits": 2,
+            "target": 12170275
+          },
+          {
+            "hits": 2,
+            "target": 12170334
+          },
+          {
+            "hits": 2,
+            "target": 12170474
+          },
+          {
+            "hits": 2,
+            "target": 12170547
+          },
+          {
+            "hits": 2,
+            "target": 12171508
+          },
+          {
+            "hits": 2,
+            "target": 12171565
+          },
+          {
+            "hits": 2,
+            "target": 12171674
+          },
+          {
+            "hits": 2,
+            "target": 12172062
+          },
+          {
+            "hits": 2,
+            "target": 12172108
+          },
+          {
+            "hits": 2,
+            "target": 12172116
+          },
+          {
+            "hits": 2,
+            "target": 12172321
+          },
+          {
+            "hits": 2,
+            "target": 12172884
+          },
+          {
+            "hits": 1,
+            "target": 12167954
+          },
+          {
+            "hits": 1,
+            "target": 12168183
+          },
+          {
+            "hits": 1,
+            "target": 12169116
+          },
+          {
+            "hits": 1,
+            "target": 12169183
+          },
+          {
+            "hits": 1,
+            "target": 12171553
+          },
+          {
+            "hits": 1,
+            "target": 12171559
+          },
+          {
+            "hits": 1,
+            "target": 12171607
+          },
+          {
+            "hits": 1,
+            "target": 12171658
+          },
+          {
+            "hits": 1,
+            "target": 12171831
+          },
+          {
+            "hits": 1,
+            "target": 12172034
+          },
+          {
+            "hits": 1,
+            "target": 12172046
+          },
+          {
+            "hits": 1,
+            "target": 12172052
+          },
+          {
+            "hits": 1,
+            "target": 12172057
+          },
+          {
+            "hits": 1,
+            "target": 12172067
+          },
+          {
+            "hits": 1,
+            "target": 12172094
+          },
+          {
+            "hits": 1,
+            "target": 12172712
+          },
+          {
+            "hits": 1,
+            "target": 12172744
+          },
+          {
+            "hits": 1,
+            "target": 12172803
+          },
+          {
+            "hits": 1,
+            "target": 12172812
+          },
+          {
+            "hits": 1,
+            "target": 12172907
+          },
+          {
+            "hits": 1,
+            "target": 12172923
+          },
+          {
+            "hits": 1,
+            "target": 12172947
+          },
+          {
+            "hits": 1,
+            "target": 12172955
+          },
+          {
+            "hits": 1,
+            "target": 12173020
+          },
+          {
+            "hits": 1,
+            "target": 12173034
+          },
+          {
+            "hits": 1,
+            "target": 12173043
+          }
+        ],
+        "targets": [
+          12166555,
+          12166560,
+          12166588,
+          12166622,
+          12166624,
+          12166658,
+          12166663,
+          12166667,
+          12166688,
+          12166787,
+          12166898,
+          12167335,
+          12167344,
+          12167743,
+          12167812,
+          12167844,
+          12167954,
+          12168034,
+          12168128,
+          12168136,
+          12168141,
+          12168146,
+          12168166,
+          12168183,
+          12168241,
+          12168453,
+          12168481,
+          12168488,
+          12168495,
+          12168556,
+          12168658,
+          12168699,
+          12168877,
+          12168901,
+          12169070,
+          12169116,
+          12169124,
+          12169140,
+          12169165,
+          12169176,
+          12169183,
+          12169191,
+          12169237,
+          12169276,
+          12169315,
+          12169411,
+          12169711,
+          12169726,
+          12169775,
+          12169940,
+          12170048,
+          12170073,
+          12170098,
+          12170137,
+          12170237,
+          12170259,
+          12170267,
+          12170275,
+          12170298,
+          12170334,
+          12170474,
+          12170509,
+          12170547,
+          12171319,
+          12171340,
+          12171402,
+          12171508,
+          12171533,
+          12171540,
+          12171553,
+          12171559,
+          12171565,
+          12171607,
+          12171658,
+          12171674,
+          12171682,
+          12171730,
+          12171737,
+          12171831,
+          12172034,
+          12172046,
+          12172052,
+          12172057,
+          12172062,
+          12172067,
+          12172094,
+          12172108,
+          12172111,
+          12172116,
+          12172128,
+          12172207,
+          12172227,
+          12172230,
+          12172233,
+          12172321,
+          12172354,
+          12172448,
+          12172712,
+          12172721,
+          12172744,
+          12172803,
+          12172812,
+          12172817,
+          12172884,
+          12172907,
+          12172923,
+          12172933,
+          12172936,
+          12172939,
+          12172947,
+          12172955,
+          12172995,
+          12173012,
+          12173020,
+          12173034,
+          12173043,
+          12173052,
+          12173055
+        ],
+        "unique_sites": 1303,
+        "unique_targets": 118,
+        "runtime_equivalence_proven": false,
+        "index_bounds_proven": false
+      },
+      "contexts": [
+        {
+          "root": 12165629,
+          "targets": [
+            12166588,
+            12166622,
+            12166624,
+            12166658,
+            12166663,
+            12166667,
+            12166787,
+            12166898,
+            12167335,
+            12167344,
+            12167743,
+            12167812,
+            12167844,
+            12167954,
+            12168034,
+            12168128,
+            12168136,
+            12168141,
+            12168146,
+            12168166,
+            12168183,
+            12168241,
+            12168453,
+            12168481,
+            12168488,
+            12168495,
+            12168556,
+            12168658,
+            12168699,
+            12168877,
+            12168901,
+            12169070,
+            12169116,
+            12169124,
+            12169140,
+            12169165,
+            12169176,
+            12169183,
+            12169191,
+            12169237,
+            12169276,
+            12169315,
+            12169411,
+            12169711,
+            12169726,
+            12169775,
+            12169940,
+            12170048,
+            12170073,
+            12170098,
+            12170137,
+            12170237,
+            12170259,
+            12170267,
+            12170275,
+            12170298,
+            12170334,
+            12170474,
+            12170509,
+            12170547,
+            12171319,
+            12171340,
+            12171402,
+            12171508,
+            12171533,
+            12171540,
+            12171553,
+            12171559,
+            12171565,
+            12171607,
+            12171658,
+            12171674,
+            12171682,
+            12171730,
+            12171737,
+            12171831,
+            12172034,
+            12172046,
+            12172052,
+            12172057,
+            12172062,
+            12172067,
+            12172094,
+            12172108,
+            12172111,
+            12172116,
+            12172128,
+            12172207,
+            12172227,
+            12172230,
+            12172233,
+            12172321,
+            12172712,
+            12172721,
+            12172744,
+            12172803,
+            12172812,
+            12172817,
+            12172884,
+            12172907,
+            12172923,
+            12172939,
+            12172947,
+            12172955,
+            12172995,
+            12173012,
+            12173020,
+            12173034,
+            12173043,
+            12173052,
+            12173055
+          ],
+          "source": "dkc3-animation-bytecode-callback-domain",
+          "resolution": {
+            "command": 3,
+            "complete": true,
+            "kind": "bytecode-callback-target-domain-context",
+            "structural_hits": 828,
+            "target_hits": [
+              {
+                "hits": 217,
+                "target": 12166588,
+                "unique_sites": 150
+              },
+              {
+                "hits": 102,
+                "target": 12166787,
+                "unique_sites": 94
+              },
+              {
+                "hits": 38,
+                "target": 12171402,
+                "unique_sites": 38
+              },
+              {
+                "hits": 21,
+                "target": 12171340,
+                "unique_sites": 21
+              },
+              {
+                "hits": 20,
+                "target": 12169711,
+                "unique_sites": 16
+              },
+              {
+                "hits": 18,
+                "target": 12166898,
+                "unique_sites": 18
+              },
+              {
+                "hits": 18,
+                "target": 12168136,
+                "unique_sites": 18
+              },
+              {
+                "hits": 17,
+                "target": 12168128,
+                "unique_sites": 17
+              },
+              {
+                "hits": 15,
+                "target": 12167344,
+                "unique_sites": 15
+              },
+              {
+                "hits": 12,
+                "target": 12166622,
+                "unique_sites": 12
+              },
+              {
+                "hits": 12,
+                "target": 12166658,
+                "unique_sites": 12
+              },
+              {
+                "hits": 12,
+                "target": 12167335,
+                "unique_sites": 12
+              },
+              {
+                "hits": 12,
+                "target": 12173012,
+                "unique_sites": 12
+              },
+              {
+                "hits": 11,
+                "target": 12172207,
+                "unique_sites": 11
+              },
+              {
+                "hits": 10,
+                "target": 12168241,
+                "unique_sites": 10
+              },
+              {
+                "hits": 10,
+                "target": 12169191,
+                "unique_sites": 10
+              },
+              {
+                "hits": 10,
+                "target": 12170509,
+                "unique_sites": 10
+              },
+              {
+                "hits": 10,
+                "target": 12173052,
+                "unique_sites": 10
+              },
+              {
+                "hits": 9,
+                "target": 12171730,
+                "unique_sites": 9
+              },
+              {
+                "hits": 9,
+                "target": 12171737,
+                "unique_sites": 9
+              },
+              {
+                "hits": 8,
+                "target": 12168141,
+                "unique_sites": 8
+              },
+              {
+                "hits": 8,
+                "target": 12172233,
+                "unique_sites": 8
+              },
+              {
+                "hits": 7,
+                "target": 12172128,
+                "unique_sites": 7
+              },
+              {
+                "hits": 7,
+                "target": 12172817,
+                "unique_sites": 7
+              },
+              {
+                "hits": 7,
+                "target": 12172939,
+                "unique_sites": 7
+              },
+              {
+                "hits": 6,
+                "target": 12168699,
+                "unique_sites": 6
+              },
+              {
+                "hits": 6,
+                "target": 12171319,
+                "unique_sites": 6
+              },
+              {
+                "hits": 5,
+                "target": 12168146,
+                "unique_sites": 5
+              },
+              {
+                "hits": 5,
+                "target": 12170298,
+                "unique_sites": 5
+              },
+              {
+                "hits": 5,
+                "target": 12172227,
+                "unique_sites": 5
+              },
+              {
+                "hits": 5,
+                "target": 12173055,
+                "unique_sites": 5
+              },
+              {
+                "hits": 4,
+                "target": 12166667,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12167743,
+                "unique_sites": 1
+              },
+              {
+                "hits": 4,
+                "target": 12168034,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12168495,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12168556,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12168658,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169124,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169140,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169237,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169276,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169315,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12169940,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12170048,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12170073,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12170237,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12171682,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12172111,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12172230,
+                "unique_sites": 4
+              },
+              {
+                "hits": 4,
+                "target": 12172995,
+                "unique_sites": 4
+              },
+              {
+                "hits": 3,
+                "target": 12168488,
+                "unique_sites": 3
+              },
+              {
+                "hits": 3,
+                "target": 12171533,
+                "unique_sites": 3
+              },
+              {
+                "hits": 3,
+                "target": 12171540,
+                "unique_sites": 3
+              },
+              {
+                "hits": 3,
+                "target": 12172721,
+                "unique_sites": 3
+              },
+              {
+                "hits": 2,
+                "target": 12166624,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12166663,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12167812,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12167844,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12168166,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12168453,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12168481,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12168877,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12168901,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169070,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169165,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169176,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169411,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169726,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12169775,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170098,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170137,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170259,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170267,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170275,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170334,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170474,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12170547,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12171508,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12171565,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12171674,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12172062,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12172108,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12172116,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12172321,
+                "unique_sites": 2
+              },
+              {
+                "hits": 2,
+                "target": 12172884,
+                "unique_sites": 2
+              },
+              {
+                "hits": 1,
+                "target": 12167954,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12168183,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12169116,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12169183,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12171553,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12171559,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12171607,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12171658,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12171831,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172034,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172046,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172052,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172057,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172067,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172094,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172712,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172744,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172803,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172812,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172907,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172923,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172947,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12172955,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12173020,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12173034,
+                "unique_sites": 1
+              },
+              {
+                "hits": 1,
+                "target": 12173043,
+                "unique_sites": 1
+              }
+            ],
+            "unique_sites": 746,
+            "unique_targets": 111
+          }
+        },
+        {
+          "root": 12165607,
+          "targets": [
+            12166555,
+            12166560,
+            12166688,
+            12172354,
+            12172448,
+            12172933,
+            12172936
+          ],
+          "source": "dkc3-animation-bytecode-callback-domain",
+          "resolution": {
+            "command": 4,
+            "complete": true,
+            "kind": "bytecode-callback-target-domain-context",
+            "structural_hits": 662,
+            "target_hits": [
+              {
+                "hits": 218,
+                "target": 12172354,
+                "unique_sites": 190
+              },
+              {
+                "hits": 150,
+                "target": 12172448,
+                "unique_sites": 150
+              },
+              {
+                "hits": 122,
+                "target": 12172933,
+                "unique_sites": 66
+              },
+              {
+                "hits": 72,
+                "target": 12166555,
+                "unique_sites": 72
+              },
+              {
+                "hits": 67,
+                "target": 12166560,
+                "unique_sites": 46
+              },
+              {
+                "hits": 17,
+                "target": 12172936,
+                "unique_sites": 17
+              },
+              {
+                "hits": 16,
+                "target": 12166688,
+                "unique_sites": 16
+              }
+            ],
+            "unique_sites": 557,
+            "unique_targets": 7
+          }
+        }
+      ]
+    },
+    {
+      "site": 12165549,
+      "targets": [
+        12165559,
+        12167533,
+        12167547,
+        12167578,
+        12167603,
+        12167610,
+        12167617,
+        12167627,
+        12167669,
+        12167788,
+        12168606,
+        12169354,
+        12170194,
+        12170850,
+        12170891,
+        12171355,
+        12171385,
+        12171519,
+        12171597,
+        12171716,
+        12171817,
+        12171882
+      ],
+      "source": "dkc3-animation-script-callback-domain",
+      "resolution": {
+        "kind": "bytecode-callback-target-domain",
+        "runtime_equivalence_proven": false,
+        "index_bounds_proven": false
+      },
+      "contexts": []
+    },
+    {
+      "site": 12165584,
+      "targets": [
+        12167454,
+        12167464,
+        12167473,
+        12167484,
+        12167503,
+        12167522,
+        12167555,
+        12167732,
+        12167983,
+        12168341,
+        12169216,
+        12169405,
+        12169996,
+        12170002,
+        12170013,
+        12170023,
+        12170037,
+        12170163,
+        12170463,
+        12171496,
+        12171583,
+        12171619,
+        12171625,
+        12171898,
+        12171913,
+        12172409,
+        12172419,
+        12172699,
+        12172736,
+        12172824,
+        12172837,
+        12172847,
+        12172869
+      ],
+      "source": "dkc3-animation-script-callback-domain",
+      "resolution": {
+        "kind": "bytecode-callback-target-domain",
+        "runtime_equivalence_proven": false,
+        "index_bounds_proven": false
+      },
+      "contexts": []
+    },
+    {
+      "site": 12165698,
+      "targets": [
+        12166588,
+        12167999,
+        12168166,
+        12168183,
+        12170174
+      ],
+      "source": "dkc3-animation-script-callback-domain",
+      "resolution": {
+        "kind": "bytecode-callback-target-domain",
+        "runtime_equivalence_proven": false,
+        "index_bounds_proven": false
+      },
+      "contexts": []
+    }
+  ],
+  "limits": [
+    "Recovered candidates for the same FNV and SHA256 ROM only; no synthetic runtime hints, RAM edits or native callback promotions."
+  ]
+}

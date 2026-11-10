@@ -1,0 +1,84 @@
+{
+  "schema": "forja65.cross-project-replay.v1",
+  "rom": {
+    "sha256": "2277a2d8dddb01fe5cb0ae9a0fa225d42b3a11adccaeafa18e3c339b3794a32b",
+    "fnv1a64": "3a574807afbad761",
+    "bytes": 4194304
+  },
+  "observations": [
+    {
+      "kind": "FLOW",
+      "from": "BEC356",
+      "target": "BEC394",
+      "flags": {
+        "e": 0,
+        "m": 0,
+        "x": 0,
+        "c": 0
+      },
+      "source": "ZERO replay: trace PC + failure-site, target from integration",
+      "evidence": "observed runtime failure; not native/handler semantic proof"
+    },
+    {
+      "kind": "FLOW",
+      "from": "B89F4D",
+      "target": "B8A6A6",
+      "flags": {
+        "e": 0,
+        "m": 0,
+        "x": 0,
+        "c": 0
+      },
+      "source": "ZERO earlier replay: CPU trace + ROM-bound flow",
+      "evidence": "observed runtime failure; not native/handler semantic proof"
+    },
+    {
+      "kind": "STATE",
+      "from": "B8CD53",
+      "target": "B8D795",
+      "flags": {
+        "e": 0,
+        "m": 0,
+        "x": 0,
+        "c": 1
+      },
+      "source": "ZERO replay: state error log",
+      "evidence": "observed runtime failure; not native/handler semantic proof"
+    },
+    {
+      "kind": "FLOW",
+      "from": "BEC3B1",
+      "target": "BEC69E",
+      "flags": {
+        "e": 0,
+        "m": 0,
+        "x": 0,
+        "c": 0
+      },
+      "source": "ZERO replay: observed followup CPU trace and error log",
+      "evidence": "observed runtime failure; not native/handler semantic proof"
+    },
+    {
+      "kind": "FLOW",
+      "from": "BEC37C",
+      "target": "BEC774",
+      "flags": {
+        "e": 0,
+        "m": 0,
+        "x": 0,
+        "c": 1
+      },
+      "x_index": 6,
+      "source": "ZERO replay v043 with ROM pointer verification by ingest-indexed-flow",
+      "evidence": "Observed runtime failure + indexed pointer bytes; not handler equivalence."
+    }
+  ],
+  "static_catalog_entries": 4724,
+  "imported_runtime_observations": 5,
+  "limits": [
+    "Imported observations are valid only for this ROM and recorded CPU flags.",
+    "A decoded routine or static name does not prove handler equivalence.",
+    "Re-analysis and deterministic replay are required before claiming gameplay progress."
+  ],
+  "added_by": "Forja65 independent verify-generated-rom + ingest-indexed-flow; previous import-replay report maintained"
+}

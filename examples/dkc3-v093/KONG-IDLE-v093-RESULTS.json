@@ -1,0 +1,2163 @@
+{
+  "schema": "dkc3.guarded-kong-initialization.v1",
+  "rom": "3a574807afbad761",
+  "guarded_callbacks": 2,
+  "accepted_cases": 3136,
+  "guard_rejections": 12,
+  "runtime_guards": [
+    "nonanimal:$7E=0",
+    "unladen:$186B=0",
+    "mirrored-handle:word-accesses-below-$2000-outside-scratch",
+    "prefix-domain:commands-5-or-12",
+    "tail-domain:A65D-A6A0-A6C7",
+    "work-budget:64-transitions-256-prefix-steps"
+  ],
+  "limits": "Normal unladen Kong domain only; animal/carried paths, whole handler closure and gameplay/PPU remain pending.",
+  "records": [
+    {
+      "target": 12166787,
+      "status": "equivalent",
+      "scope": "dependency-abi",
+      "native_symbol": "dkc3::romAnimationOriginalCallback (guarded Kong initialization)",
+      "span": {
+        "start": 12166787,
+        "end": 12166816
+      },
+      "span_fingerprint": "1baee1ad10d31991",
+      "evidence_spans": [
+        {
+          "start": 12166898,
+          "end": 12166995,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "ad0a6f85ee04f965"
+        },
+        {
+          "start": 12166693,
+          "end": 12166758,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "4fccda54dcce6515"
+        },
+        {
+          "start": 12166770,
+          "end": 12166787,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "e7169bcbadcc0415"
+        },
+        {
+          "start": 12166816,
+          "end": 12166829,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "ebf40b96e2d92c10"
+        },
+        {
+          "start": 12166841,
+          "end": 12166868,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "ad43bad02e5d8da5"
+        },
+        {
+          "start": 12166880,
+          "end": 12166894,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "284b2d34e947f8ce"
+        },
+        {
+          "start": 12167011,
+          "end": 12167108,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "a9a746cf7cc2a159"
+        },
+        {
+          "start": 12167124,
+          "end": 12167219,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "159720768eb728cc"
+        },
+        {
+          "start": 12167219,
+          "end": 12167331,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "27260d48b31a45bc"
+        },
+        {
+          "start": 12165292,
+          "end": 12165346,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "d7e9252243ab8979"
+        },
+        {
+          "start": 12165402,
+          "end": 12165466,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "3d007ad34e752ed2"
+        },
+        {
+          "start": 12165670,
+          "end": 12165682,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "256768d7e09d06a2"
+        },
+        {
+          "start": 12165814,
+          "end": 12165838,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "610ce4b6671f2d9b"
+        }
+      ],
+      "contract": {
+        "entry": "Normal unladen Kong only. Other states remain fallback.",
+        "runtime_guards": [
+          "nonanimal:$7E=0",
+          "unladen:$186B=0",
+          "mirrored-handle:word-accesses-below-$2000-outside-scratch",
+          "prefix-domain:commands-5-or-12",
+          "tail-domain:A65D-A6A0-A6C7",
+          "work-budget:64-transitions-256-prefix-steps"
+        ],
+        "indirect_calls": [
+          {
+            "site": 12165449,
+            "targets": [
+              12166749
+            ]
+          },
+          {
+            "site": 12165463,
+            "targets": [
+              12165670,
+              12165814
+            ]
+          },
+          {
+            "site": 12166755,
+            "targets": [
+              12166770
+            ]
+          }
+        ],
+        "inlined_indirect_targets": [
+          12166749,
+          12166770
+        ],
+        "shared_state": [
+          "low-WRAM:all-except-$42/$44/$70-and-local-sprite-overlay"
+        ],
+        "read_only_data": [
+          {
+            "start": 16318464,
+            "end": 16384000,
+            "fingerprint": "74d1a8c37775baec"
+          },
+          {
+            "start": 12166758,
+            "end": 12166770,
+            "fingerprint": "ee2b38bb5889888b"
+          },
+          {
+            "start": 12166829,
+            "end": 12166841,
+            "fingerprint": "1bda8f2eba442edb"
+          },
+          {
+            "start": 12166868,
+            "end": 12166880,
+            "fingerprint": "57051d0a06df7c77"
+          }
+        ]
+      },
+      "verification": {
+        "result": "PASS",
+        "method": "composed-original-ROM-Kong-initialization-vs-native-C++",
+        "original_dependencies_executed": true,
+        "cases": 1568,
+        "indirect_calls": [
+          {
+            "site": 12165449,
+            "targets": [
+              12166749
+            ]
+          },
+          {
+            "site": 12165463,
+            "targets": [
+              12165670,
+              12165814
+            ]
+          },
+          {
+            "site": 12166755,
+            "targets": [
+              12166770
+            ]
+          }
+        ],
+        "target_cases": [
+          {
+            "site": 12165449,
+            "target": 12166749,
+            "cases": 128
+          },
+          {
+            "site": 12165463,
+            "target": 12165670,
+            "cases": 128
+          },
+          {
+            "site": 12165463,
+            "target": 12165814,
+            "cases": 128
+          },
+          {
+            "site": 12166755,
+            "target": 12166770,
+            "cases": 128
+          }
+        ],
+        "guarded_indirect_calls": [
+          {
+            "site": 12165449,
+            "target": 12166749,
+            "cases": 128
+          },
+          {
+            "site": 12165463,
+            "target": 12165670,
+            "cases": 128
+          },
+          {
+            "site": 12165463,
+            "target": 12165814,
+            "cases": 128
+          },
+          {
+            "site": 12166755,
+            "target": 12166770,
+            "cases": 128
+          }
+        ],
+        "runtime_guards": [
+          "nonanimal:$7E=0",
+          "unladen:$186B=0",
+          "mirrored-handle:word-accesses-below-$2000-outside-scratch",
+          "prefix-domain:commands-5-or-12",
+          "tail-domain:A65D-A6A0-A6C7",
+          "work-budget:64-transitions-256-prefix-steps"
+        ],
+        "guard_cases": [
+          {
+            "guard": "nonanimal:$7E=0",
+            "cases": 1
+          },
+          {
+            "guard": "unladen:$186B=0",
+            "cases": 1
+          },
+          {
+            "guard": "mirrored-handle:word-accesses-below-$2000-outside-scratch",
+            "cases": 1
+          },
+          {
+            "guard": "prefix-domain:commands-5-or-12",
+            "cases": 1
+          },
+          {
+            "guard": "tail-domain:A65D-A6A0-A6C7",
+            "cases": 1
+          },
+          {
+            "guard": "work-budget:64-transitions-256-prefix-steps",
+            "cases": 1
+          }
+        ],
+        "rejected_cases": 6,
+        "rejected_state_unchanged": true,
+        "shared_state": [
+          "low-WRAM:all-except-$42/$44/$70-and-local-sprite-overlay"
+        ],
+        "read_only_data": [
+          {
+            "start": 16318464,
+            "end": 16384000,
+            "fingerprint": "74d1a8c37775baec"
+          },
+          {
+            "start": 12166758,
+            "end": 12166770,
+            "fingerprint": "ee2b38bb5889888b"
+          },
+          {
+            "start": 12166829,
+            "end": 12166841,
+            "fingerprint": "1bda8f2eba442edb"
+          },
+          {
+            "start": 12166868,
+            "end": 12166880,
+            "fingerprint": "57051d0a06df7c77"
+          }
+        ],
+        "accepted_instruction_cases": [
+          {
+            "pc": 12165292,
+            "cases": 128
+          },
+          {
+            "pc": 12165294,
+            "cases": 128
+          },
+          {
+            "pc": 12165297,
+            "cases": 128
+          },
+          {
+            "pc": 12165300,
+            "cases": 128
+          },
+          {
+            "pc": 12165302,
+            "cases": 64
+          },
+          {
+            "pc": 12165303,
+            "cases": 64
+          },
+          {
+            "pc": 12165306,
+            "cases": 128
+          },
+          {
+            "pc": 12165307,
+            "cases": 128
+          },
+          {
+            "pc": 12165310,
+            "cases": 128
+          },
+          {
+            "pc": 12165311,
+            "cases": 128
+          },
+          {
+            "pc": 12165312,
+            "cases": 128
+          },
+          {
+            "pc": 12165314,
+            "cases": 128
+          },
+          {
+            "pc": 12165316,
+            "cases": 128
+          },
+          {
+            "pc": 12165317,
+            "cases": 128
+          },
+          {
+            "pc": 12165318,
+            "cases": 128
+          },
+          {
+            "pc": 12165319,
+            "cases": 128
+          },
+          {
+            "pc": 12165321,
+            "cases": 128
+          },
+          {
+            "pc": 12165324,
+            "cases": 128
+          },
+          {
+            "pc": 12165327,
+            "cases": 128
+          },
+          {
+            "pc": 12165329,
+            "cases": 128
+          },
+          {
+            "pc": 12165332,
+            "cases": 128
+          },
+          {
+            "pc": 12165334,
+            "cases": 128
+          },
+          {
+            "pc": 12165335,
+            "cases": 128
+          },
+          {
+            "pc": 12165338,
+            "cases": 128
+          },
+          {
+            "pc": 12165340,
+            "cases": 128
+          },
+          {
+            "pc": 12165342,
+            "cases": 128
+          },
+          {
+            "pc": 12165344,
+            "cases": 128
+          },
+          {
+            "pc": 12165402,
+            "cases": 128
+          },
+          {
+            "pc": 12165403,
+            "cases": 128
+          },
+          {
+            "pc": 12165406,
+            "cases": 128
+          },
+          {
+            "pc": 12165408,
+            "cases": 128
+          },
+          {
+            "pc": 12165409,
+            "cases": 128
+          },
+          {
+            "pc": 12165410,
+            "cases": 128
+          },
+          {
+            "pc": 12165413,
+            "cases": 128
+          },
+          {
+            "pc": 12165414,
+            "cases": 128
+          },
+          {
+            "pc": 12165416,
+            "cases": 128
+          },
+          {
+            "pc": 12165418,
+            "cases": 128
+          },
+          {
+            "pc": 12165424,
+            "cases": 128
+          },
+          {
+            "pc": 12165427,
+            "cases": 128
+          },
+          {
+            "pc": 12165429,
+            "cases": 128
+          },
+          {
+            "pc": 12165430,
+            "cases": 128
+          },
+          {
+            "pc": 12165431,
+            "cases": 128
+          },
+          {
+            "pc": 12165432,
+            "cases": 128
+          },
+          {
+            "pc": 12165434,
+            "cases": 128
+          },
+          {
+            "pc": 12165435,
+            "cases": 128
+          },
+          {
+            "pc": 12165437,
+            "cases": 128
+          },
+          {
+            "pc": 12165440,
+            "cases": 128
+          },
+          {
+            "pc": 12165441,
+            "cases": 128
+          },
+          {
+            "pc": 12165442,
+            "cases": 128
+          },
+          {
+            "pc": 12165443,
+            "cases": 128
+          },
+          {
+            "pc": 12165444,
+            "cases": 128
+          },
+          {
+            "pc": 12165446,
+            "cases": 128
+          },
+          {
+            "pc": 12165449,
+            "cases": 128
+          },
+          {
+            "pc": 12165452,
+            "cases": 128
+          },
+          {
+            "pc": 12165453,
+            "cases": 128
+          },
+          {
+            "pc": 12165454,
+            "cases": 128
+          },
+          {
+            "pc": 12165455,
+            "cases": 128
+          },
+          {
+            "pc": 12165456,
+            "cases": 128
+          },
+          {
+            "pc": 12165457,
+            "cases": 128
+          },
+          {
+            "pc": 12165458,
+            "cases": 128
+          },
+          {
+            "pc": 12165461,
+            "cases": 128
+          },
+          {
+            "pc": 12165462,
+            "cases": 128
+          },
+          {
+            "pc": 12165463,
+            "cases": 128
+          },
+          {
+            "pc": 12165629,
+            "cases": 1568
+          },
+          {
+            "pc": 12165631,
+            "cases": 1568
+          },
+          {
+            "pc": 12165634,
+            "cases": 1568
+          },
+          {
+            "pc": 12165636,
+            "cases": 1568
+          },
+          {
+            "pc": 12165637,
+            "cases": 1568
+          },
+          {
+            "pc": 12165638,
+            "cases": 1568
+          },
+          {
+            "pc": 12165640,
+            "cases": 1568
+          },
+          {
+            "pc": 12165641,
+            "cases": 1568
+          },
+          {
+            "pc": 12165642,
+            "cases": 1568
+          },
+          {
+            "pc": 12165643,
+            "cases": 1568
+          },
+          {
+            "pc": 12165644,
+            "cases": 1568
+          },
+          {
+            "pc": 12165647,
+            "cases": 1568
+          },
+          {
+            "pc": 12165650,
+            "cases": 1568
+          },
+          {
+            "pc": 12165651,
+            "cases": 1568
+          },
+          {
+            "pc": 12165652,
+            "cases": 1568
+          },
+          {
+            "pc": 12165654,
+            "cases": 1568
+          },
+          {
+            "pc": 12165656,
+            "cases": 1568
+          },
+          {
+            "pc": 12165658,
+            "cases": 1440
+          },
+          {
+            "pc": 12165659,
+            "cases": 1440
+          },
+          {
+            "pc": 12165662,
+            "cases": 128
+          },
+          {
+            "pc": 12165670,
+            "cases": 128
+          },
+          {
+            "pc": 12165672,
+            "cases": 128
+          },
+          {
+            "pc": 12165675,
+            "cases": 128
+          },
+          {
+            "pc": 12165677,
+            "cases": 128
+          },
+          {
+            "pc": 12165678,
+            "cases": 128
+          },
+          {
+            "pc": 12165679,
+            "cases": 128
+          },
+          {
+            "pc": 12165814,
+            "cases": 128
+          },
+          {
+            "pc": 12165817,
+            "cases": 128
+          },
+          {
+            "pc": 12165820,
+            "cases": 128
+          },
+          {
+            "pc": 12165821,
+            "cases": 128
+          },
+          {
+            "pc": 12165823,
+            "cases": 128
+          },
+          {
+            "pc": 12165824,
+            "cases": 128
+          },
+          {
+            "pc": 12165825,
+            "cases": 128
+          },
+          {
+            "pc": 12165828,
+            "cases": 128
+          },
+          {
+            "pc": 12165829,
+            "cases": 128
+          },
+          {
+            "pc": 12165830,
+            "cases": 128
+          },
+          {
+            "pc": 12165832,
+            "cases": 128
+          },
+          {
+            "pc": 12165833,
+            "cases": 128
+          },
+          {
+            "pc": 12165835,
+            "cases": 128
+          },
+          {
+            "pc": 12166693,
+            "cases": 1568
+          },
+          {
+            "pc": 12166695,
+            "cases": 1568
+          },
+          {
+            "pc": 12166697,
+            "cases": 224
+          },
+          {
+            "pc": 12166699,
+            "cases": 224
+          },
+          {
+            "pc": 12166701,
+            "cases": 32
+          },
+          {
+            "pc": 12166704,
+            "cases": 32
+          },
+          {
+            "pc": 12166705,
+            "cases": 192
+          },
+          {
+            "pc": 12166708,
+            "cases": 192
+          },
+          {
+            "pc": 12166709,
+            "cases": 192
+          },
+          {
+            "pc": 12166712,
+            "cases": 192
+          },
+          {
+            "pc": 12166713,
+            "cases": 1344
+          },
+          {
+            "pc": 12166715,
+            "cases": 448
+          },
+          {
+            "pc": 12166718,
+            "cases": 448
+          },
+          {
+            "pc": 12166719,
+            "cases": 1344
+          },
+          {
+            "pc": 12166721,
+            "cases": 1344
+          },
+          {
+            "pc": 12166723,
+            "cases": 1344
+          },
+          {
+            "pc": 12166725,
+            "cases": 1152
+          },
+          {
+            "pc": 12166727,
+            "cases": 384
+          },
+          {
+            "pc": 12166730,
+            "cases": 384
+          },
+          {
+            "pc": 12166731,
+            "cases": 1152
+          },
+          {
+            "pc": 12166733,
+            "cases": 1152
+          },
+          {
+            "pc": 12166735,
+            "cases": 704
+          },
+          {
+            "pc": 12166737,
+            "cases": 448
+          },
+          {
+            "pc": 12166740,
+            "cases": 448
+          },
+          {
+            "pc": 12166741,
+            "cases": 448
+          },
+          {
+            "pc": 12166744,
+            "cases": 448
+          },
+          {
+            "pc": 12166745,
+            "cases": 256
+          },
+          {
+            "pc": 12166748,
+            "cases": 256
+          },
+          {
+            "pc": 12166749,
+            "cases": 128
+          },
+          {
+            "pc": 12166751,
+            "cases": 128
+          },
+          {
+            "pc": 12166754,
+            "cases": 128
+          },
+          {
+            "pc": 12166755,
+            "cases": 128
+          },
+          {
+            "pc": 12166770,
+            "cases": 128
+          },
+          {
+            "pc": 12166787,
+            "cases": 1568
+          },
+          {
+            "pc": 12166789,
+            "cases": 1568
+          },
+          {
+            "pc": 12166792,
+            "cases": 1568
+          },
+          {
+            "pc": 12166794,
+            "cases": 1536
+          },
+          {
+            "pc": 12166797,
+            "cases": 1536
+          },
+          {
+            "pc": 12166799,
+            "cases": 192
+          },
+          {
+            "pc": 12166801,
+            "cases": 192
+          },
+          {
+            "pc": 12166803,
+            "cases": 64
+          },
+          {
+            "pc": 12166806,
+            "cases": 64
+          },
+          {
+            "pc": 12166807,
+            "cases": 192
+          },
+          {
+            "pc": 12166810,
+            "cases": 192
+          },
+          {
+            "pc": 12166812,
+            "cases": 1440
+          },
+          {
+            "pc": 12166813,
+            "cases": 128
+          },
+          {
+            "pc": 12166898,
+            "cases": 128
+          },
+          {
+            "pc": 12166900,
+            "cases": 128
+          },
+          {
+            "pc": 12166902,
+            "cases": 128
+          },
+          {
+            "pc": 12166904,
+            "cases": 128
+          },
+          {
+            "pc": 12166907,
+            "cases": 128
+          },
+          {
+            "pc": 12166909,
+            "cases": 128
+          },
+          {
+            "pc": 12166912,
+            "cases": 128
+          },
+          {
+            "pc": 12166914,
+            "cases": 128
+          },
+          {
+            "pc": 12166917,
+            "cases": 128
+          },
+          {
+            "pc": 12166921,
+            "cases": 128
+          }
+        ]
+      },
+      "dependencies": [
+        {
+          "target": 12165670,
+          "required_status": "equivalent"
+        },
+        {
+          "target": 12165814,
+          "required_status": "equivalent"
+        }
+      ]
+    },
+    {
+      "target": 12166898,
+      "status": "equivalent",
+      "scope": "dependency-abi",
+      "native_symbol": "dkc3::romAnimationOriginalCallback (guarded Kong initialization)",
+      "span": {
+        "start": 12166898,
+        "end": 12166995
+      },
+      "span_fingerprint": "ad0a6f85ee04f965",
+      "evidence_spans": [
+        {
+          "start": 12166787,
+          "end": 12166816,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "1baee1ad10d31991"
+        },
+        {
+          "start": 12166693,
+          "end": 12166758,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "4fccda54dcce6515"
+        },
+        {
+          "start": 12166770,
+          "end": 12166787,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "e7169bcbadcc0415"
+        },
+        {
+          "start": 12166816,
+          "end": 12166829,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "ebf40b96e2d92c10"
+        },
+        {
+          "start": 12166841,
+          "end": 12166868,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "ad43bad02e5d8da5"
+        },
+        {
+          "start": 12166880,
+          "end": 12166894,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "284b2d34e947f8ce"
+        },
+        {
+          "start": 12167011,
+          "end": 12167108,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "a9a746cf7cc2a159"
+        },
+        {
+          "start": 12167124,
+          "end": 12167219,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "159720768eb728cc"
+        },
+        {
+          "start": 12167219,
+          "end": 12167331,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "27260d48b31a45bc"
+        },
+        {
+          "start": 12165292,
+          "end": 12165346,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "d7e9252243ab8979"
+        },
+        {
+          "start": 12165402,
+          "end": 12165466,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "3d007ad34e752ed2"
+        },
+        {
+          "start": 12165670,
+          "end": 12165682,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "256768d7e09d06a2"
+        },
+        {
+          "start": 12165814,
+          "end": 12165838,
+          "name": "reviewed Kong initialization branch",
+          "fingerprint": "610ce4b6671f2d9b"
+        }
+      ],
+      "contract": {
+        "entry": "Normal unladen Kong only. Other states remain fallback.",
+        "runtime_guards": [
+          "nonanimal:$7E=0",
+          "unladen:$186B=0",
+          "mirrored-handle:word-accesses-below-$2000-outside-scratch",
+          "prefix-domain:commands-5-or-12",
+          "tail-domain:A65D-A6A0-A6C7",
+          "work-budget:64-transitions-256-prefix-steps"
+        ],
+        "indirect_calls": [
+          {
+            "site": 12165449,
+            "targets": [
+              12166749,
+              12166816,
+              12166855
+            ]
+          },
+          {
+            "site": 12165463,
+            "targets": [
+              12165670,
+              12165814
+            ]
+          },
+          {
+            "site": 12166755,
+            "targets": [
+              12166770,
+              12166771
+            ]
+          },
+          {
+            "site": 12166826,
+            "targets": [
+              12166841
+            ]
+          },
+          {
+            "site": 12166865,
+            "targets": [
+              12166880
+            ]
+          }
+        ],
+        "inlined_indirect_targets": [
+          12166749,
+          12166770,
+          12166771,
+          12166816,
+          12166841,
+          12166855,
+          12166880
+        ],
+        "shared_state": [
+          "low-WRAM:all-except-$42/$44/$70-and-local-sprite-overlay"
+        ],
+        "read_only_data": [
+          {
+            "start": 16318464,
+            "end": 16384000,
+            "fingerprint": "74d1a8c37775baec"
+          },
+          {
+            "start": 12166758,
+            "end": 12166770,
+            "fingerprint": "ee2b38bb5889888b"
+          },
+          {
+            "start": 12166829,
+            "end": 12166841,
+            "fingerprint": "1bda8f2eba442edb"
+          },
+          {
+            "start": 12166868,
+            "end": 12166880,
+            "fingerprint": "57051d0a06df7c77"
+          }
+        ]
+      },
+      "verification": {
+        "result": "PASS",
+        "method": "composed-original-ROM-Kong-initialization-vs-native-C++",
+        "original_dependencies_executed": true,
+        "cases": 1568,
+        "indirect_calls": [
+          {
+            "site": 12165449,
+            "targets": [
+              12166749,
+              12166816,
+              12166855
+            ]
+          },
+          {
+            "site": 12165463,
+            "targets": [
+              12165670,
+              12165814
+            ]
+          },
+          {
+            "site": 12166755,
+            "targets": [
+              12166770,
+              12166771
+            ]
+          },
+          {
+            "site": 12166826,
+            "targets": [
+              12166841
+            ]
+          },
+          {
+            "site": 12166865,
+            "targets": [
+              12166880
+            ]
+          }
+        ],
+        "target_cases": [
+          {
+            "site": 12165449,
+            "target": 12166749,
+            "cases": 1568
+          },
+          {
+            "site": 12165449,
+            "target": 12166816,
+            "cases": 672
+          },
+          {
+            "site": 12165449,
+            "target": 12166855,
+            "cases": 672
+          },
+          {
+            "site": 12165463,
+            "target": 12165670,
+            "cases": 1568
+          },
+          {
+            "site": 12165463,
+            "target": 12165814,
+            "cases": 1568
+          },
+          {
+            "site": 12166755,
+            "target": 12166770,
+            "cases": 224
+          },
+          {
+            "site": 12166755,
+            "target": 12166771,
+            "cases": 1344
+          },
+          {
+            "site": 12166826,
+            "target": 12166841,
+            "cases": 336
+          },
+          {
+            "site": 12166865,
+            "target": 12166880,
+            "cases": 336
+          }
+        ],
+        "guarded_indirect_calls": [
+          {
+            "site": 12165449,
+            "target": 12166749,
+            "cases": 1568
+          },
+          {
+            "site": 12165449,
+            "target": 12166816,
+            "cases": 672
+          },
+          {
+            "site": 12165449,
+            "target": 12166855,
+            "cases": 672
+          },
+          {
+            "site": 12165463,
+            "target": 12165670,
+            "cases": 1568
+          },
+          {
+            "site": 12165463,
+            "target": 12165814,
+            "cases": 1568
+          },
+          {
+            "site": 12166755,
+            "target": 12166770,
+            "cases": 224
+          },
+          {
+            "site": 12166755,
+            "target": 12166771,
+            "cases": 1344
+          },
+          {
+            "site": 12166826,
+            "target": 12166841,
+            "cases": 336
+          },
+          {
+            "site": 12166865,
+            "target": 12166880,
+            "cases": 336
+          }
+        ],
+        "runtime_guards": [
+          "nonanimal:$7E=0",
+          "unladen:$186B=0",
+          "mirrored-handle:word-accesses-below-$2000-outside-scratch",
+          "prefix-domain:commands-5-or-12",
+          "tail-domain:A65D-A6A0-A6C7",
+          "work-budget:64-transitions-256-prefix-steps"
+        ],
+        "guard_cases": [
+          {
+            "guard": "nonanimal:$7E=0",
+            "cases": 1
+          },
+          {
+            "guard": "unladen:$186B=0",
+            "cases": 1
+          },
+          {
+            "guard": "mirrored-handle:word-accesses-below-$2000-outside-scratch",
+            "cases": 1
+          },
+          {
+            "guard": "prefix-domain:commands-5-or-12",
+            "cases": 1
+          },
+          {
+            "guard": "tail-domain:A65D-A6A0-A6C7",
+            "cases": 1
+          },
+          {
+            "guard": "work-budget:64-transitions-256-prefix-steps",
+            "cases": 1
+          }
+        ],
+        "rejected_cases": 6,
+        "rejected_state_unchanged": true,
+        "shared_state": [
+          "low-WRAM:all-except-$42/$44/$70-and-local-sprite-overlay"
+        ],
+        "read_only_data": [
+          {
+            "start": 16318464,
+            "end": 16384000,
+            "fingerprint": "74d1a8c37775baec"
+          },
+          {
+            "start": 12166758,
+            "end": 12166770,
+            "fingerprint": "ee2b38bb5889888b"
+          },
+          {
+            "start": 12166829,
+            "end": 12166841,
+            "fingerprint": "1bda8f2eba442edb"
+          },
+          {
+            "start": 12166868,
+            "end": 12166880,
+            "fingerprint": "57051d0a06df7c77"
+          }
+        ],
+        "accepted_instruction_cases": [
+          {
+            "pc": 12165292,
+            "cases": 1568
+          },
+          {
+            "pc": 12165294,
+            "cases": 1568
+          },
+          {
+            "pc": 12165297,
+            "cases": 1568
+          },
+          {
+            "pc": 12165300,
+            "cases": 1568
+          },
+          {
+            "pc": 12165302,
+            "cases": 784
+          },
+          {
+            "pc": 12165303,
+            "cases": 784
+          },
+          {
+            "pc": 12165306,
+            "cases": 1568
+          },
+          {
+            "pc": 12165307,
+            "cases": 1568
+          },
+          {
+            "pc": 12165310,
+            "cases": 1568
+          },
+          {
+            "pc": 12165311,
+            "cases": 1568
+          },
+          {
+            "pc": 12165312,
+            "cases": 1568
+          },
+          {
+            "pc": 12165314,
+            "cases": 1568
+          },
+          {
+            "pc": 12165316,
+            "cases": 1568
+          },
+          {
+            "pc": 12165317,
+            "cases": 1568
+          },
+          {
+            "pc": 12165318,
+            "cases": 1568
+          },
+          {
+            "pc": 12165319,
+            "cases": 1568
+          },
+          {
+            "pc": 12165321,
+            "cases": 1568
+          },
+          {
+            "pc": 12165324,
+            "cases": 1568
+          },
+          {
+            "pc": 12165327,
+            "cases": 1568
+          },
+          {
+            "pc": 12165329,
+            "cases": 1568
+          },
+          {
+            "pc": 12165332,
+            "cases": 1568
+          },
+          {
+            "pc": 12165334,
+            "cases": 1568
+          },
+          {
+            "pc": 12165335,
+            "cases": 1568
+          },
+          {
+            "pc": 12165338,
+            "cases": 1568
+          },
+          {
+            "pc": 12165340,
+            "cases": 1568
+          },
+          {
+            "pc": 12165342,
+            "cases": 1568
+          },
+          {
+            "pc": 12165344,
+            "cases": 1568
+          },
+          {
+            "pc": 12165402,
+            "cases": 1568
+          },
+          {
+            "pc": 12165403,
+            "cases": 1568
+          },
+          {
+            "pc": 12165406,
+            "cases": 1568
+          },
+          {
+            "pc": 12165408,
+            "cases": 1568
+          },
+          {
+            "pc": 12165409,
+            "cases": 1568
+          },
+          {
+            "pc": 12165410,
+            "cases": 1568
+          },
+          {
+            "pc": 12165413,
+            "cases": 1568
+          },
+          {
+            "pc": 12165414,
+            "cases": 1568
+          },
+          {
+            "pc": 12165416,
+            "cases": 1568
+          },
+          {
+            "pc": 12165418,
+            "cases": 1568
+          },
+          {
+            "pc": 12165424,
+            "cases": 1568
+          },
+          {
+            "pc": 12165427,
+            "cases": 1568
+          },
+          {
+            "pc": 12165429,
+            "cases": 1568
+          },
+          {
+            "pc": 12165430,
+            "cases": 1568
+          },
+          {
+            "pc": 12165431,
+            "cases": 1568
+          },
+          {
+            "pc": 12165432,
+            "cases": 1568
+          },
+          {
+            "pc": 12165434,
+            "cases": 1568
+          },
+          {
+            "pc": 12165435,
+            "cases": 1568
+          },
+          {
+            "pc": 12165437,
+            "cases": 1568
+          },
+          {
+            "pc": 12165439,
+            "cases": 672
+          },
+          {
+            "pc": 12165440,
+            "cases": 1568
+          },
+          {
+            "pc": 12165441,
+            "cases": 1568
+          },
+          {
+            "pc": 12165442,
+            "cases": 1568
+          },
+          {
+            "pc": 12165443,
+            "cases": 1568
+          },
+          {
+            "pc": 12165444,
+            "cases": 1568
+          },
+          {
+            "pc": 12165446,
+            "cases": 1568
+          },
+          {
+            "pc": 12165449,
+            "cases": 1568
+          },
+          {
+            "pc": 12165452,
+            "cases": 1568
+          },
+          {
+            "pc": 12165453,
+            "cases": 1568
+          },
+          {
+            "pc": 12165454,
+            "cases": 1568
+          },
+          {
+            "pc": 12165455,
+            "cases": 1568
+          },
+          {
+            "pc": 12165456,
+            "cases": 1568
+          },
+          {
+            "pc": 12165457,
+            "cases": 1568
+          },
+          {
+            "pc": 12165458,
+            "cases": 1568
+          },
+          {
+            "pc": 12165461,
+            "cases": 1568
+          },
+          {
+            "pc": 12165462,
+            "cases": 1568
+          },
+          {
+            "pc": 12165463,
+            "cases": 1568
+          },
+          {
+            "pc": 12165629,
+            "cases": 1568
+          },
+          {
+            "pc": 12165631,
+            "cases": 1568
+          },
+          {
+            "pc": 12165634,
+            "cases": 1568
+          },
+          {
+            "pc": 12165636,
+            "cases": 1568
+          },
+          {
+            "pc": 12165637,
+            "cases": 1568
+          },
+          {
+            "pc": 12165638,
+            "cases": 1568
+          },
+          {
+            "pc": 12165640,
+            "cases": 1568
+          },
+          {
+            "pc": 12165641,
+            "cases": 1568
+          },
+          {
+            "pc": 12165642,
+            "cases": 1568
+          },
+          {
+            "pc": 12165643,
+            "cases": 1568
+          },
+          {
+            "pc": 12165644,
+            "cases": 1568
+          },
+          {
+            "pc": 12165647,
+            "cases": 1568
+          },
+          {
+            "pc": 12165650,
+            "cases": 1568
+          },
+          {
+            "pc": 12165651,
+            "cases": 1568
+          },
+          {
+            "pc": 12165652,
+            "cases": 1568
+          },
+          {
+            "pc": 12165654,
+            "cases": 1568
+          },
+          {
+            "pc": 12165656,
+            "cases": 1568
+          },
+          {
+            "pc": 12165662,
+            "cases": 1568
+          },
+          {
+            "pc": 12165670,
+            "cases": 1568
+          },
+          {
+            "pc": 12165672,
+            "cases": 1568
+          },
+          {
+            "pc": 12165675,
+            "cases": 1568
+          },
+          {
+            "pc": 12165677,
+            "cases": 1568
+          },
+          {
+            "pc": 12165678,
+            "cases": 1568
+          },
+          {
+            "pc": 12165679,
+            "cases": 1568
+          },
+          {
+            "pc": 12165814,
+            "cases": 1568
+          },
+          {
+            "pc": 12165817,
+            "cases": 1568
+          },
+          {
+            "pc": 12165820,
+            "cases": 1568
+          },
+          {
+            "pc": 12165821,
+            "cases": 1568
+          },
+          {
+            "pc": 12165823,
+            "cases": 1568
+          },
+          {
+            "pc": 12165824,
+            "cases": 1568
+          },
+          {
+            "pc": 12165825,
+            "cases": 1568
+          },
+          {
+            "pc": 12165828,
+            "cases": 1568
+          },
+          {
+            "pc": 12165829,
+            "cases": 1568
+          },
+          {
+            "pc": 12165830,
+            "cases": 1568
+          },
+          {
+            "pc": 12165832,
+            "cases": 1568
+          },
+          {
+            "pc": 12165833,
+            "cases": 1568
+          },
+          {
+            "pc": 12165835,
+            "cases": 1568
+          },
+          {
+            "pc": 12166693,
+            "cases": 1568
+          },
+          {
+            "pc": 12166695,
+            "cases": 1568
+          },
+          {
+            "pc": 12166697,
+            "cases": 224
+          },
+          {
+            "pc": 12166699,
+            "cases": 224
+          },
+          {
+            "pc": 12166701,
+            "cases": 32
+          },
+          {
+            "pc": 12166704,
+            "cases": 32
+          },
+          {
+            "pc": 12166705,
+            "cases": 192
+          },
+          {
+            "pc": 12166708,
+            "cases": 192
+          },
+          {
+            "pc": 12166709,
+            "cases": 192
+          },
+          {
+            "pc": 12166712,
+            "cases": 192
+          },
+          {
+            "pc": 12166713,
+            "cases": 1344
+          },
+          {
+            "pc": 12166715,
+            "cases": 448
+          },
+          {
+            "pc": 12166718,
+            "cases": 448
+          },
+          {
+            "pc": 12166719,
+            "cases": 1344
+          },
+          {
+            "pc": 12166721,
+            "cases": 1344
+          },
+          {
+            "pc": 12166723,
+            "cases": 1344
+          },
+          {
+            "pc": 12166725,
+            "cases": 1152
+          },
+          {
+            "pc": 12166727,
+            "cases": 384
+          },
+          {
+            "pc": 12166730,
+            "cases": 384
+          },
+          {
+            "pc": 12166731,
+            "cases": 1152
+          },
+          {
+            "pc": 12166733,
+            "cases": 1152
+          },
+          {
+            "pc": 12166735,
+            "cases": 704
+          },
+          {
+            "pc": 12166737,
+            "cases": 448
+          },
+          {
+            "pc": 12166740,
+            "cases": 448
+          },
+          {
+            "pc": 12166741,
+            "cases": 448
+          },
+          {
+            "pc": 12166744,
+            "cases": 448
+          },
+          {
+            "pc": 12166745,
+            "cases": 256
+          },
+          {
+            "pc": 12166748,
+            "cases": 256
+          },
+          {
+            "pc": 12166749,
+            "cases": 1568
+          },
+          {
+            "pc": 12166751,
+            "cases": 1568
+          },
+          {
+            "pc": 12166754,
+            "cases": 1568
+          },
+          {
+            "pc": 12166755,
+            "cases": 1568
+          },
+          {
+            "pc": 12166770,
+            "cases": 224
+          },
+          {
+            "pc": 12166771,
+            "cases": 1344
+          },
+          {
+            "pc": 12166773,
+            "cases": 1344
+          },
+          {
+            "pc": 12166776,
+            "cases": 1344
+          },
+          {
+            "pc": 12166779,
+            "cases": 1344
+          },
+          {
+            "pc": 12166781,
+            "cases": 672
+          },
+          {
+            "pc": 12166784,
+            "cases": 672
+          },
+          {
+            "pc": 12166816,
+            "cases": 672
+          },
+          {
+            "pc": 12166819,
+            "cases": 672
+          },
+          {
+            "pc": 12166821,
+            "cases": 336
+          },
+          {
+            "pc": 12166824,
+            "cases": 336
+          },
+          {
+            "pc": 12166825,
+            "cases": 336
+          },
+          {
+            "pc": 12166826,
+            "cases": 336
+          },
+          {
+            "pc": 12166841,
+            "cases": 336
+          },
+          {
+            "pc": 12166843,
+            "cases": 336
+          },
+          {
+            "pc": 12166846,
+            "cases": 336
+          },
+          {
+            "pc": 12166849,
+            "cases": 336
+          },
+          {
+            "pc": 12166854,
+            "cases": 672
+          },
+          {
+            "pc": 12166855,
+            "cases": 672
+          },
+          {
+            "pc": 12166858,
+            "cases": 672
+          },
+          {
+            "pc": 12166860,
+            "cases": 336
+          },
+          {
+            "pc": 12166863,
+            "cases": 336
+          },
+          {
+            "pc": 12166864,
+            "cases": 336
+          },
+          {
+            "pc": 12166865,
+            "cases": 336
+          },
+          {
+            "pc": 12166880,
+            "cases": 336
+          },
+          {
+            "pc": 12166882,
+            "cases": 336
+          },
+          {
+            "pc": 12166885,
+            "cases": 336
+          },
+          {
+            "pc": 12166888,
+            "cases": 336
+          },
+          {
+            "pc": 12166893,
+            "cases": 672
+          },
+          {
+            "pc": 12166898,
+            "cases": 1568
+          },
+          {
+            "pc": 12166900,
+            "cases": 1568
+          },
+          {
+            "pc": 12166902,
+            "cases": 1568
+          },
+          {
+            "pc": 12166904,
+            "cases": 1568
+          },
+          {
+            "pc": 12166907,
+            "cases": 1568
+          },
+          {
+            "pc": 12166909,
+            "cases": 1568
+          },
+          {
+            "pc": 12166912,
+            "cases": 1568
+          },
+          {
+            "pc": 12166914,
+            "cases": 1568
+          },
+          {
+            "pc": 12166917,
+            "cases": 1568
+          },
+          {
+            "pc": 12166921,
+            "cases": 1568
+          },
+          {
+            "pc": 12167011,
+            "cases": 672
+          },
+          {
+            "pc": 12167013,
+            "cases": 672
+          },
+          {
+            "pc": 12167015,
+            "cases": 672
+          },
+          {
+            "pc": 12167017,
+            "cases": 672
+          },
+          {
+            "pc": 12167020,
+            "cases": 672
+          },
+          {
+            "pc": 12167022,
+            "cases": 672
+          },
+          {
+            "pc": 12167025,
+            "cases": 672
+          },
+          {
+            "pc": 12167027,
+            "cases": 672
+          },
+          {
+            "pc": 12167030,
+            "cases": 672
+          },
+          {
+            "pc": 12167034,
+            "cases": 672
+          },
+          {
+            "pc": 12167124,
+            "cases": 672
+          },
+          {
+            "pc": 12167126,
+            "cases": 672
+          },
+          {
+            "pc": 12167128,
+            "cases": 672
+          },
+          {
+            "pc": 12167130,
+            "cases": 672
+          },
+          {
+            "pc": 12167133,
+            "cases": 672
+          },
+          {
+            "pc": 12167135,
+            "cases": 672
+          },
+          {
+            "pc": 12167138,
+            "cases": 672
+          },
+          {
+            "pc": 12167140,
+            "cases": 672
+          },
+          {
+            "pc": 12167143,
+            "cases": 672
+          },
+          {
+            "pc": 12167147,
+            "cases": 672
+          },
+          {
+            "pc": 12167219,
+            "cases": 1344
+          },
+          {
+            "pc": 12167221,
+            "cases": 1344
+          },
+          {
+            "pc": 12167223,
+            "cases": 1344
+          },
+          {
+            "pc": 12167225,
+            "cases": 1344
+          },
+          {
+            "pc": 12167226,
+            "cases": 1344
+          },
+          {
+            "pc": 12167228,
+            "cases": 1344
+          },
+          {
+            "pc": 12167231,
+            "cases": 1344
+          },
+          {
+            "pc": 12167233,
+            "cases": 672
+          },
+          {
+            "pc": 12167234,
+            "cases": 672
+          },
+          {
+            "pc": 12167235,
+            "cases": 672
+          },
+          {
+            "pc": 12167237,
+            "cases": 672
+          },
+          {
+            "pc": 12167239,
+            "cases": 672
+          },
+          {
+            "pc": 12167242,
+            "cases": 672
+          },
+          {
+            "pc": 12167244,
+            "cases": 672
+          },
+          {
+            "pc": 12167247,
+            "cases": 672
+          },
+          {
+            "pc": 12167251,
+            "cases": 672
+          },
+          {
+            "pc": 12167252,
+            "cases": 672
+          }
+        ]
+      },
+      "dependencies": [
+        {
+          "target": 12165670,
+          "required_status": "equivalent"
+        },
+        {
+          "target": 12165814,
+          "required_status": "equivalent"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "dkc3.animation-original-callback-results.v093",
+  "rom": "3a574807afbad761",
+  "native_callbacks": 126,
+  "composed_cases": 44547,
+  "commands": {
+    "0": {
+      "targets": 21,
+      "cases": 12562,
+      "guard_rejections": 510,
+      "source_script_sites": 362,
+      "continuations": [
+        12165402,
+        12165434
+      ]
+    },
+    "1": {
+      "targets": 33,
+      "cases": 3693,
+      "guard_rejections": 211,
+      "source_script_sites": 128,
+      "continuations": [
+        12165402
+      ]
+    },
+    "3": {
+      "targets": 67,
+      "cases": 22276,
+      "guard_rejections": 1960,
+      "source_script_sites": 507,
+      "continuations": [
+        12165402,
+        12165434
+      ]
+    },
+    "4": {
+      "targets": 3,
+      "cases": 3824,
+      "guard_rejections": 0,
+      "source_script_sites": 155,
+      "continuations": [
+        12165402
+      ]
+    },
+    "6": {
+      "targets": 5,
+      "cases": 2192,
+      "guard_rejections": 1200,
+      "source_script_sites": 13,
+      "continuations": [
+        12165402
+      ]
+    }
+  },
+  "guard_rejections": 3881,
+  "limits": [
+    "Generated wrapper/target pairs and complete command1/6 domains only. Gameplay integration and PPU pending.",
+    "A683/A6F2 valid only for normal unladen Kong state; animal/carried paths remain fallback."
+  ],
+  "guarded_kong_family": {
+    "results": "KONG-IDLE-v093-RESULTS.json",
+    "runtime_guards": [
+      "nonanimal:$7E=0",
+      "unladen:$186B=0",
+      "mirrored-handle:word-accesses-below-$2000-outside-scratch",
+      "prefix-domain:commands-5-or-12",
+      "tail-domain:A65D-A6A0-A6C7",
+      "work-budget:64-transitions-256-prefix-steps"
+    ]
+  }
+}

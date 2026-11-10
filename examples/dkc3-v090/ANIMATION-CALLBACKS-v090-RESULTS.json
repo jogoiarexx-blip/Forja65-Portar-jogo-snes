@@ -1,0 +1,59 @@
+{
+  "schema": "dkc3.animation-original-callback-results.v1",
+  "rom": "3a574807afbad761",
+  "native_callbacks": 113,
+  "composed_cases": 31383,
+  "commands": {
+    "0": {
+      "targets": 21,
+      "cases": 12562,
+      "guard_rejections": 510,
+      "source_script_sites": 362,
+      "continuations": [
+        12165402,
+        12165434
+      ]
+    },
+    "1": {
+      "targets": 33,
+      "cases": 3693,
+      "guard_rejections": 211,
+      "source_script_sites": 128,
+      "continuations": [
+        12165402
+      ]
+    },
+    "3": {
+      "targets": 54,
+      "cases": 9112,
+      "guard_rejections": 456,
+      "source_script_sites": 348,
+      "continuations": [
+        12165402,
+        12165434
+      ]
+    },
+    "4": {
+      "targets": 3,
+      "cases": 3824,
+      "guard_rejections": 0,
+      "source_script_sites": 155,
+      "continuations": [
+        12165402
+      ]
+    },
+    "6": {
+      "targets": 5,
+      "cases": 2192,
+      "guard_rejections": 1200,
+      "source_script_sites": 13,
+      "continuations": [
+        12165402
+      ]
+    }
+  },
+  "guard_rejections": 2377,
+  "limits": [
+    "Generated wrapper/target pairs and complete command1/6 domains only. Gameplay integration and PPU pending."
+  ]
+}

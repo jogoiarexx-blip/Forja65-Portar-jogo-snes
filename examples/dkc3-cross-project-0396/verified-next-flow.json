@@ -1,0 +1,19 @@
+{
+  "schema": "forja65.verified-indexed-flow.v1",
+  "rom": "3a574807afbad761",
+  "site": "BEC37C",
+  "target": "BEC774",
+  "x": 6,
+  "pb": 190,
+  "e": 0,
+  "m": 0,
+  "x8": 0,
+  "c": 1,
+  "opcode": "7C",
+  "pointer_table_base": "C37F",
+  "pointer_address": "BEC385",
+  "pointer_value": 51060,
+  "already_present": false,
+  "static_pointer_verified": true,
+  "semantic_equivalence_proven": false
+}

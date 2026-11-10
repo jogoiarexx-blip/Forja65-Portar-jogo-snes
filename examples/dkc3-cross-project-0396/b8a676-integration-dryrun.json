@@ -1,0 +1,24 @@
+{
+  "entry": "B8A676",
+  "rom_sha256": "2277a2d8dddb01fe5cb0ae9a0fa225d42b3a11adccaeafa18e3c339b3794a32b",
+  "generated_cpp_sha256": "29077bbe4f9ba12d4fa8e9295a3d97fee743a0228e0557ee9852c3c217b03840",
+  "variants": [
+    "sub_B8A676_E0M0X0C0",
+    "sub_B8A676_E0M0X0CQ"
+  ],
+  "new_dispatch_rows": 22,
+  "new_instruction_sites": 8,
+  "address_overlap": 0,
+  "preserved_existing_sites": 20,
+  "preserved_existing_rows": 208,
+  "new_dispatch_owner_sites": 8,
+  "previous_dispatch_rows": 113019,
+  "proof_level": "ROM opcode match and static dispatch integration only; runtime replay required",
+  "dry_run": true,
+  "schema": "forja65.observed-target-integration.v1",
+  "hint": "rom=3a574807afbad761 target=B8A676 from=B89F4D kind=FLOW e=0 m=0 x=0 c=0 observed=1",
+  "focus_max": 512,
+  "generated_shard": "generated_053.cpp",
+  "source_rom_sha256": "2277a2d8dddb01fe5cb0ae9a0fa225d42b3a11adccaeafa18e3c339b3794a32b",
+  "compile_and_replay_verified": false
+}
