@@ -1,0 +1,62 @@
+name: Forja65 REV216 - sincronizar lote de evidencias
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'source-batches/rev216-observed-evidence.tar.gz'
+      - '.github/workflows/rev216-sync-evidence.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Extrair somente arquivos esperados sem substituir outros
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib, tarfile
+          archive = pathlib.Path("source-batches/rev216-observed-evidence.tar.gz")
+          allowed = {
+            "profiles/super-bomberman-2/observed-cpu-entry-states-rev216.json",
+            "reports/rev216/knowledge-union.json",
+            "tests/rev216-observed-cfg-catalog.js",
+          }
+          with tarfile.open(archive, "r:gz") as tf:
+              files = tf.getmembers()
+              actual = {m.name for m in files}
+              if actual != allowed:
+                  raise RuntimeError(f"Manifesto inesperado: {actual ^ allowed}")
+              for m in files:
+                  if not m.isfile():
+                      raise RuntimeError(f"Entrada nao regular: {m.name}")
+                  payload = tf.extractfile(m).read()
+                  target = pathlib.Path(m.name)
+                  if target.is_symlink():
+                      raise RuntimeError(f"Symlink recusado: {m.name}")
+                  if target.exists() and target.read_bytes() != payload:
+                      raise RuntimeError(f"Conflito de conteudo: {m.name}")
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  if not target.exists():
+                      target.write_bytes(payload)
+          print("REV216_EVIDENCE_IMPORT_PASS", len(allowed))
+          PY
+      - name: Verificar catalogo de 746 estados
+        run: node tests/rev216-observed-cfg-catalog.js
+      - name: Registrar arquivos originais da REV216
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profiles/super-bomberman-2/observed-cpu-entry-states-rev216.json reports/rev216/knowledge-union.json tests/rev216-observed-cfg-catalog.js
+          if ! git diff --cached --quiet; then
+            git commit -m "REV216: importar evidencias CFG observadas e teste"
+            git push origin HEAD:main
+          else
+            echo "Arquivos ja presentes; nenhuma alteracao necessaria"
+          fi
