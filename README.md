@@ -32,3 +32,11 @@ Os registros de 746 estados observados também são distribuídos em [lote de or
 - [Auditoria Bomberman 2 v0.60](reports/rev216/Bomberman-v0.60-AUDITORIA.md)
 
 Esta etapa de publicação não altera o gerador, o runtime nem a compatibilidade dos ports.
+
+## Atualização de publicação — 10/11/2026
+
+A sincronização de 12 lotes autenticados por SHA-256 importou os arquivos técnicos da REV216 para a branch `main`. O GitHub agora contém **517 arquivos em `tools/`, 849 em `tests/` e 136 em `profiles/`**, além dos exemplos, fontes nativas e relatórios já publicados. Os 1.501 arquivos dos lotes foram conferidos; quatro já existiam com conteúdo idêntico.
+
+O processo passou nos cinco testes automáticos e na verificação de hashes do [workflow de importação](.github/workflows/rev216-import-toolchain.yml). Os arquivos utilizados podem ser consultados nos [lotes de origem](source-batches/REV216-toolchain.md).
+
+**Ainda é uma publicação parcial do ZIP completo.** Permanecem excluídos arquivos grandes gerados, referências binárias de jogos, fixtures volumosas e históricos de auditoria. Nenhum resultado adicional de gameplay completo ou execução de EXE Windows foi certificado.
