@@ -1,0 +1,1160 @@
+{
+  "schema": "forja65.rev216.knowledge-union.v1",
+  "rom": {
+    "fnv1a64": "3ce797fd0241fce8",
+    "sha256": "0a4b4a783a7faf6ada3e1326ecf85de77e8c2a171659b42a78a1fae43f806ca6"
+  },
+  "before_entries": 620,
+  "before_unique_addresses": 554,
+  "source_reports": 9,
+  "source_rows": 309,
+  "observed_distinct_states": 126,
+  "added_entries": 126,
+  "after_entries": 746,
+  "after_unique_addresses": 680,
+  "preserved_baseline_entries": true,
+  "core_non_catalog_content_unchanged_by_union": true,
+  "core_non_catalog_sha256_at_start": "ee9516617af787a6ba40f19b9edff3468eef194c35a294d81e2cf67fa8cbc943",
+  "catalog_before_sha256": "4446d218f3315aa2410914824c9186498729fedc92e096672e6013ed70fce138",
+  "catalog_after_sha256": "531d96b7f3bd1c7b2c3355032f3781f7d9f3b93b9bc4b98a8332d4e8a4223d85",
+  "added_states": [
+    {
+      "address": "C04206",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C08F5B",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C08F8C",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C08FC0",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C09013",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C0903E",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C09058",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C09072",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C0909B",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C090C4",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C090ED",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C09116",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C09130",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C14355",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C143AD",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C14410",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C14A16",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C14A1F",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C14B06",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C14B43",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C14BED",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C14C4A",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C14CAB",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C14D37",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C14D5E",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C16B90",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C16D96",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C16E0E",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C16E46",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C16E72",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C16E9F",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C16ED8",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C16F22",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C16F6C",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C16FB6",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C17011",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C170E6",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C1715A",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C171C9",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C1B05D",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C1B07D",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C1B1AE",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C1B1CA",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C1B23B",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C1B2D4",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C1B85A",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "C1BD92",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC02C4",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC1D6E",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC1EF5",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC1F0B",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC1F21",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC1F52",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC20BE",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC20F6",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC2286",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC22D5",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC22F7",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC2399",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC242A",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC247D",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC249C",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC24D8",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC24F8",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC2550",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC2616",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC261B",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC2659",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC267F",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC26BD",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC26E3",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC26E4",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC26FC",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC292B",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC2952",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC29C5",
+      "state": {
+        "emulation": false,
+        "m8": true,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC29DF",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC2ADA",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC2B01",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC49EB",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC4ACD",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC4BB8",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC4BE7",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC4C5B",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC4D16",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC4E43",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC4EB5",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC4F25",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC4F2A",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC4FAD",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC5032",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC5062",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC50B1",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC50C3",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC50D5",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC515E",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC51E1",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC51E6",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC61AA",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC6295",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC62BF",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC6360",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC63C9",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC6401",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC6449",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC6563",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC661F",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC66E0",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC69C1",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC6A8A",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC6CC2",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC72EA",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC79CB",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC79FE",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC7A31",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC7B8B",
+      "state": {
+        "emulation": false,
+        "m8": true,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC7BC3",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC7BF0",
+      "state": {
+        "emulation": false,
+        "m8": true,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC7CFC",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC7D41",
+      "state": {
+        "emulation": false,
+        "m8": true,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC7D4F",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC7D52",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC7E75",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC7E88",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC8193",
+      "state": {
+        "emulation": false,
+        "m8": true,
+        "x8": false,
+        "carry": null
+      }
+    },
+    {
+      "address": "CC81DB",
+      "state": {
+        "emulation": false,
+        "m8": true,
+        "x8": false,
+        "carry": null
+      }
+    }
+  ],
+  "limits": [
+    "This union measures discovery input, not native CPU execution, gameplay coverage, subsystem fidelity or hardware equivalence.",
+    "Forja runtime VERSION and REV215 timing semantics were not changed by this catalog edit."
+  ]
+}
