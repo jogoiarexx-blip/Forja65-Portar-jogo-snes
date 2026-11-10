@@ -1,0 +1,10 @@
+'use strict';
+const assert=require('node:assert/strict');
+const F=require('../forja65-core');
+const rom=F.loadRom(F.makeSyntheticRom());
+const files=F.generateProject(rom,F.analyze(rom,96));
+const runtime=files['src/runtime.hpp'];
+assert.ok(runtime.includes('nativeInstructionHook?"aot_opcode":"interpreter"'), "native instruction AOT backend label");
+assert.ok(runtime.includes('nativeRom.sourceHash!=hashBytes(cart.data(),cart.size())'), 'reject wrong pack fingerprint in hybrid mode');
+assert.ok(runtime.includes('native ROM pack fingerprint mismatch'), 'diagnostic');
+console.log('REV144_AUDIT_BACKEND_ROMPACK_PASS');

@@ -1,0 +1,52 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),os=require('node:os'),path=require('node:path');
+const C=require('../forja65-core'),A=require('../tools/cfg-evidence-audit-v043688');
+function put(dir,name,txt){fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,name),txt);}
+const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'cfg-evidence-v88-'));
+const ROM_A='3a574807afbad761',ROM_B='acf499bb77115533';
+let checks=0;const ok=(value,message)=>{assert(value,message);checks++;};
+try{
+  const r1=path.join(tmp,'round1'),r2=path.join(tmp,'round2'),r3=path.join(tmp,'wrong-rom'),r4=path.join(tmp,'unbound'),r5=path.join(tmp,'return');
+  put(r1,'forja65-unresolved-targets.txt','b7d078 -> b7d478\nb7d078 -> b7d478\n');
+  put(r1,'forja65-runtime-hints.txt',`rom=${ROM_A} target=b7d478 from=b7d078 kind=FLOW e=0 m=0 x=0 c=0\n`);
+  put(r2,'forja65-unresolved-targets.txt','b7d078 -> b7d478\nb7d078 -> b7d464\n');
+  put(r2,'forja65-runtime-hints.txt',`rom=${ROM_A} target=b7d464 from=b7d078 kind=FLOW e=0 m=0 x=0 c=0\n`);
+  put(r3,'forja65-unresolved-targets.txt','b7d078 -> b7d478\n');
+  put(r3,'forja65-runtime-hints.txt',`rom=${ROM_B} target=b7d478 from=b7d078 kind=FLOW e=0 m=0 x=0 c=0\n`);
+  put(r4,'forja65-unresolved-targets.txt','b7d078 -> b7d478\n');
+  put(r4,'forja65-runtime-hints.txt','target=b7d478 from=b7d078 kind=FLOW e=0 m=0 x=0 c=0\n');
+  put(r5,'forja65-unresolved-returns.txt','bbb8eb -> b680de kind=STACK-RTL s=1f9 depth=2973\n');
+  put(r5,'forja65-runtime-hints.txt',`rom=${ROM_A} target=b680de from=bbb8eb kind=STACK-RTL e=0 m=0 x=0 c=0\n`);
+  const results=A.audit(A.collectFiles([tmp]),{romHash:ROM_A,root:tmp});
+  ok(results.totals.files===10,'files');ok(results.runs.length===5,'runs');
+  ok(results.totals.raw_flows===6,'raw flow count');ok(results.totals.corroborated_flows===2,'matched flow per run');
+  ok(results.totals.raw_returns===1&&results.totals.corroborated_returns===1,'return distinct');
+  ok(results.totals.hints_unbound===1,'unbound quarantined');ok(results.totals.hints_hash_mismatch===1,'other ROM quarantine');
+  ok(results.sites.some(s=>s.target==='b7d478'&&s.rom===ROM_A&&s.corroborated),'bound site');
+  ok(results.sites.some(s=>s.target==='b7d478'&&!s.rom&&!s.corroborated),'no false crossrun correlation');
+  ok(results.sites.some(s=>s.type==='RETURN'&&s.from==='bbb8eb'&&s.corroborated),'stack return distinct');
+  ok(results.gameplay_validated===false&&results.dynamic_domain_complete===false,'not certification');
+  ok(A.renderMarkdown(results).includes('NAO VERIFICADA'),'md qualification');
+  const noFilter=A.audit(A.collectFiles([tmp]));
+  ok(noFilter.totals.hints_hash_mismatch===0,'no filter, no collision');
+  ok(noFilter.sites.some(s=>s.rom===ROM_B),'different ROM shown separately');
+  const mismatch=C.parseRuntimeHintsDetailed('target=008100 from=008000 e=1 m=0 x=1 kind=FLOW');
+  ok(mismatch.rejected[0].reason==='invalid-emulation-width','invalid E/M combination');
+  ok(C.parseRuntimeHintsDetailed('target=008100 from=008000 e=1 m=1 x=0 kind=FLOW').rejected[0].reason==='invalid-emulation-width','invalid E/X combination');
+  ok(C.parseRuntimeHintsDetailed('target=008100 from=008000 e=1 m=1 x=1 kind=FLOW').hints.length===1,'legal E state');
+  ok(C.parseRuntimeHintsDetailed('target=008100 from=008000 e=0 m=0 x=0 kind=FLOW').hints.length===1,'legal native state');
+  const malformed=path.join(tmp,'injected');put(malformed,'forja65-runtime-hints.txt',`rom=${ROM_A} target=b7d478 from=b7d078 kind=FLOW e=1 m=0 x=0\n`);
+  ok(A.audit(A.collectFiles([malformed])).totals.hints_malformed===1,'invalid E width rejected from logs');
+  const direct=path.join(tmp,'raw'),notfound=path.join(tmp,'raw2');put(direct,'forja65-unresolved-targets.txt','004000 -> 004300\n');
+  put(notfound,'forja65-runtime-hints.txt',`rom=${ROM_A} target=004300 from=004000 kind=FLOW e=0 m=0 x=0\n`);
+  const disjoint=A.audit(A.collectFiles([direct,notfound]));
+  ok(disjoint.totals.corroborated_flows===0,'must be same execution folder');
+  ok(results.violations.length===0,'no invalid raw samples');
+  // Read the historic archive already bundled with the CROSSFEED release.
+  const historical=path.join(__dirname,'..','reports','validation-v0392');
+  const real=A.audit(A.collectFiles([historical]),{romHash:ROM_A});
+  ok(real.totals.files>10,'historic logs present');
+  ok(real.totals.raw_flows>0&&real.totals.raw_returns>0,'actual historic target/return events');
+  ok(real.totals.sites_corroborated>0,'actual historic records matched');
+  console.log('CFG_EVIDENCE_AUDIT_V043688_PASS checks='+checks+' historic_files='+real.totals.files+' historic_sites='+real.totals.sites+' corroborated='+real.totals.sites_corroborated);
+}finally{fs.rmSync(tmp,{recursive:true,force:true});}

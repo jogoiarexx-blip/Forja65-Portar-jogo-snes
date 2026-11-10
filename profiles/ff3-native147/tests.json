@@ -1,0 +1,92 @@
+[
+  {
+    "test": "observed-coverage-rev147.js",
+    "exit": 0,
+    "seconds": 0.08,
+    "output": "OBSERVED_COVERAGE_REV147_PASS pc state carry malformed input\n"
+  },
+  {
+    "test": "cpu-learning-emitter-rev146.js",
+    "exit": 0,
+    "seconds": 0.45,
+    "output": "CPU_LEARNING_EMITTER_PASS explicit selection / fail closed / provenance\n"
+  },
+  {
+    "test": "cpu-learning-log-strict-rev145.js",
+    "exit": 0,
+    "seconds": 0.07,
+    "output": "CPU_LEARNING_STRICT_PASS: valid legacy states preserved; 15 malformed records rejected\n"
+  },
+  {
+    "test": "transactional-crash-learning-v0383-regression.js",
+    "exit": 0,
+    "seconds": 0.51,
+    "output": "TRANSACTIONAL_CRASH_LEARNING_V0383_PASS\n"
+  },
+  {
+    "test": "interpreter-rom-identity-rev137-regression.js",
+    "exit": 0,
+    "seconds": 0.26,
+    "output": "interpreter-rom-identity-rev137: PASS (ROM errada, manifesto errado, faltantes e ROM valida)\n"
+  },
+  {
+    "test": "interpreter-learning-v0436135-regression.js",
+    "exit": 0,
+    "seconds": 45.53,
+    "output": "interpreter-learning-v0436135: PASS (40 quadros com WRAM identica; $9000 passou de interpretado para nativo)\n"
+  },
+  {
+    "test": "spc-backend-report-rev145-regression.js",
+    "exit": 0,
+    "seconds": 2.72,
+    "output": "SPC_BACKEND_REPORT_REV145_PASS interpreter step instruction precedence passive\n"
+  },
+  {
+    "test": "spc-computed-ret-rev146-regression.js",
+    "exit": 0,
+    "seconds": 0.1,
+    "output": "SPC_COMPUTED_RET_REV146_PASS exact-return bounded-proof negative-cases root-order budget wrap\n"
+  },
+  {
+    "test": "spc-cfg-tables-rev142-regression.js",
+    "exit": 0,
+    "seconds": 0.1,
+    "output": "SPC_CFG_TABLES_REV142_PASS bounded-table negative-cases wrap multi-entry guarded-AOT\n"
+  },
+  {
+    "test": "spc-aot-learn-cfg-rev143-regression.js",
+    "exit": 0,
+    "seconds": 0.2,
+    "output": "SPC_AOT_LEARN_CFG_REV143_PASS and-mask cmp-any-exit movx-imm multi-capture learned-roots\n"
+  },
+  {
+    "test": "spc-aot-rev140-regression.js",
+    "exit": 0,
+    "seconds": 0.24,
+    "output": "SPC_AOT_REV140_METADATA_PASS opcodes=256\n"
+  },
+  {
+    "test": "spc-aot-scheduler-rev140-regression.js",
+    "exit": 0,
+    "seconds": 13.0,
+    "output": "SPC_AOT_SCHEDULER_REV140_PASS ntsc/pal batch=single=irregular operand-change opcode-fallback instance-isolation\n"
+  },
+  {
+    "test": "spc-ipl-aot-rev142-regression.js",
+    "exit": 0,
+    "seconds": 11.57,
+    "output": "SPC_IPL_AOT_REV142_PASS ntsc/pal batch=single=irregular operand-change opcode-fallback instance-isolation\n"
+  },
+  {
+    "test": "spc-standalone-runtime-rev143-regression.js",
+    "exit": 0,
+    "seconds": 3.43,
+    "output": "SPC_STANDALONE_RUNTIME_REV143_PASS unmodified-generated-headers\n"
+  },
+  {
+    "test": "spc-miss-profile-validation-rev145-regression.js",
+    "exit": 0,
+    "seconds": 0.09,
+    "output": "SPC_MISS_PROFILE_VALIDATION_REV145_PASS valid-records malformed-values no-false-CFG-root\n"
+  }
+]

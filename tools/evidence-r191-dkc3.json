@@ -1,0 +1,73 @@
+{
+  "schema": "forja65.interpreter-learning.v1",
+  "tag": "r191",
+  "rom": {
+    "fnv1a64": "3a574807afbad761",
+    "sha256": "2277a2d8dddb01fe5cb0ae9a0fa225d42b3a11adccaeafa18e3c339b3794a32b"
+  },
+  "log": {
+    "sha256": "8795ccf18eeac881dd4341b54ba1288943298c949de804d5b713a7756c2de56e",
+    "entradas": 1,
+    "execucoes": 1
+  },
+  "aceitas": 1,
+  "rejeitadas": 0,
+  "classes": {
+    "TABELA-INDEXADA": 1
+  },
+  "locais_de_despacho": 1,
+  "tabelas": [
+    {
+      "site": "B6D22C",
+      "origem": "JMP AbsoluteIndexedIndirectX",
+      "observados": [
+        "B6D243"
+      ],
+      "vizinhos_recuperados": [
+        "B6D25B",
+        "B6D26B",
+        "B6D281",
+        "B6D291",
+        "B6D2F0",
+        "B6D306",
+        "B6D339",
+        "B6D35A",
+        "B6D35D"
+      ]
+    }
+  ],
+  "sites": [
+    {
+      "from": "B6D22C",
+      "origem": "JMP AbsoluteIndexedIndirectX",
+      "classe": "TABELA-INDEXADA",
+      "alvos": 1,
+      "execucoes": 1
+    }
+  ],
+  "entradas": [
+    {
+      "target": "B6D243",
+      "state": "M0X0",
+      "from": "B6D22C",
+      "count": 1,
+      "classe": "TABELA-INDEXADA",
+      "origem": "JMP AbsoluteIndexedIndirectX"
+    }
+  ],
+  "rejeitados": [],
+  "analise": {
+    "ms": 20534,
+    "funcoes": 250,
+    "alvos_incluindo_tabelas": 10
+  },
+  "integracao": {
+    "rotinas": 10,
+    "funcoes": 10,
+    "linhas": 38,
+    "aliases": 28,
+    "arquivos": [
+      "src/forja_learned_r191_000.cpp"
+    ]
+  }
+}

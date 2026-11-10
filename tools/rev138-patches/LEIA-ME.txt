@@ -1,0 +1,12 @@
+Forja65 REV138 - correcoes de runtime para um port JA GERADO (src/runtime.hpp).
+O gerador (forja65-core.js) ja contem todas; estes scripts servem para quem nao quer regenerar o port.
+Uso:  python3 <script>_patch.py caminho/do/port/src/runtime.hpp   (cada script e idempotente)
+Ordem sugerida: vcounter irqlog dump cputrace poweron ctlvblank spchz indtiming hdmav0 spcsync
+  spchz      relogio do SPC700 1.025.280 Hz (FORJA65_SPC_HZ)
+  indtiming  custo de barramento dos dados dos modos indiretos (FORJA65_INDIRECT_DATA_TIMING=0 desliga)
+  hdmav0     transferencia de HDMA no HBlank de V=0 (FORJA65_HDMA_V0_TRANSFER=0 desliga)
+  spcsync    linha curta V=240 (FORJA65_SHORTLINE=0 desliga) + comando aram + FORJA65_SPCTRACE_INLINE
+  poweron    FORJA65_POWERON=snes9x
+  ctlvblank  FORJA65_CONTROL_AT=vblank
+  dump/cputrace  comandos do modo de controle
+Recompile o port depois.

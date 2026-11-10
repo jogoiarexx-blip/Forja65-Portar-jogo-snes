@@ -1,0 +1,40 @@
+{
+  "baseline_binary": "checkpoint147/native-work/final-fight3-rev143/build-linux/game",
+  "initial_checkpoint": "work147/final-fight3-rev143/phase6-final-proof/final-checkpoint.f65s",
+  "capcom_frame": 323967,
+  "final_frame": 328975,
+  "capcom_to_final_delta": {
+    "frame": 5008,
+    "instructions": 68212648,
+    "nmi": 5008
+  },
+  "capcom_framebuffer_hashes": [
+    "3f7b2ebfc6982be1"
+  ],
+  "latched_input_masks": [
+    "0",
+    "10",
+    "1000",
+    "20",
+    "2000",
+    "3000",
+    "40",
+    "4000",
+    "80",
+    "8000",
+    "f0f0",
+    "ffff"
+  ],
+  "rom_proof": {
+    "ram_0429": "0041",
+    "ram_0427": "0000",
+    "dispatch": "EC1B99 -> JMP (EC1BA3 + 2*$0429)",
+    "table_entry_rom_offset": "2C1C25",
+    "table_entry_bytes": "BD 38",
+    "destination": "EC38BD",
+    "original_rom_destination_bytes": "C2 30 6B",
+    "decoded_destination": "REP #$30; RTL",
+    "main_loop": "EC02E6 checks $0427; when zero EC02EB jumps EC027F"
+  },
+  "conclusion": "Original ROM terminal screen. Start is not checked by terminal state. CPU/NMI/input continue correctly. F5 host restart restores replay access without changing original ROM behavior."
+}

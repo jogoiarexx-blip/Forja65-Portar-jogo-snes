@@ -1,0 +1,17 @@
+'use strict';
+const assert=require('node:assert/strict');
+const F=require('../forja65-core');
+const rom=F.loadRom(F.makeSyntheticRom());
+const project=F.generateProject(rom,F.analyze(rom,200));
+const h=project['src/runtime.hpp'];
+assert(h.includes('void appendOamSelectedSnapshot(){'));
+assert(h.includes('FORJA65_OAM_SNAP_FRAMES'));
+assert(h.includes('FORJA65_OAM_SNAP_DIR'));
+assert(h.includes('FORJA65_OAM_DMA_BYTES_CSV'));
+assert(h.includes('FORJA65_OAM_DMA_START'));
+assert(h.includes('FORJA65_OAM_DMA_END'));
+assert(h.includes('tapeWord=ppu.oamAddr'));
+assert(h.includes('appendWramSelectedSnapshot();appendOamSelectedSnapshot();appendNativeAuditFrame()'));
+assert(h.includes('oam-')&&h.includes('oam-snapshots.csv'));
+require('fs').writeFileSync(require('path').join(require('os').tmpdir(),'forja65-generated-oam-v24.hpp'),h);
+console.log('FORJA65_OAM_DMA_V24_GENERATOR_PASS');

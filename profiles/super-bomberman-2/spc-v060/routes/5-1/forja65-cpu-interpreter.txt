@@ -1,0 +1,14 @@
+FORJA65_CPU_INTERPRETER 1
+blocks=37349
+instructions=775413
+# entrada estado(E/M/X) origem execucoes
+C14410 M0X0 from=C14B30 count=3401
+C14B06 M0X0 from=C0FD80 count=3401
+C14B43 M0X0 from=C14B3E count=3401
+C14BED M0X0 from=C14B13 count=1
+C14C4A M0X0 from=C14B3A count=3401
+C14CAB M0X0 from=C14C4A count=3401
+C14D37 M0X0 from=C14CAB count=3401
+C14D5E M0X0 from=C14B0F count=1
+C1B85A M0X0 from=C0FD80 count=10179
+C1BD92 M0X0 from=C1B92F count=6762

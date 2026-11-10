@@ -1,0 +1,1 @@
+float4 psMain(float4 pos:SV_Position,float2 uv:TEXCOORD0):SV_Target{return forjaShade(uv);}

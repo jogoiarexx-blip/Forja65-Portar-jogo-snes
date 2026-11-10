@@ -1,0 +1,11 @@
+'use strict';
+const assert=require('node:assert/strict'),C=require('../forja65-core');
+const b=C.makeSyntheticRom();b.fill(0xea,0,64);b[64]=0xdb;const rom=C.loadRom(b),old=C.analyze(rom,4,[],{globalCfg:false});
+const coverage=new Map(old.functions.map(f=>[f.functionKey,new Map(f.instructions.map(i=>[i.stateKey,i.raw.join(',')+'|'+i.size]))]));
+const next=C.analyze(rom,4,[],{globalCfg:false,internalCoverage:coverage,internalReplayBudget:8});
+assert(next.decoded>old.decoded,'re-decoding covered prefix must leave the discovery budget for new instructions');
+assert(next.rieInternalReplay.replayed>0);assert(next.rieInternalReplay.charged<=4);assert(next.rieInternalReplay.replayed<=8);assert(next.functions.some(f=>f.internalFrontier?.length));
+console.log('INTERNAL_REPLAY_PREFIX_ADVANCES_PASS');
+const R=require('../analysis/internal-replay'),cache={schema:'forja65.cfg-coverage-cache.v1',rom:'a',version:'b',internalReplayContext:'c',functions:old.functions};
+const imported=R.prepare(cache,{rom:'a',version:'b',context:'c'});assert(imported.accepted>0);assert(imported.coverage instanceof Map);
+for(const opts of [{rom:'other',version:'b',context:'c'},{rom:'a',version:'old',context:'c'},{rom:'a',version:'b',context:'other'}])assert.equal(R.prepare(cache,opts).accepted,0);

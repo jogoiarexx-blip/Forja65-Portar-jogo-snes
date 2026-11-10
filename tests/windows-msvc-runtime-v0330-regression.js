@@ -1,0 +1,10 @@
+const assert=require('assert');
+const C=require('../forja65-core.js');
+const rom=C.loadRom(C.makeSyntheticRom(),'msvc-macro.sfc');
+const a=C.analyze(rom,4096,[]);
+const p=C.generateProject(rom,a);
+const h=String(p['src/runtime.hpp']);
+assert(!/int\s*&\s*small\b/.test(h),'runtime ainda usa parametro small, que colide com macro do Windows SDK');
+assert(h.includes('objSizes(int&smallSize,int&largeSize)'),'objSizes nao usa nomes seguros para MSVC');
+assert(String(p['analysis.json']).includes('"msvc_macro_safe_runtime": true'),'metadata MSVC-safe ausente');
+console.log('Windows/MSVC runtime v0.3.30 regression: PASS');

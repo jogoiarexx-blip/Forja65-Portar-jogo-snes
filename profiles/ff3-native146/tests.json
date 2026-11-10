@@ -1,0 +1,86 @@
+[
+  {
+    "test": "spc-aot-learn-cfg-rev143.log",
+    "pass": true,
+    "stdout": "SPC_AOT_LEARN_CFG_REV143_PASS and-mask cmp-any-exit movx-imm multi-capture learned-roots\n",
+    "log_sha256": "1c3e54773ac85174931263798eb864241c5c6cb212fc6d4c7982c954e871c281"
+  },
+  {
+    "test": "spc-aot-rev140.log",
+    "pass": true,
+    "stdout": "SPC_AOT_REV140_METADATA_PASS opcodes=256\n",
+    "log_sha256": "e086b370cf9ee00cb2ad76e0f756c9cb52dbcb4ac72a6bed68778de40ac16006"
+  },
+  {
+    "test": "spc-aot-scheduler-rev140.log",
+    "pass": true,
+    "stdout": "SPC_AOT_SCHEDULER_REV140_PASS ntsc/pal batch=single=irregular operand-change opcode-fallback instance-isolation\n",
+    "log_sha256": "00b0fe9f4f95d3496568ae3984487a2ee83591b2e89416ed31f6ecbf43071a2d"
+  },
+  {
+    "test": "spc-backend-report-rev145.log",
+    "pass": true,
+    "stdout": "SPC_BACKEND_REPORT_REV145_PASS interpreter step instruction precedence passive\n",
+    "log_sha256": "02256e1d830b322829aa94a5f21056c76671db17b14a0c7eae913649959ed00f"
+  },
+  {
+    "test": "spc-cfg-tables-rev142.log",
+    "pass": true,
+    "stdout": "SPC_CFG_TABLES_REV142_PASS bounded-table negative-cases wrap multi-entry guarded-AOT\n",
+    "log_sha256": "d4755f967f9c059d8563e6eda56f071199c0ed0ac160d913268a441f3c85a647"
+  },
+  {
+    "test": "spc-computed-ret-rev146.log",
+    "pass": true,
+    "stdout": "SPC_COMPUTED_RET_REV146_PASS exact-return bounded-proof negative-cases root-order budget wrap\n",
+    "log_sha256": "4fbaf5d37668c347ac6c1585257fb4be99d9f192b2b7490f412e873a30d78abd"
+  },
+  {
+    "test": "spc-ipl-aot-rev142.log",
+    "pass": true,
+    "stdout": "SPC_IPL_AOT_REV142_PASS ntsc/pal batch=single=irregular operand-change opcode-fallback instance-isolation\n",
+    "log_sha256": "9ce37e6f93ed2c26bb758d6a9be8e75c553f233b271a58f60fd3e48898c9be2f"
+  },
+  {
+    "test": "spc-miss-profile-validation-rev145.log",
+    "pass": true,
+    "stdout": "SPC_MISS_PROFILE_VALIDATION_REV145_PASS valid-records malformed-values no-false-CFG-root\n",
+    "log_sha256": "7836e833688f630c278c87c9111b955bd02270a9a5fcd15f2f1a671a1026b7bd"
+  },
+  {
+    "test": "spc-standalone-runtime-rev143.log",
+    "pass": true,
+    "stdout": "SPC_STANDALONE_RUNTIME_REV143_PASS unmodified-generated-headers\n",
+    "log_sha256": "c8f786ebea0def261eb97be7ba15b72069dcb5fb042c85d26668d260e6c557ee"
+  },
+  {
+    "test": "cpu-learning-emitter-rev146.js",
+    "pass": true,
+    "stdout": "CPU_LEARNING_EMITTER_PASS explicit selection / fail closed / provenance\n",
+    "stderr": ""
+  },
+  {
+    "test": "cpu-learning-log-strict-rev145.js",
+    "pass": true,
+    "stdout": "CPU_LEARNING_STRICT_PASS: valid legacy states preserved; 15 malformed records rejected\n",
+    "stderr": ""
+  },
+  {
+    "test": "transactional-crash-learning-v0383-regression.js",
+    "pass": true,
+    "stdout": "TRANSACTIONAL_CRASH_LEARNING_V0383_PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "interpreter-rom-identity-rev137-regression.js",
+    "pass": true,
+    "stdout": "interpreter-rom-identity-rev137: PASS (ROM errada, manifesto errado, faltantes e ROM valida)\n",
+    "stderr": ""
+  },
+  {
+    "test": "interpreter-learning-v0436135-regression.js",
+    "pass": true,
+    "stdout": "interpreter-learning-v0436135: PASS (40 quadros com WRAM identica; $9000 passou de interpretado para nativo)\n",
+    "log_sha256": "51e0945336757af017a2975df232e95e2a515e2cda92ec6e53ae7fc1a5bb6f8e"
+  }
+]

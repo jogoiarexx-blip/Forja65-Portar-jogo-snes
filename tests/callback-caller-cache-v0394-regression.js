@@ -1,0 +1,16 @@
+'use strict';
+const assert=require('node:assert/strict');
+const F=require('../forja65-core'),IO=require('../tools/project-io');
+const bytes=F.makeSyntheticRom();bytes.set([0x18,0xfb,0xc2,0x30,0xf4,0x09,0x80,0x6c,0x42,0x00,0xdb],0);bytes.set([0x60],0x100);
+const rom=F.loadRom(bytes,'caller-cache.sfc'),hash=F.romFingerprint(rom),cache=IO.makeCfgCache(F.analyze(rom,128),hash);
+const hints=IO.prioritizeUncoveredHints(F.parseRuntimeHints(`rom=${hash} target=008100 from=008007 kind=FLOW e=0 m=0 x=0 c=1`),cache);
+const seeds=IO.cachedCallerSeeds(hints,cache);
+assert(seeds.some(s=>s.start===0x8000),'pending indirect observation must revisit its cached caller, not only the caller direct callees');
+assert.equal(IO.cachedCallerSeeds(hints.map(h=>({...h,cachedCoverage:true})),cache).length,0,'already-covered observations cannot flood the analysis queue');
+const fresh=F.analyze(rom,128,hints),merged=IO.mergeCfgCoverage(fresh,cache,hash).a;
+assert(merged.functions.find(f=>f.start===0x8000).calls.some(c=>c.from===0x8007&&c.target===0x8100),'equal-size cached function cannot discard a newly observed callback edge');
+const crowded=F.makeSyntheticRom();crowded.set([0x20,0x00,0x83,0xdb],0);crowded.set([0xf4,0x05,0x81,0x6c,0x42,0x00,0xdb],0x100);crowded[0x200]=0x60;crowded.fill(0xea,0x300,0x380);crowded[0x380]=0x60;
+const r=F.loadRom(crowded,'caller-budget.sfc'),hs=F.parseRuntimeHints(`rom=${F.romFingerprint(r)} target=008200 from=008103 kind=FLOW e=0 m=0 x=0 c=1`);
+const bounded=F.analyze(r,48,hs,{discoverySeeds:[{start:0x8100,state:{emulation:false,m8:false,x8:false,carry:true},entryName:'CACHED-CALLER'}]});
+assert(bounded.functions.some(f=>f.start===0x8100),'RESET descendants cannot starve the actual pending callback caller');
+console.log('CALLBACK_CALLER_CACHE_V0394_PASS');

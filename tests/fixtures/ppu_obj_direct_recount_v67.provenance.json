@@ -1,0 +1,10 @@
+{
+  "archive": "Forja65-v0.4.36.67-SPC-DSP-HDMA-IRQ-REFERENCE.zip",
+  "archive_sha256": "9b348c98657c1b1c253965aacf247f5240f10784a8caf19006a352914efa7354",
+  "member": "Forja65-CROSSFEED-5-RAMOS/forja65-core.js",
+  "member_sha256": "7d1effc50793aa5ae5f11ee85c99f26b502f98d813c568c49f52542465924a2a",
+  "extraction": "ZIP central directory absent; verified complete local deflate member",
+  "excerpt_sha256": "5532fffd162017ad1eba5d554cf329ca0ee56b8b75d89f07b958274ff56c1343",
+  "fixture_sha256": "af722f12ca65ecb13ee06b69a75834381c4b823dfcf959572959369c8eaf421d",
+  "scope": "Exact objDims, SpriteSliver, SpriteEvaluation, evaluateSpriteSlivers excerpt; surrounding struct/storage adapter added. v67 direct recount algorithm independently models the retroactive recount defect documented by v70. No shipped-v69 equivalence claimed."
+}

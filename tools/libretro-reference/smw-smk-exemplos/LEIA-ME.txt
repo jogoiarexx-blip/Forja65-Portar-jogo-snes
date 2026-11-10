@@ -1,0 +1,17 @@
+EXEMPLOS SMW + SMK (REV137) - scripts usados para fechar a 1a fase de cada jogo NO PROPRIO PORT
+==========================================================================================
+Linux/macOS (savestates por fork do modo de controle). Variaveis:
+  FORJA65_PORT_GAME=caminho/build/game  FORJA65_PORT_ASSETS=caminho/assets  FORJA65_OUT=pasta das imagens
+
+Super Mario World (Yoshi's Island 1)
+  python smw_01_ate_yi1.py        -> yi1_start.pkl (dentro da fase, quadro ~2034)
+  python smw_02_goexplore_yi1.py  -> Go-Explore ate a fita ($1493), volta ao mapa, grava smw_yi1.trace
+
+Super Mario Kart (Mario Circuit 1, 50cc)
+  python smk_01_ate_largada.py    -> smk_race.pkl
+  python smk_02_trajetoria_ia.py  -> ai_paths.pkl (trajetoria dos karts da CPU)
+  python smk_03_perseguicao.py 20 6 -> 5 voltas, resultados, grava smk_mario_circuit1.trace
+
+portnav.py: Rec = PortEmu + gravacao das entradas + dump/restore + write_trace com "# FORJA65_ENV"
+            (o port aplica esse perfil no replay; sem ele o replay diverge do modo de controle).
+ge.py:      Go-Explore generico (acoes, celula, progresso, morte, fim).

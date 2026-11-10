@@ -1,0 +1,552 @@
+{
+  "schema": "forja65.interpreter-learning.v1",
+  "tag": "stage6r145b",
+  "rom": {
+    "fnv1a64": "0219ea8f95a4f0ed",
+    "sha256": "f9dac709b2c2859f828103a0dd980716817e2bde3b9d7e2fdea36e9bb9bed7f2"
+  },
+  "log": {
+    "sha256": "83b7537f99a9ba2b0a2ec05fbcae1533ec8fd2df1b42556e63cfa7ec39bd3b08",
+    "entradas": 31,
+    "execucoes": 6924
+  },
+  "aceitas": 31,
+  "rejeitadas": 0,
+  "classes": {
+    "CHAMADA-DIRETA-NAO-ANALISADA": 22,
+    "TABELA-INDEXADA": 5,
+    "REENTRADA-ESTADO": 2,
+    "RETORNO-SEM-FRAME": 2
+  },
+  "locais_de_despacho": 29,
+  "tabelas": [
+    {
+      "site": "C03137",
+      "origem": "JSR AbsoluteIndexedIndirectX",
+      "observados": [
+        "C0319E"
+      ],
+      "vizinhos_recuperados": [
+        "C0319D",
+        "C031BC",
+        "C031F9",
+        "C03206",
+        "C03229",
+        "C0323F",
+        "C04089",
+        "C04212",
+        "C0AD20",
+        "C0C260"
+      ]
+    },
+    {
+      "site": "C05215",
+      "origem": "JMP AbsoluteIndexedIndirectX",
+      "observados": [
+        "C0522C",
+        "C05294",
+        "C054E2"
+      ],
+      "vizinhos_recuperados": [
+        "C00CA5",
+        "C05301",
+        "C053C0",
+        "C0545A",
+        "C05523",
+        "C0552C",
+        "C055AE",
+        "C0560A"
+      ]
+    },
+    {
+      "site": "C0BF40",
+      "origem": "JMP AbsoluteIndexedIndirectX",
+      "observados": [
+        "C0BF66"
+      ],
+      "vizinhos_recuperados": [
+        "C00000",
+        "C02070",
+        "C02072",
+        "C04D20",
+        "C0614D",
+        "C06567",
+        "C06843",
+        "C06E61",
+        "C06F63",
+        "C06F6C",
+        "C0C04D"
+      ]
+    }
+  ],
+  "sites": [
+    {
+      "from": "C05215",
+      "origem": "JMP AbsoluteIndexedIndirectX",
+      "classe": "TABELA-INDEXADA",
+      "alvos": 3,
+      "execucoes": 1828
+    },
+    {
+      "from": "C0316A",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 2393
+    },
+    {
+      "from": "C03137",
+      "origem": "JSR AbsoluteIndexedIndirectX",
+      "classe": "TABELA-INDEXADA",
+      "alvos": 1,
+      "execucoes": 2380
+    },
+    {
+      "from": "C08C80",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 95
+    },
+    {
+      "from": "C0811F",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 40
+    },
+    {
+      "from": "C0760B",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 34
+    },
+    {
+      "from": "C08E03",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 34
+    },
+    {
+      "from": "C09D22",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 27
+    },
+    {
+      "from": "C09D25",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 27
+    },
+    {
+      "from": "C08370",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 14
+    },
+    {
+      "from": "CC0232",
+      "origem": "RTS Implied",
+      "classe": "RETORNO-SEM-FRAME",
+      "alvos": 1,
+      "execucoes": 8
+    },
+    {
+      "from": "C05D9C",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 6
+    },
+    {
+      "from": "C06113",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 6
+    },
+    {
+      "from": "C08DEA",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 4
+    },
+    {
+      "from": "C08DF5",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 4
+    },
+    {
+      "from": "C0885F",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 4
+    },
+    {
+      "from": "C0882B",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 3
+    },
+    {
+      "from": "CC018B",
+      "origem": "RTS Implied",
+      "classe": "RETORNO-SEM-FRAME",
+      "alvos": 1,
+      "execucoes": 3
+    },
+    {
+      "from": "C06164",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 2
+    },
+    {
+      "from": "C09D55",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 2
+    },
+    {
+      "from": "C099A1",
+      "origem": "JSL AbsoluteLong",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 2
+    },
+    {
+      "from": "C0698E",
+      "origem": "SEC Implied",
+      "classe": "REENTRADA-ESTADO",
+      "alvos": 1,
+      "execucoes": 1
+    },
+    {
+      "from": "C06991",
+      "origem": "CLC Implied",
+      "classe": "REENTRADA-ESTADO",
+      "alvos": 1,
+      "execucoes": 1
+    },
+    {
+      "from": "C087C5",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 1
+    },
+    {
+      "from": "C079F7",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 1
+    },
+    {
+      "from": "C0BF40",
+      "origem": "JMP AbsoluteIndexedIndirectX",
+      "classe": "TABELA-INDEXADA",
+      "alvos": 1,
+      "execucoes": 1
+    },
+    {
+      "from": "ECAAEE",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 1
+    },
+    {
+      "from": "ECAAF1",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 1
+    },
+    {
+      "from": "ECAAF4",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 1
+    }
+  ],
+  "entradas": [
+    {
+      "target": "C015AA",
+      "state": "M1X0",
+      "from": "C0316A",
+      "count": 2393,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C0319E",
+      "state": "M1X0",
+      "from": "C03137",
+      "count": 2380,
+      "classe": "TABELA-INDEXADA",
+      "origem": "JSR AbsoluteIndexedIndirectX"
+    },
+    {
+      "target": "C036FC",
+      "state": "M0X0",
+      "from": "C09D22",
+      "count": 27,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C0522C",
+      "state": "M1X0",
+      "from": "C05215",
+      "count": 323,
+      "classe": "TABELA-INDEXADA",
+      "origem": "JMP AbsoluteIndexedIndirectX"
+    },
+    {
+      "target": "C05294",
+      "state": "M1X0",
+      "from": "C05215",
+      "count": 49,
+      "classe": "TABELA-INDEXADA",
+      "origem": "JMP AbsoluteIndexedIndirectX"
+    },
+    {
+      "target": "C054E2",
+      "state": "M1X0",
+      "from": "C05215",
+      "count": 1456,
+      "classe": "TABELA-INDEXADA",
+      "origem": "JMP AbsoluteIndexedIndirectX"
+    },
+    {
+      "target": "C05DA6",
+      "state": "M1X0",
+      "from": "C05D9C",
+      "count": 6,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C05DA6",
+      "state": "M1X0",
+      "from": "C06113",
+      "count": 6,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C06920",
+      "state": "M0X0",
+      "from": "C06164",
+      "count": 2,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C0698E",
+      "state": "M0X0",
+      "from": "C0698E",
+      "count": 1,
+      "classe": "REENTRADA-ESTADO",
+      "origem": "SEC Implied"
+    },
+    {
+      "target": "C06991",
+      "state": "M0X0",
+      "from": "C06991",
+      "count": 1,
+      "classe": "REENTRADA-ESTADO",
+      "origem": "CLC Implied"
+    },
+    {
+      "target": "C07995",
+      "state": "M1X0",
+      "from": "C0760B",
+      "count": 34,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C07EBA",
+      "state": "M0X0",
+      "from": "C0811F",
+      "count": 40,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C08E55",
+      "state": "M0X0",
+      "from": "C09D25",
+      "count": 27,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C08E55",
+      "state": "M0X0",
+      "from": "C09D55",
+      "count": 2,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C09D2E",
+      "state": "M0X0",
+      "from": "C08DEA",
+      "count": 4,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C09D60",
+      "state": "M0X0",
+      "from": "C0882B",
+      "count": 3,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C09D60",
+      "state": "M0X0",
+      "from": "C08DF5",
+      "count": 4,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C09D60",
+      "state": "M0X0",
+      "from": "C08E03",
+      "count": 34,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C09F73",
+      "state": "M0X0",
+      "from": "C087C5",
+      "count": 1,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C0A827",
+      "state": "M0X0",
+      "from": "C079F7",
+      "count": 1,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C0A827",
+      "state": "M0X0",
+      "from": "C08370",
+      "count": 14,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C0A827",
+      "state": "M0X0",
+      "from": "C0885F",
+      "count": 4,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C0AD76",
+      "state": "M0X0",
+      "from": "C08C80",
+      "count": 95,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C0BF66",
+      "state": "M1X0",
+      "from": "C0BF40",
+      "count": 1,
+      "classe": "TABELA-INDEXADA",
+      "origem": "JMP AbsoluteIndexedIndirectX"
+    },
+    {
+      "target": "C0E084",
+      "state": "M0X0",
+      "from": "C099A1",
+      "count": 2,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSL AbsoluteLong"
+    },
+    {
+      "target": "CC0088",
+      "state": "M1X0",
+      "from": "CC018B",
+      "count": 3,
+      "classe": "RETORNO-SEM-FRAME",
+      "origem": "RTS Implied"
+    },
+    {
+      "target": "CC0112",
+      "state": "M1X0",
+      "from": "CC0232",
+      "count": 8,
+      "classe": "RETORNO-SEM-FRAME",
+      "origem": "RTS Implied"
+    },
+    {
+      "target": "EC03DB",
+      "state": "M1X0",
+      "from": "ECAAEE",
+      "count": 1,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "EC0E74",
+      "state": "M1X0",
+      "from": "ECAAF1",
+      "count": 1,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "EC0ECA",
+      "state": "M1X0",
+      "from": "ECAAF4",
+      "count": 1,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    }
+  ],
+  "rejeitados": [],
+  "analise": {
+    "ms": 80700,
+    "funcoes": 666,
+    "alvos_incluindo_tabelas": 54
+  },
+  "integracao": {
+    "rotinas": 52,
+    "funcoes": 110,
+    "linhas": 2773,
+    "aliases": 603,
+    "arquivos": [
+      "src/forja_learned_stage6r145b_000.cpp"
+    ]
+  }
+}

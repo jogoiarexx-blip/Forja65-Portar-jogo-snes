@@ -1,0 +1,123 @@
+{
+  "schema": "forja65.interpreter-learning.v1",
+  "tag": "bootr145d",
+  "rom": {
+    "fnv1a64": "0219ea8f95a4f0ed",
+    "sha256": "f9dac709b2c2859f828103a0dd980716817e2bde3b9d7e2fdea36e9bb9bed7f2"
+  },
+  "log": {
+    "sha256": "59906d32a8a5f7e1f830a3865c646b4e37b351b74c64d1a65c697b927e713027",
+    "entradas": 5,
+    "execucoes": 154
+  },
+  "aceitas": 5,
+  "rejeitadas": 0,
+  "classes": {
+    "CHAMADA-DIRETA-NAO-ANALISADA": 1,
+    "TABELA-INDEXADA": 2,
+    "RETORNO-SEM-FRAME": 2
+  },
+  "locais_de_despacho": 4,
+  "tabelas": [
+    {
+      "site": "C069B3",
+      "origem": "JMP AbsoluteIndexedIndirectX",
+      "observados": [
+        "C069C0",
+        "C06CF4"
+      ],
+      "vizinhos_recuperados": [
+        "C06A4D",
+        "C06B28",
+        "C06D20"
+      ]
+    }
+  ],
+  "sites": [
+    {
+      "from": "C069B3",
+      "origem": "JMP AbsoluteIndexedIndirectX",
+      "classe": "TABELA-INDEXADA",
+      "alvos": 2,
+      "execucoes": 5
+    },
+    {
+      "from": "C052A9",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 147
+    },
+    {
+      "from": "CC018B",
+      "origem": "RTS Implied",
+      "classe": "RETORNO-SEM-FRAME",
+      "alvos": 1,
+      "execucoes": 1
+    },
+    {
+      "from": "CC0322",
+      "origem": "RTS Implied",
+      "classe": "RETORNO-SEM-FRAME",
+      "alvos": 1,
+      "execucoes": 1
+    }
+  ],
+  "entradas": [
+    {
+      "target": "C06554",
+      "state": "M1X0",
+      "from": "C052A9",
+      "count": 147,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C069C0",
+      "state": "M1X0",
+      "from": "C069B3",
+      "count": 3,
+      "classe": "TABELA-INDEXADA",
+      "origem": "JMP AbsoluteIndexedIndirectX"
+    },
+    {
+      "target": "C06CF4",
+      "state": "M1X0",
+      "from": "C069B3",
+      "count": 2,
+      "classe": "TABELA-INDEXADA",
+      "origem": "JMP AbsoluteIndexedIndirectX"
+    },
+    {
+      "target": "CC0095",
+      "state": "M1X0",
+      "from": "CC018B",
+      "count": 1,
+      "classe": "RETORNO-SEM-FRAME",
+      "origem": "RTS Implied"
+    },
+    {
+      "target": "CC009B",
+      "state": "M1X0",
+      "from": "CC0322",
+      "count": 1,
+      "classe": "RETORNO-SEM-FRAME",
+      "origem": "RTS Implied"
+    }
+  ],
+  "rejeitados": [],
+  "analise": {
+    "ms": 4986,
+    "funcoes": 280,
+    "alvos_incluindo_tabelas": 8
+  },
+  "integracao": {
+    "rotinas": 6,
+    "funcoes": 10,
+    "linhas": 301,
+    "aliases": 27,
+    "arquivos": [
+      "src/forja_learned_bootr145d_000.cpp"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+#pragma once
+// Forja65 REV180 - CPU AOT-only guard.  No hardware/emulator-native claim.
+// Records a precise unresolved (PC, E/M/X, origin) for the AOT learning cycle.
+#include "generated.hpp"
+#include <cstdlib>
+#include <cstdio>
+#include <fstream>
+#include <string>
+inline bool forja65_aot_only(){
+  static const bool value=[](){
+    const char* p=std::getenv("FORJA65_CPU_AOT_ONLY");
+    return p && (std::string(p)=="1" || std::string(p)=="true" || std::string(p)=="on");
+  }();
+  return value;
+}
+inline void forja65_record_aot_miss(std::uint32_t from,std::uint32_t pc,const CpuState& cpu,const char* why){
+  if(!forja65_aot_only())return;
+  // Intentionally overwrite a previous run: each failure is a self-contained,
+  // Forja learn-from-interpreter.js compatible seed file, not a coverage claim.
+  std::ofstream f("forja65-aot-frontier.txt",std::ios::trunc);
+  if(!f)return;
+  const char* state=cpu.e?"E1":cpu.m8?(cpu.x8?"M1X1":"M1X0"):(cpu.x8?"M0X1":"M0X0");
+  char line[128];
+  std::snprintf(line,sizeof line,"%06X %s from=%06X count=1\n",unsigned(pc&0xFFFFFFu),state,unsigned(from&0xFFFFFFu));
+  f<<"FORJA65_CPU_AOT_FRONTIER 1\n";
+  f<<"# reason="<<(why?why:"unknown")<<" carry="<<int(cpu.c)<<"\n";
+  f<<line;
+}

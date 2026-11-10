@@ -1,0 +1,833 @@
+{
+  "schema": "forja65.cpu-executed-closure-delta.v1",
+  "rom": "3ce797fd0241fce8",
+  "beforeFunctions": 4292,
+  "afterFunctions": 4345,
+  "addedFunctions": 53,
+  "removedFunctions": 0,
+  "nativeUnitCount": 43,
+  "referenceExecutedInstructions": 765496,
+  "referenceUniquePcWidthStates": 2505,
+  "missingReturnState": {
+    "pc": "CC1DF3",
+    "state": "E0M0X0C1",
+    "executedCount": 1
+  },
+  "cause": "CC1DEF calls CC814E, which calls C3A4B5 and returns with M=0; the initial static graph retained M=1 at CC1DF3.",
+  "negativeC0FCE1E0M1X0C1Compiled": false,
+  "addedEntries": [
+    {
+      "pc": 13377011,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        34,
+        53,
+        114,
+        204
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "JSL",
+      "fn": "forja65_aot_CC1DF3_E0M0X0"
+    },
+    {
+      "pc": 13377120,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC1E60_E0M0X0"
+    },
+    {
+      "pc": 13377137,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC1E71_E0M0X0"
+    },
+    {
+      "pc": 13377154,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC1E82_E0M0X0"
+    },
+    {
+      "pc": 13377192,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC1EA8_E0M0X0"
+    },
+    {
+      "pc": 13377209,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC1EB9_E0M0X0"
+    },
+    {
+      "pc": 13377226,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC1ECA_E0M0X0"
+    },
+    {
+      "pc": 13377243,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        34,
+        132,
+        119,
+        204
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "JSL",
+      "fn": "forja65_aot_CC1EDB_E0M0X0"
+    },
+    {
+      "pc": 13377247,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        34,
+        130,
+        121,
+        204
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "JSL",
+      "fn": "forja65_aot_CC1EDF_E0M0X0"
+    },
+    {
+      "pc": 13377251,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC1EE3_E0M0X0"
+    },
+    {
+      "pc": 13377321,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC1F29_E0M1X0"
+    },
+    {
+      "pc": 13377434,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        107
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "RTL",
+      "fn": "forja65_aot_CC1F9A_E0M0X0"
+    },
+    {
+      "pc": 13377730,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        34,
+        197,
+        41,
+        204
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "JSL",
+      "fn": "forja65_aot_CC20C2_E0M1X0"
+    },
+    {
+      "pc": 13377873,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        107
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "RTL",
+      "fn": "forja65_aot_CC2151_E0M0X0"
+    },
+    {
+      "pc": 13378186,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC228A_E0M1X0"
+    },
+    {
+      "pc": 13378327,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        107
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "RTL",
+      "fn": "forja65_aot_CC2317_E0M0X0"
+    },
+    {
+      "pc": 13378461,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC239D_E0M1X0"
+    },
+    {
+      "pc": 13378754,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        34,
+        111,
+        129,
+        204
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "JSL",
+      "fn": "forja65_aot_CC24C2_E0M0X0"
+    },
+    {
+      "pc": 13378758,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC24C6_E0M0X0"
+    },
+    {
+      "pc": 13378924,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        176,
+        7
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "BCS",
+      "fn": "forja65_aot_CC256C_E0M0X0"
+    },
+    {
+      "pc": 13378926,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC256E_E0M0X0"
+    },
+    {
+      "pc": 13378950,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        176,
+        7
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "BCS",
+      "fn": "forja65_aot_CC2586_E0M0X0"
+    },
+    {
+      "pc": 13378952,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC2588_E0M0X0"
+    },
+    {
+      "pc": 13379055,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        144,
+        1
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "BCC",
+      "fn": "forja65_aot_CC25EF_E0M0X0"
+    },
+    {
+      "pc": 13379058,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC25F2_E0M0X0"
+    },
+    {
+      "pc": 13379083,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        144,
+        1
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "BCC",
+      "fn": "forja65_aot_CC260B_E0M0X0"
+    },
+    {
+      "pc": 13379086,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC260E_E0M0X0"
+    },
+    {
+      "pc": 13379098,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        107
+      ],
+      "need": [
+        false,
+        true
+      ],
+      "mnemonic": "RTL",
+      "fn": "forja65_aot_CC261A_E0M1X0"
+    },
+    {
+      "pc": 13388271,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC49EF_E0M1X0"
+    },
+    {
+      "pc": 13388288,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4A00_E0M0X0"
+    },
+    {
+      "pc": 13388305,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4A11_E0M0X0"
+    },
+    {
+      "pc": 13388322,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        34,
+        132,
+        119,
+        204
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "JSL",
+      "fn": "forja65_aot_CC4A22_E0M0X0"
+    },
+    {
+      "pc": 13388326,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4A26_E0M0X0"
+    },
+    {
+      "pc": 13388352,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4A40_E0M0X0"
+    },
+    {
+      "pc": 13388378,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4A5A_E0M0X0"
+    },
+    {
+      "pc": 13388395,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        34,
+        205,
+        74,
+        204
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "JSL",
+      "fn": "forja65_aot_CC4A6B_E0M0X0"
+    },
+    {
+      "pc": 13388399,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4A6F_E0M0X0"
+    },
+    {
+      "pc": 13388416,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4A80_E0M0X0"
+    },
+    {
+      "pc": 13388433,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4A91_E0M0X0"
+    },
+    {
+      "pc": 13388450,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4AA2_E0M0X0"
+    },
+    {
+      "pc": 13388467,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        34,
+        43,
+        41,
+        204
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "JSL",
+      "fn": "forja65_aot_CC4AB3_E0M0X0"
+    },
+    {
+      "pc": 13388471,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        34,
+        218,
+        42,
+        204
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "JSL",
+      "fn": "forja65_aot_CC4AB7_E0M0X0"
+    },
+    {
+      "pc": 13388475,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4ABB_E0M0X0"
+    },
+    {
+      "pc": 13388869,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        34,
+        111,
+        129,
+        204
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "JSL",
+      "fn": "forja65_aot_CC4C45_E0M0X0"
+    },
+    {
+      "pc": 13388873,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4C49_E0M0X0"
+    },
+    {
+      "pc": 13389438,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4E7E_E0M1X0"
+    },
+    {
+      "pc": 13389552,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4EF0_E0M1X0"
+    },
+    {
+      "pc": 13389587,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        194,
+        32
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "REP",
+      "fn": "forja65_aot_CC4F13_E0M0X0"
+    },
+    {
+      "pc": 13389609,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        107
+      ],
+      "need": [
+        false,
+        true
+      ],
+      "mnemonic": "RTL",
+      "fn": "forja65_aot_CC4F29_E0M1X0"
+    },
+    {
+      "pc": 13390041,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        176,
+        1
+      ],
+      "need": [
+        false,
+        true
+      ],
+      "mnemonic": "BCS",
+      "fn": "forja65_aot_CC50D9_E0M1X0"
+    },
+    {
+      "pc": 13390043,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        107
+      ],
+      "need": [
+        false
+      ],
+      "mnemonic": "RTL",
+      "fn": "forja65_aot_CC50DB_E0M1X0"
+    },
+    {
+      "pc": 13390044,
+      "e": false,
+      "m": true,
+      "x": false,
+      "raw": [
+        92,
+        181,
+        120,
+        204
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "JML",
+      "fn": "forja65_aot_CC50DC_E0M1X0"
+    },
+    {
+      "pc": 13402595,
+      "e": false,
+      "m": false,
+      "x": false,
+      "raw": [
+        107
+      ],
+      "need": [
+        true
+      ],
+      "mnemonic": "RTL",
+      "fn": "forja65_aot_CC81E3_E0M0X0"
+    }
+  ]
+}

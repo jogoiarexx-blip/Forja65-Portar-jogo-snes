@@ -1,0 +1,11 @@
+'use strict';
+const assert=require('node:assert/strict');const {compareHashes}=require('../tools/input-differential-probe.js');
+const mk=(ids)=>ids.map(([frame,fb,wr])=>({frame,framebuffer:fb,wram:wr}));
+const base=mk([[1,'a','x'],[2,'b','y'],[3,'c','z'],[4,'d','q']]);
+assert.equal(compareHashes(base,mk([[1,'a','x'],[2,'b','y'],[3,'e','z'],[4,'d','q']]),3).status,'VISUAL_EFFECT_OBSERVED');
+assert.equal(compareHashes(base,mk([[1,'a','x'],[2,'f','y'],[3,'c','z']]),3).status,'PRE_INPUT_MISMATCH');
+assert.equal(compareHashes(base,base,3).status,'NO_EFFECT_OBSERVED');
+assert.equal(compareHashes(base,mk([[1,'a','x'],[2,'b','y'],[3,'c','changed'],[4,'d','q']]),3).status,'MEMORY_ONLY_EFFECT_OBSERVED');
+assert.equal(compareHashes(base,mk([[1,'a','x'],[2,'b','y'],[3,'c','other']]),3).first_divergence,3);
+assert.throws(()=>compareHashes(base,base,-1),/Invalid/);
+console.log('input-differential-v08-regression: PASS');

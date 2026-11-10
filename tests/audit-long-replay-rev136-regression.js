@@ -1,0 +1,12 @@
+'use strict';
+const assert=require('node:assert/strict');
+const {analyze}=require('../tools/audit-long-replay-rev136.js');
+const csv='frame,pc,joy1,joy2,autojoy1,autojoy2,instructions,nmi,fb_fnv1a64\n50,808000,0,0,0,0,5000,0,aabb\n100,808001,0,0,0,0,11000,0,aabc\n';
+const qa='rom=c5c657071aadfc1d\nruntime_started=PASS\nframes=100\ninstructions=11000\nframebuffer_hash=aabc\n';
+const yes=analyze(csv,qa,'FORJA65_CPU_INTERPRETER 1\ninstructions=93\n',100);
+assert.equal(yes.pass,true);assert.equal(yes.interpreted_instructions,93);assert.equal(yes.visual_changes_between_samples,1);
+assert.equal(analyze(csv,qa.replace('frames=100','frames=90'),null,100).pass,false);
+assert.equal(analyze(csv,qa,null,200).pass,false);
+assert.throws(()=>analyze(csv.replace('100,808001','40,808001'),qa,null,100),/invalid\/overshooting frame/);
+assert.throws(()=>analyze(csv.replace('11000','1000'),qa,null,100),/instructions not monotone/);
+console.log('REV136 long replay auditor: 6 QA cases PASS');

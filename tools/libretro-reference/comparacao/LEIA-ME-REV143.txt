@@ -1,0 +1,21 @@
+Forja65 REV143 - comparacao de temporizacao com bsnes/Snes9x (cores libretro)
+
+1) Referencias (codigo aberto; compilar localmente, nenhum binario incluido):
+   bsnes-libretro  https://github.com/libretro/bsnes-libretro   (commit usado: 05439f96121d2b9d7ad7a5fc1f29d7eebdcc8c43)
+       git apply bsnes-sonda-traco-rev143.patch ; make -j2 target=libretro binary=library
+   snes9x          https://github.com/libretro/snes9x           (commit usado: fae2fea08f74180759ef540ee94259213f503480)
+       git apply snes9x-sondas-forja.patch ; cd libretro ; make -j2
+   refemu:  g++ -O2 -std=c++17 -I<snes9x>/libretro ../refemu.cpp -o refemu -ldl
+2) ROMs de teste livres:
+   tests/fixtures/rev143/apusync.sfc, nmitiming.sfc (MIT, fonte .asm junto; ca65/ld65)
+   gilyon/snes-tests (MIT)  https://github.com/gilyon/snes-tests    cputest-full.sfc, spctest.sfc (ca65 + spcasm)
+   PeterLemon/SNES          https://github.com/PeterLemon/SNES      SPC700/PlayTwoSong, Games/MonsterFarmJump
+3) Traco do port desde o power-on: FORJA65_CPUTRACE_FILE=arquivo FORJA65_CPUTRACE_COUNT=N (ou comando cputrace
+   no modo de controle). Formato: "PC ciclos_cobrados linha_do_port H" (linha do port = V-1).
+4) Ferramentas:
+   timingdiff.py  custo por instrucao (descontado o refresh), histograma por opcode
+   driftmap.py    deriva absoluta instrucao a instrucao e onde ela muda
+   apuwait.py     esperas de porta APU pareadas (leituras e duracao)
+   waitexit.py    instante absoluto da ultima leitura de cada espera de porta APU
+   irqentry.py    custo medido de entrada de NMI/IRQ
+   avaliar-rev143.sh  roda tudo, perfis rev142 e rev143, para uma pasta de ROMs

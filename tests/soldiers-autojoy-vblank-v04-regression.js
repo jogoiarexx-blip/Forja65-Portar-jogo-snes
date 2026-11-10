@@ -1,0 +1,11 @@
+"use strict";
+const fs = require('fs');
+const path = require('path');
+const assert = require('assert');
+const source = fs.readFileSync(path.join(__dirname, '..', 'forja65-core.js'), 'utf8');
+assert(source.includes('void beginVblank(unsigned line)'), 'manual VBlank helper missing');
+assert(source.includes('if(currentScanline==vis){io.vblank=true;ppu.resetOamAddressOnVblank();if(io.autoJoypad)pollAutoJoypad();scheduleAutoJoyRead();}'), 'real timing path not scheduling automatic joypad read');
+assert(source.includes('void pollAutoJoypad(){pollInput();io.setJoyStrobe(true);io.setJoyStrobe(false);'), 'Bomberman serial clock regression');
+assert(source.includes('void finishAutoJoyRead(bool frameEnded=false)'), 'automatic joypad latch missing');
+assert(source.includes('constexpr unsigned START_MC=300u,DURATION_MC=4224u'), 'latch timing changed unexpectedly');
+console.log('FORJA65_AUTOJOY_VBLANK_GENERATOR_PASS');

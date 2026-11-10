@@ -1,0 +1,99 @@
+{
+  "schema": "forja65.interpreter-learning.v1",
+  "tag": "stage6r145c",
+  "rom": {
+    "fnv1a64": "0219ea8f95a4f0ed",
+    "sha256": "f9dac709b2c2859f828103a0dd980716817e2bde3b9d7e2fdea36e9bb9bed7f2"
+  },
+  "log": {
+    "sha256": "02d81f643d9d4474223660a3e4c9c3254434165ea34c09ae94e72995c041eefa",
+    "entradas": 4,
+    "execucoes": 59
+  },
+  "aceitas": 4,
+  "rejeitadas": 0,
+  "classes": {
+    "CHAMADA-DIRETA-NAO-ANALISADA": 4
+  },
+  "locais_de_despacho": 4,
+  "tabelas": [],
+  "sites": [
+    {
+      "from": "C052A9",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 49
+    },
+    {
+      "from": "C054F5",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 8
+    },
+    {
+      "from": "C0EB57",
+      "origem": "JSL AbsoluteLong",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 1
+    },
+    {
+      "from": "C0EB65",
+      "origem": "JSL AbsoluteLong",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 1
+    }
+  ],
+  "entradas": [
+    {
+      "target": "C064A4",
+      "state": "M1X0",
+      "from": "C054F5",
+      "count": 8,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C06554",
+      "state": "M1X0",
+      "from": "C052A9",
+      "count": 49,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C0EB35",
+      "state": "M0X0",
+      "from": "C0EB57",
+      "count": 1,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSL AbsoluteLong"
+    },
+    {
+      "target": "C0EB35",
+      "state": "M0X0",
+      "from": "C0EB65",
+      "count": 1,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSL AbsoluteLong"
+    }
+  ],
+  "rejeitados": [],
+  "analise": {
+    "ms": 6514,
+    "funcoes": 295,
+    "alvos_incluindo_tabelas": 3
+  },
+  "integracao": {
+    "rotinas": 3,
+    "funcoes": 3,
+    "linhas": 96,
+    "aliases": 94,
+    "arquivos": [
+      "src/forja_learned_stage6r145c_000.cpp"
+    ]
+  }
+}

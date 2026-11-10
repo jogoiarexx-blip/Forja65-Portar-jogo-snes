@@ -1,0 +1,40 @@
+'use strict';
+const assert=require('node:assert/strict'),C=require('../forja65-core');
+const b=C.makeSyntheticRom();b.fill(0xea,0,0x1000);b.set([0xa2,0x04,0x7c,0x00,0x90]);b.set([0x00,0x82],0x1004);b.set([0xa9,0x42,0x60],0x200);const rom=C.loadRom(b),a=C.analyze(rom,64,[],{globalCfg:false});
+assert(a.functions.some(f=>f.start===0x8200),'known LDX must resolve a non-inline JMP table before execution');
+const site=a.functions.flatMap(f=>f.instructions).find(i=>i.pc===0x8002);assert(site.rieIndirect&&site.rieIndirect.targets.includes(0x8200),'new target must carry revalidatable local evidence');assert.equal(site.rieIndirect.index_bounds_proven,false,'one entry path does not close a global runtime domain');
+console.log('INDIRECT_RIE_V043696_PASS');
+const R=require('../analysis/indirect-targets'),Inv=require('../analysis/rom-inventory');
+const emu={emulation:true,m8:true,x8:true,carry:null},native={emulation:false,m8:false,x8:false,carry:null};
+function check(code,state=emu,prepare=()=>{},pc=0x8000){const bytes=new Uint8Array(0x10000);bytes.fill(0xea);bytes.set(C.makeSyntheticRom());const image=C.loadRom(bytes);bytes.set(code,C.snesToRom(image,pc));prepare(bytes,image);const cart=C.loadRom(bytes),path=[];let at=pc,st={...state};for(let n=0;n<128;n++){const before={...st},i=C.decodeOne(cart,at,st);i.stateIn=before;i.stateOut={...st};path.push(i);if(R.supported(i))break;at=(at&0xff0000)|((at+i.size)&65535);}const services={rom:cart,bus:a=>Inv.busOffset(cart,C.snesToRom,a),executable:a=>C.isRomAddress(cart,a)};return {result:R.resolve(path,services),path,services};}
+const table=bytes=>bytes.set([0,0x82,0x10,0x82,0x20,0x82,0x30,0x82],0x1000);
+let q=check([0xad,0,0x10,0x29,3,0,0x0a,0xaa,0x7c,0,0x90],native,table);assert.deepEqual(q.result.targets,[0x8200,0x8210,0x8220,0x8230]);assert(!q.result.index_bounds_proven);
+q=check([0xe2,0x20,0xa9,4,0xaa,0x7c,0,0x90],native,table);assert.deepEqual(q.result.targets,[],'M8 LDA leaves unknown hidden B; TAX16 cannot assume zero');
+q=check([0xa9,4,0x12,0xe2,0x20,0xa9,2,0xaa,0x7c,0,0x90],native,bytes=>bytes.set([0,0x83],0x2202));assert.deepEqual(q.result.targets,[0x8300],'known B must survive M8 LDA');
+q=check([0xa2,4,0xab,0xe2,0x10,0xc2,0x10,0x7c,0,0x90],native,bytes=>bytes.set([0,0x83],0x1004));assert.deepEqual(q.result.targets,[0x8300],'SEP X truncates high index bytes permanently');
+q=check([0xa2,0xff,0x9a,0x4b,0xab,0xa9,0,0x8d,0x10,0,0xa9,0x82,0x8d,0x11,0,0x6c,0x10,0]);assert.deepEqual(q.result.targets,[0x8200]);
+q=check([0xa9,0,0x8d,0x10,0,0xa9,0x82,0x8d,0x11,0,0x6c,0x10,0]);assert.deepEqual(q.result.targets,[],'absolute stores with unknown DB cannot establish bank-zero pointer');
+q=check([0xa2,0xff,0x9a,0xa9,0x7e,0x48,0xab,0xa9,0,0x8d,0x10,0,0xa9,0x82,0x8d,0x11,0,0x6c,0x10,0]);assert.deepEqual(q.result.targets,[0x8200],'WRAM banks and low mirrors share local bytes');
+q=check([0xa9,0,0,0x5b,0xe2,0x20,0xa9,0,0x85,0x10,0xa9,0x82,0x85,0x11,0x6c,0x10,0],native);assert.deepEqual(q.result.targets,[0x8200],'TCD can prove local direct page');
+q=check([0xa2,0xff,0x9a,0x4b,0xab,0xa9,0,0x8d,0x10,0,0xa9,0x82,0x8d,0x11,0,0x91,0x20,0x6c,0x10,0]);assert.deepEqual(q.result.targets,[],'unknown indirect store invalidates RAM witnesses');
+q=check([0xa2,0xff,0x9a,0x4b,0xab,0xa9,0,0x8d,0x10,0,0xa9,0x82,0x8d,0x11,0,0xf4,0,0,0x6c,0x10,0]);assert.deepEqual(q.result.targets,[],'unknown stack address may overwrite local pointer bytes');
+q=check([0xa2,0xff,0x9a,0xf4,0xff,0x81,0x60]);assert.deepEqual(q.result.targets,[0x8200]);
+q=check([0xa2,0xff,0x9a,0x4b,0xf4,0xff,0x81,0x6b]);assert.deepEqual(q.result.targets,[0x8200]);
+q=check([0xa2,0xff,0x9a,0xa9,0x81,0x48,0xf4,0xff,0x7f,0x6b]);assert.deepEqual(q.result.targets,[0x818000],'RTL uses pushed bank and increments only 16-bit PC');
+q=check([0xf4,0xff,0x81,0x8f,0,0,0x7e,0x60]);assert.deepEqual(q.result.targets,[],'memory stores can alias the unknown stack');
+q=check([0xa2,0xff,0x9a,0x4b,0xab,0xa9,0,0x8d,0x10,0,0xa9,0x82,0x8d,0x11,0,0xa9,0x81,0x8d,0x12,0,0xdc,0x10,0]);assert.deepEqual(q.result.targets,[0x818200]);
+q=check([0x6c,0,0x90],emu,bytes=>bytes.set([0,0x82],0x1000));assert.deepEqual(q.result.targets,[0x8200],'JMP indirect reads bank zero, not DB');
+q=check([0xa2,0,0x7c,0xff,0xff],emu,(bytes)=>{bytes[0x7fff]=0;bytes[0]=0x82;},0xc08100);assert.deepEqual(q.result.targets,[0xc08200],'16-bit table reads wrap inside program bank');
+q=check([0xa2,4,...Array(65).fill(0xea),0x7c,0,0x90],emu,table);assert.equal(q.result.pathLength,64);assert.deepEqual(q.result.targets,[],'facts beyond path budget are unknown');
+q=check([0xa2,4,0x7c,0,0x90],emu,bytes=>bytes.set([0,0x82],0x1004));assert.deepEqual(R.resolve(q.path,{...q.services,inData:()=>true}).targets,[],'known data cannot become new code');
+for(const m8 of [false,true])for(const x8 of [false,true]){const code=[0xa2,4,...(x8?[]:[0]),0x7c,0,0x90];q=check(code,{...native,m8,x8},bytes=>bytes.set([0,0x82],0x1004));assert.deepEqual(q.result.targets,[0x8200]);}
+console.log('INDIRECT_RIE_WIDTH_RAM_STACK_BANK_BOUNDS_PASS');
+q=check([0xf4,0xff,0x81,0x60]);assert.deepEqual(q.result.targets,[],'unknown emulation SP cannot prove full-stack PEA followed by page-wrapped RTS');
+q=check([0x4b,0xab,0xa9,0,0x8d,0x10,0,0xa9,0x82,0x8d,0x11,0,0x6c,0x10,0]);assert.deepEqual(q.result.targets,[],'PHK/PLB may cross different page boundaries with unknown emulation SP');
+
+q=check([0xa2,0,0x9a,0xf4,0xff,0x81,0x60]);assert.deepEqual(q.result.targets,[],'known emulation SP=0100 has distinct PEA/RTS byte locations');
+q=check([0xa2,0,0x9a,0x4b,0xab,0xa9,0,0x8d,0x10,0,0xa9,0x82,0x8d,0x11,0,0x6c,0x10,0]);assert.deepEqual(q.result.targets,[],'PHK/PLB boundary mismatch cannot establish DB');
+console.log('INDIRECT_EMULATION_STACK_BOUNDARY_PASS');
+const returned=C.makeSyntheticRom();returned.set([0x18,0xfb,0xc2,0x30,0x22,0,0x81,0,0xa9,0x34,0x12,0xdb]);returned.set([0xa2,0xfc,1,0x9a,0xa9,0xff,0x81,0x48,0x60],0x100);returned.set([0xe2,0x20,0x6b],0x200);const retAnalysis=C.analyze(C.loadRom(returned),512,[],{globalCfg:false,summaryRounds:8});assert(retAnalysis.functions.flatMap(f=>f.instructions).some(i=>i.pc===0x8008&&i.stateIn.m8),'computed RTS must propagate destination exit widths to original JSL caller');
+console.log('INDIRECT_RETURN_SUMMARY_PASS');
+q=check([0x7c,0,0x90]);assert.equal((q.result.witness||[]).length,0,'unresolved sites keep a reason, not 64 duplicated instruction records');

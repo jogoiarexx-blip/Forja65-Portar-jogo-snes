@@ -1,0 +1,4 @@
+'use strict';
+const assert=require('node:assert/strict'),{report}=require('../tools/ppu-timeline-report.js');
+const csv=['event,frame,instruction,pc,scanline,master_cycle,port,value,inidisp,blank,brightness,bgmode,tm,ts,ppu_writes,dma_bytes,hdma_bytes','frame,5,100,33000,0,0,0,0,143,1,15,0,0,0,0,0,0','write,5,120,33010,5,300,8448,15,15,0,15,0,0,0,1,0,0','write,5,121,33012,5,320,8492,3,15,0,15,0,3,0,2,0,0','frame,6,150,33018,0,0,0,0,15,0,15,0,3,0,2,0,0'].join('\n');
+const r=report(csv);assert.equal(r.frames.length,2);assert.equal(r.frames[0].visibility,'FORCED_BLANK');assert.equal(r.frames[1].visibility,'DISPLAY_ENABLED_POSSIBLE');assert.equal(r.firstVisibilityPossible.frame,5);assert.equal(r.firstUnblank.frame,5);assert.equal(r.firstLayerEnabled.frame,5);assert.throws(()=>report('broken,header\n'),/Invalid/);console.log('PPU timeline classification regression PASS');

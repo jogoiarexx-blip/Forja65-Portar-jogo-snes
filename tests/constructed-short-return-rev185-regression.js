@@ -1,0 +1,15 @@
+'use strict';
+const assert=require('assert');
+const C=require('../forja65-core');
+const rom=C.makeSyntheticRom();
+rom.set([0x22,0x00,0x81,0x00,0x20,0x00,0x82,0xDB],0x0000);
+rom.set([0x5A,0xF4,0x06,0x81,0x6C,0x1A,0x00,0x7A,0x6B],0x0100);
+rom.set([0x60],0x0200);
+const r=C.loadRom(rom,'short-return.sfc');
+const p=C.generateProject(r,C.analyze(r,2500));
+const src=Object.entries(p).filter(([n])=>/src\/generated_.*\.cpp/.test(n)).map(([,s])=>s).join('\n');
+assert(src.includes('hw.armConstructedShortReturn(0x008104u,cpu)'));
+assert(src.includes('hw.consumeConstructedShortReturn(dst,cpu)'));
+assert(p['src/runtime.hpp'].includes('bool consumeConstructedShortReturn('));
+assert(p['src/runtime.hpp'].includes('bool armConstructedShortReturn('));
+console.log('CONSTRUCTED_SHORT_RETURN_REV185_PASS');

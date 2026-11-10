@@ -1,0 +1,10 @@
+FORJA65_CPU_INTERPRETER 1
+blocks=258
+instructions=1057
+# entrada estado(E/M/X) origem execucoes
+EC224C M0X0 from=EC220E count=129
+EC2270 M0X0 from=EC56AA count=75
+EC2270 M0X0 from=EC5722 count=38
+EC2270 M1X0 from=EC56AA count=10
+EC2270 M1X0 from=EC5722 count=5
+EC227C M0X0 from=EC56AA count=1

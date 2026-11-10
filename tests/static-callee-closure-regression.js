@@ -1,0 +1,12 @@
+'use strict';const assert=require('assert');const {staticCalleeClosure}=require('../tools/static-callee-closure.js');
+const f=(start,pcs,calls=[])=>({start,instructions:pcs.map(pc=>({pc})),calls:calls.map(target=>({target}))});
+const mapped=a=>a>=0x8000&&a<0x9000?a-0x8000:a>=0x18000&&a<0x19000?a-0x18000:null;
+let n=0;const test=(name,fn)=>{fn();console.log('PASS '+name);n++;};
+test('recursive callees and cycle terminate',()=>{const r=staticCalleeClosure({functions:[f(0x8000,[0x8000],[0x8100]),f(0x8100,[0x8100],[0x8000,0x8200]),f(0x8200,[0x8200])]},[0x8000],mapped);assert.deepEqual(r.targets,[0x8000,0x8100,0x8200]);});
+test('interior labels select the containing routine',()=>{const r=staticCalleeClosure({functions:[f(0x8000,[0x8000,0x8003],[0x8100]),f(0x8100,[0x8100])]},[0x8003],mapped);assert(r.targets.includes(0x8100));});
+test('mirrored ROM addresses select the decoded routine',()=>{const r=staticCalleeClosure({functions:[f(0x8000,[0x8000],[0x8100]),f(0x8100,[0x8100])]},[0x18000],mapped);assert(r.targets.includes(0x8100));});
+test('all decoded state variants contribute callees',()=>{const r=staticCalleeClosure({functions:[f(0x8000,[0x8000],[0x8100]),f(0x8000,[0x8000],[0x8200]),f(0x8100,[0x8100]),f(0x8200,[0x8200])]},[0x8000],mapped);assert(r.targets.includes(0x8100)&&r.targets.includes(0x8200));});
+test('mapped but undecoded targets are reported',()=>{const r=staticCalleeClosure({functions:[f(0x8000,[0x8000],[0x8100])]},[0x8000],mapped);assert.deepEqual(r.undecoded,[0x8100]);});
+test('unmapped targets are excluded',()=>{const r=staticCalleeClosure({functions:[f(0x8000,[0x8000],[0x1234])]},[0x8000],mapped);assert.deepEqual(r.targets,[0x8000]);});
+test('inputs are preserved',()=>{let a={functions:[f(0x8000,[0x8000],[0x8100])]},seeds=[0x8000];let before=JSON.stringify([a,seeds]);staticCalleeClosure(a,seeds,mapped);assert.equal(JSON.stringify([a,seeds]),before);});
+console.log(n+' tests passed');

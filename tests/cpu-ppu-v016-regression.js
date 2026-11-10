@@ -1,0 +1,14 @@
+const fs=require('fs'),path=require('path'),os=require('os'),cp=require('child_process');
+const C=require('../forja65-core.js');
+function assert(x,m){if(!x)throw new Error(m);}
+const rom=C.loadRom(C.makeSyntheticRom(),'v016.sfc');
+const cases=[
+ [0x0A,'ASL','Accumulator'],[0xA4,'LDY','Direct'],[0xDC,'JMP','AbsoluteIndirectLong'],[0xBD,'LDA','AbsoluteX'],[0x9D,'STA','AbsoluteX'],[0x91,'STA','DirectIndirectY'],[0x0F,'ORA','AbsoluteLong'],[0xAE,'LDX','Absolute'],[0x6F,'ADC','AbsoluteLong'],[0xD1,'CMP','DirectIndirectY'],[0x87,'STA','DirectIndirectLong'],[0x37,'AND','DirectIndirectLongY'],[0x96,'STX','DirectY'],[0x97,'STA','DirectIndirectLongY']
+];
+for(const [op,mn,mode] of cases){rom.data[0]=op;rom.data[1]=0;rom.data[2]=0;rom.data[3]=0;const i=C.decodeOne(rom,0x008000,{emulation:true,m8:true,x8:true,carry:null});assert(i.status==='native',`$${op.toString(16)} nao nativo`);assert(i.mnemonic===mn&&i.mode===mode,`$${op.toString(16)} decode ${i.mnemonic}/${i.mode}`);}
+const base=C.loadRom(C.makeSyntheticRom(),'runtime.sfc'),a=C.analyze(base),files=C.generateProject(base,a);
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'forja65-v016-'));fs.mkdirSync(path.join(dir,'src'));
+fs.writeFileSync(path.join(dir,'src','runtime.hpp'),files['src/runtime.hpp']);
+fs.writeFileSync(path.join(dir,'ppu_test.cpp'),`#include "src/runtime.hpp"\n#include <cassert>\nint main(){SnesRuntime hw;\n hw.write8(0x2115,0x80); hw.write8(0x2116,0); hw.write8(0x2117,0); hw.write8(0x2118,0x34); assert(hw.ppu.vmadd==0); hw.write8(0x2119,0x12); assert(hw.ppu.vmadd==1); assert(hw.ppu.vram[0]==0x34&&hw.ppu.vram[1]==0x12);\n hw.write8(0x2121,2); hw.write8(0x2122,0x1F); hw.write8(0x2122,0x83); assert(hw.ppu.cgram[4]==0x1F&&hw.ppu.cgram[5]==0x03);\n hw.write8(0x2102,0);hw.write8(0x2103,0);hw.write8(0x2104,0x77);hw.write8(0x2104,0x66);assert(hw.ppu.oam[0]==0x77&&hw.ppu.oam[1]==0x66);\n hw.write8(0x2100,0x80); /* forced blank for a legal VRAM DMA */ hw.ram[0x1234]=0xAA;hw.ram[0x1235]=0x55;hw.write8(0x2115,0x80);hw.write8(0x2116,1);hw.write8(0x2117,0);hw.write8(0x4300,1);hw.write8(0x4301,0x18);hw.write8(0x4302,0x34);hw.write8(0x4303,0x12);hw.write8(0x4304,0);hw.write8(0x4305,2);hw.write8(0x4306,0);hw.write8(0x420B,1);assert(hw.ppu.vram[2]==0xAA&&hw.ppu.vram[3]==0x55);\n CpuState cpu;cpu.d=0;cpu.db=0x7E;hw.ram[0x20]=0x00;hw.ram[0x21]=0x10;cpu.y=3;assert(cpu.addressDpIndirectY(hw,0x20)==0x7E1003);hw.ram[0x30]=0x56;hw.ram[0x31]=0x34;hw.ram[0x32]=0x12;assert(cpu.addressDpLong(hw,0x30)==0x123456);return 0;}\n`);
+try{cp.execFileSync('g++',['-std=c++20','-O2',path.join(dir,'ppu_test.cpp'),'-o',path.join(dir,'ppu_test')],{stdio:'inherit'});cp.execFileSync(path.join(dir,'ppu_test'),[],{stdio:'inherit'});}catch(e){throw new Error('falha compilando/executando runtime C++ v0.1.6: '+e.message)}
+console.log('CPU/PPU v0.1.6 regression: PASS', {opcodes:cases.length, vram:65536,cgram:512,oam:544});

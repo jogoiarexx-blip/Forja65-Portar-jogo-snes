@@ -1,0 +1,14 @@
+{
+  "start_frame": 2972,
+  "rom_fingerprint": "a738cdf85a0c3821",
+  "checkpoint": "tests/intro-2971-rev172.f65s",
+  "goal": "Introduction: beyond third barrier to upper right wall; CF-0 still pending",
+  "phases": [
+    {"name":"Destruir barreira com Buster pulsado", "frames":260,"hold":["right"],"pulses":[{"button":"shoot","every":5}]},
+    {"name":"Atravessar plataformas", "frames":220,"hold":["right","dash"],"pulses":[{"button":"jump","every":20}]},
+    {"name":"Rumo ao setor final da fabrica", "frames":600,"hold":["right","dash"],"pulses":[{"button":"jump","every":20},{"button":"shoot","every":8,"start":328}]},
+    {"name":"Chegar a parede direita", "frames":200,"hold":["right","dash"],"pulses":[{"button":"jump","every":12}]},
+    {"name":"Iniciar escalada e camera vertical", "frames":240,"hold":["right"],"pulses":[{"button":"left","every":20,"width":4},{"button":"jump","every":4}]},
+    {"name":"Testar cadencia de escalada na parede", "frames":360,"hold":["right"],"pulses":[{"button":"left","every":20,"width":4},{"button":"jump","every":5}]}
+  ]
+}

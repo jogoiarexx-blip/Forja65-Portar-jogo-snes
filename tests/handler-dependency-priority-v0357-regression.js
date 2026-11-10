@@ -1,0 +1,40 @@
+'use strict';
+const assert=require('assert'),C=require('../forja65-core.js');
+const d=C.makeSyntheticRom();d.fill(0xEA,0,0x200);d.set([0xC2,0x30,0x29,0x7F,0x00,0x0A,0xAA,0x7C,0x0A,0x80],0);d.set([0x10,0x80,0x20,0x80,0x30,0x80],10);d.set([0x6C,0x42,0],16);d[32]=0x60;d[48]=0x60;
+const rom=C.loadRom(d,'subdomain.sfc'),hash=C.romFingerprint(rom),fp=(a,b)=>C.fnv1a64Bytes(d.slice(a-0x8000,b-0x8000));
+const calls=[{site:0x8010,targets:[0x8020,0x8030]}],sub=[{site:0x8010,targets:[0x8020]}];
+const knowledge={schema:'forja65.knowledge.v1',rom:{fnv1a64:hash},entries:[],dataRegions:[{start:0x800A,end:0x8010}],dispatch:[{site:0x8007,targets:[0x8010,0x8020,0x8030],resolution:{kind:'inline-structural-table',entries:3,script_domain:{complete:true,index_bounds_proven:true,observed_ids_in_closed_entries:[0,1,2],table_entries:3}}},{site:0x8010,targets:[0x8020,0x8030]}],limits:[]};
+const dep={target:0x8020,status:'equivalent',scope:'dependency-abi',span:{start:0x8020,end:0x8021},span_fingerprint:fp(0x8020,0x8021),verification:{result:'PASS',cases:4},dependencies:[]};
+const specialization={key:'original-leaf',native_symbol:'nativeOriginal',contract:{indirect_calls:sub,flow_outcomes:[0x8040],shared_state:['wram:$1000']},verification:{result:'PASS',cases:4,original_dependencies_executed:true,indirect_calls:sub,continuations:[0x8040],shared_state:['wram:$1000'],target_cases:[{site:0x8010,target:0x8020,cases:4}]},dependencies:[{target:0x8020}]};
+const p={target:0x8010,status:'dependency-boundary',scope:'handler-abi',span:{start:0x8010,end:0x8013},span_fingerprint:fp(0x8010,0x8013),contract:{indirect_calls:calls},verification:{result:'PASS',cases:4,indirect_calls:calls},dependencies:[{target:0x8020},{target:0x8030}],specializations:[specialization]};
+const proofs={schema:'forja65.handler-equivalence.v1',rom:hash,dispatcher_site:0x8007,proofs:[p,dep]};
+const plan=q=>C.nativeDispatchPlan(rom,0x8007,knowledge,{handlerProofs:q,handlerMax:64});
+
+const rows=plan(proofs).handler_dependency_priority;
+assert(Array.isArray(rows),'whole handler blockers must be exposed separately');
+assert.deepStrictEqual(rows.map(r=>r.target),[0x8030]);
+assert.deepStrictEqual(rows[0].affected_handlers,[0x8010]);
+assert.strictEqual(rows[0].proof_status,'missing');
+const shared=structuredClone(proofs);
+shared.proofs[0].dependencies.push({target:0x8050});
+shared.proofs[0].specializations[0].dependencies.push({target:0x8050});
+shared.proofs.push({target:0x8030,status:'unproven',verification:{},scope:'handler-abi',span:{start:0x8030,end:0x8031},dependencies:[{target:0x8050}]});
+shared.proofs.push({target:0x8050,status:'unproven',verification:{},scope:'dependency-abi',span:{start:0x8050,end:0x8051},dependencies:[{target:0x8030}]});
+const sharedRows=plan(shared).handler_dependency_priority;
+assert.deepStrictEqual(sharedRows.find(r=>r.target===0x8050).affected_handlers,[0x8010,0x8030]);
+assert.strictEqual(sharedRows.filter(r=>r.target===0x8050).length,1,'shared/cyclic dependencies counted once');
+const complete=structuredClone(proofs);complete.proofs[0].dependencies=[{target:0x8020}];complete.proofs[0].contract.indirect_calls=sub;complete.proofs[0].verification.indirect_calls=sub;
+assert.deepStrictEqual(plan(complete).handler_dependency_priority,[]);
+console.log('handler-dependency-priority-v0357-regression: OK');
+
+const constrained=structuredClone(complete);delete constrained.proofs[0].specializations;
+constrained.proofs[0].dependencies[0].required_postconditions=['required-effect'];
+assert.deepStrictEqual(plan(constrained).handler_dependency_priority.map(r=>r.target),[0x8020]);
+const inputs=structuredClone(complete);delete inputs.proofs[0].specializations;
+inputs.proofs[0].dependencies[0].required_input_values=[2];
+inputs.proofs[1].contract={input_values:[1]};inputs.proofs[1].verification.input_values=[1];
+assert.deepStrictEqual(plan(inputs).handler_dependency_priority.map(r=>r.target),[0x8020]);
+
+const weighted=structuredClone(knowledge);weighted.dispatch[0].resolution.script_domain.command_hits={'0':100,'1':20,'2':5};
+const weightedPlan=C.nativeDispatchPlan(rom,0x8007,weighted,{handlerProofs:shared,handlerMax:64});
+assert.strictEqual(weightedPlan.handler_dependency_priority.find(r=>r.target===0x8050).affected_handler_hits,105);

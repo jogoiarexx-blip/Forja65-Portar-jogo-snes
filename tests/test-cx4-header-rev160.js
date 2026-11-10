@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict');
+const C=require('../forja65-core.js');
+const rom=new Uint8Array(0x10000);
+const off=0x7FC0;
+rom.set(Buffer.from('MEGAMAN X2           '),off);
+rom[off+0x15]=0x20;rom[off+0x16]=0xF3;rom[off-1]=0x10;rom[off+0x17]=0x0B;rom[off+0x1C]=0xFF;rom[off+0x1D]=0xFF;rom[off+0x3D]=0x80;
+const c=C.loadRom(rom,'test.sfc');
+assert.equal(c.header.coprocessor,'CX4');
+rom[off-1]=0x11;assert.equal(C.loadRom(rom,'test.sfc').header.coprocessor,'CUSTOM');
+console.log('REV160_CX4_HEADER_PASS');

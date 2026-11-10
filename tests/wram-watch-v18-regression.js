@@ -1,0 +1,13 @@
+'use strict';
+const assert=require('node:assert/strict');
+const F=require('../forja65-core');
+const rom=F.loadRom(F.makeSyntheticRom());
+const project=F.generateProject(rom,F.analyze(rom,200));
+const hdr=project['src/runtime.hpp'];
+assert(hdr.includes('void appendWramWatchSnapshot()'));
+assert(hdr.includes('appendWramDiffSnapshot();appendWramWatchSnapshot();appendWramSelectedSnapshot();appendOamSelectedSnapshot();appendNativeAuditFrame()'));
+assert(hdr.includes('FORJA65_WRAM_WATCH_ADDRS'));
+assert(hdr.includes('FORJA65_WRAM_WRITE_CHANGES_ONLY'));
+assert(hdr.includes('frame,address,value,pc,joy1\\n')||hdr.includes('frame,address,value,pc,joy1\n'));
+assert.equal(hdr.split('appendWramWatchSnapshot(){').length,2);
+console.log('FORJA65_WRAM_WATCH_V18_GENERATOR_PASS');

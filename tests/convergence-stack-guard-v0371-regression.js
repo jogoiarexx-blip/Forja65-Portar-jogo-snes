@@ -1,0 +1,17 @@
+'use strict';
+const assert=require('node:assert/strict');
+const C=require('../forja65-core');
+const {validateNewReturnHints}=require('../tools/converge');
+const rom=C.loadRom(C.makeSyntheticRom(),'converge-stack.sfc');
+const from=C.resetAddress(rom),to=from+5;
+const src=C.snesToRom(rom,from),dst=C.snesToRom(rom,to);
+rom.data[src]=0x6b; rom.data[dst]=0xea;
+const base={rom:C.romFingerprint(rom),from,target:to,kind:'STACK-RTL',state:{emulation:false,m8:false,x8:false,carry:false}};
+const evidence=`${from.toString(16)} -> ${to.toString(16)} kind=STACK-RTL s=1f9 depth=1 expected=fed long=1\n`;
+assert.equal(validateNewReturnHints(rom,[base],evidence),1);
+assert.equal(validateNewReturnHints(rom,[{...base,kind:'FLOW'}],''),0);
+assert.throws(()=>validateNewReturnHints(rom,[base],''),/exact runtime return evidence/);
+assert.throws(()=>validateNewReturnHints(rom,[{...base,target:to+1}],evidence),/exact runtime return evidence/);
+rom.data[src]=0x60;
+assert.throws(()=>validateNewReturnHints(rom,[base],evidence),/is not RTL/);
+console.log('CONVERGENCE_STACK_GUARD_V0371=PASS');

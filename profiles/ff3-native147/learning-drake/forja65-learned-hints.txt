@@ -1,0 +1,3 @@
+# Forja65 drake147: sementes aprendidas com o interpretador (rom=0219ea8f95a4f0ed)
+rom=0219ea8f95a4f0ed target=c03718 from=c0d7d9 kind=FLOW e=0 m=0 x=0 c=?
+rom=0219ea8f95a4f0ed target=c0e087 from=c0d6bb kind=FLOW e=0 m=0 x=0 c=?

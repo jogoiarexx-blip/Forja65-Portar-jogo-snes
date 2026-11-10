@@ -1,0 +1,611 @@
+{
+  "schema": "forja65.observed-static-coverage.v1",
+  "observations": 107,
+  "unique_states": 86,
+  "covered_states": 0,
+  "missing": [
+    {
+      "pc": "C07692",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C076CB",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0779F",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C078C3",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C694",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C69E",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C6BB",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C6C3",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C6E5",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C6F4",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C6FF",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C734",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C73B",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C73D",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C785",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C7B3",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C7CF",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0C7FB",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0CA07",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0CA25",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D4DF",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D4E4",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D4E7",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D52F",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D53A",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D55F",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D562",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D565",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D5BB",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D5CF",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D5DF",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D5E4",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D5E7",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D5EA",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D62B",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D650",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D653",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D656",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D6BF",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D76C",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D8D1",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D942",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D94B",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D962",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D965",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "C0D96F",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC1107",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC112F",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC1157",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC117E",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC11A5",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC11CC",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC11F3",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC18FB",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC19A9",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC5FE5",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC60F0",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC89D7",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC9C6F",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC9D8E",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC9DCD",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC9DE0",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC9E11",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA03B",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA0C4",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA0D0",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA0D1",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA167",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA1CA",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA1CE",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA235",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA25D",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA2AB",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA2C8",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA301",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA31C",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA480",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA4AC",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA574",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA6A6",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA820",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA82F",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA884",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA888",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA897",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "ECA8EC",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    }
+  ],
+  "scope": "Static dispatch coverage only; not a runtime, whole-game or equivalence certificate."
+}

@@ -1,0 +1,7 @@
+FORJA65_CPU_INTERPRETER 1
+blocks=5661
+instructions=51246
+# entrada estado(E/M/X) origem execucoes
+C14355 M0X0 from=C14A16 count=1887
+C14A16 M0X0 from=C0FD80 count=1887
+C14A1F M0X0 from=C14A1A count=1887

@@ -1,0 +1,1 @@
+{"ppu-port-readback":["oam","vram","cgram","dma","wram"],"oam-sprite-render":["oam","dma","jogo"],"hdma-all-modes":["hdma","window","colormath","wram"]}

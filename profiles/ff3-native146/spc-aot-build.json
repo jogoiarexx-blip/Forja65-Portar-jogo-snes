@@ -1,0 +1,81 @@
+{
+  "rom": "0219ea8f95a4f0ed",
+  "source_snapshot": "spc-aot-source",
+  "ipl_native_pc_cases": 64,
+  "entries": [
+    1792,
+    1920
+  ],
+  "decoded": 1855,
+  "tables": [
+    {
+      "pc": 3387,
+      "base": 996,
+      "entries": 31,
+      "targets": [
+        3783,
+        3776,
+        3745,
+        3732,
+        3660,
+        3669,
+        3752,
+        3397,
+        3412,
+        3602,
+        3612,
+        3629,
+        3640,
+        3434,
+        3453,
+        3388,
+        3506,
+        3513,
+        3528,
+        3466,
+        3482,
+        3586,
+        3594,
+        3551,
+        3696,
+        3727,
+        3700,
+        3561,
+        3574,
+        3580
+      ],
+      "proof": "cmp-bcc-asl-movy-push-ret"
+    },
+    {
+      "pc": 6340,
+      "base": 6299,
+      "entries": 16,
+      "targets": [
+        6499,
+        6504,
+        6525,
+        6540,
+        6343,
+        6344,
+        6362,
+        6370,
+        6411,
+        6420,
+        6446,
+        6460
+      ],
+      "proof": "cmp-bcs-asl-movx"
+    }
+  ],
+  "unresolved": [],
+  "truncated": false,
+  "provenance": {
+    "core_version": "0.4.36.146-native-cfg",
+    "core_sha256": "3e0b7b6cc4f1c27b4196ae3f374881ee9318c1d7d1ffc99c231040b2ae2a0a3a",
+    "capture_ram_sha256": "c8b9dbb48465ba4582e147404199b819e981df7ac3ccf1f30a0411f5ad90c5af",
+    "capture_manifest_sha256": "0d322c11e75f92e1ae76b1abe13eb6ac2e501c9ec6b597d54182d4f2e301224d",
+    "generator_sha256": "aa0c1edcbbfd8a4c3ea523680a7f58b66b438f41121a6edb3547b4efcd93f13b",
+    "generated_cpp_sha256": "cab6887200bd55971d15e5dd240ea9cc8134160c00dbb7162011054a94d54c44"
+  },
+  "note": "Guarded static instructions; misses return to shared interpreter; not full coverage."
+}

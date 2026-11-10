@@ -1,0 +1,16 @@
+'use strict';
+const assert=require('node:assert/strict');
+const F=require('../forja65-core.js');
+const rom=F.loadRom(F.makeSyntheticRom(),'duplicate-body.sfc');
+const a=F.analyze(rom,128);
+const original=a.functions.find(f=>f.instructions.length);
+assert(original,'missing CFG function');
+const first=original.instructions[0];
+original.instructions.splice(1,0,{...first,stateIn:{...first.stateIn}});
+const files=F.generateProject(rom,a);
+const src=Object.entries(files).filter(([name])=>/^src\/generated_\d+\.cpp$/.test(name)).map(([,val])=>String(val)).join('\n');
+assert(src.includes('2 variantes de decodificacao M/X para este endereco; 1 corpos distintos.'),'duplicate body not eliminated');
+const search=src.match(/2 variantes de decodificacao M\/X para este endereco; 1 corpos distintos\.\n([\s\S]+?)hw\.requestDispatch\(/);
+assert(search,'missing specialized branch');
+assert.equal((search[1].match(/hw\.traceInstruction\(/g)||[]).length,1,'duplicate CPU instruction still emitted');
+console.log('PASS: identical E/M/X/C + body emitted once, no CPU instruction removed from source CFG');

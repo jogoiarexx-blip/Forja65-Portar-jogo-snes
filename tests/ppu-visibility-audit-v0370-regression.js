@@ -1,0 +1,12 @@
+'use strict';
+const assert=require('node:assert/strict');
+const {audit}=require('../tools/ppu-visibility-audit.js');
+const hdr='event,frame,inidisp,blank,brightness,bgmode,tm,ts';
+const csv=[hdr,'frame,0,143,1,15,7,16,0','frame,1,0,0,0,7,16,0','frame,2,15,0,15,7,16,0','frame,3,15,0,15,7,1,0','frame,4,15,0,15,7,0,0'].join('\n');
+const a=audit(csv);
+assert.deepEqual([...Object.entries(a.counts)], [['forced_blank',1],['brightness_zero',1],['obj_only',1],['background_enabled',1],['main_screen_disabled',1]]);
+assert.equal(a.lastSampledFrame,4);
+assert.equal(a.first.background_enabled,3);
+assert.equal(a.intervals.length,5);
+assert.throws(()=>audit('event,frame\nframe,0'),/missing field/);
+console.log('PASS: PPU audit distinguishes forced blank, zero brightness, OBJ only and BG; no pixel claims');

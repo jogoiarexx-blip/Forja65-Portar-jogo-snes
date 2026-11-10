@@ -1,0 +1,10 @@
+const fs=require('fs'),path=require('path'),os=require('os'),cp=require('child_process'),assert=require('assert'),C=require('../forja65-core.js');const dir=fs.mkdtempSync(path.join(os.tmpdir(),'forja-cli-trace-')),romPath=path.join(dir,'fixture.sfc'),out=path.join(dir,'project'),cli=path.resolve(__dirname,'../tools/forja65.js');const d=C.makeSyntheticRom();d.set([0x20,0x20,0x80,0xdb],0);d.set([0xa9,0x12,0x60],0x20);fs.writeFileSync(romPath,d);
+cp.execFileSync(process.execPath,[cli,'analyze',romPath,'--out',out],{stdio:'pipe'});
+fs.writeFileSync(path.join(out,'src/native_hooks.cpp'),'#include "generated.hpp"\nstatic unsigned hook(CpuState&c,SnesRuntime&){c.setA(0x12,8);return 58;}\nvoid forja65_register_native_hooks(SnesRuntime&h){h.registerNativeHook({0x8020,hook,nullptr,1,1,1});}\n');
+// Regeneration preserves replacement source and establishes its integrity hash.
+cp.execFileSync(process.execPath,[cli,'analyze',romPath,'--out',out,'--update'],{stdio:'pipe'});
+cp.execFileSync(process.execPath,[cli,'trace',out,'--frames','2','--execution','native'],{stdio:'pipe'});
+const map=JSON.parse(fs.readFileSync(path.join(out,'analysis/native-map.json'),'utf8')),report=JSON.parse(fs.readFileSync(path.join(out,'reports/compatibility-report.json'),'utf8'));assert.equal(map.metrics.hostReplacementEvents,1);assert.equal(report.observedNativeHooks,1);assert.deepEqual(report.metrics,map.metrics);assert.equal(map.trace.complete,true);
+const manifest=fs.readFileSync(path.join(out,'forja65-build-manifest.txt'),'utf8');assert.ok(manifest.includes('generated_shard_capacity=64'));
+for(const n of ['analysis/native-map.json','analysis/native-map.md','analysis/trace.json','analysis/trace.txt','reports/compatibility-report.json','reports/compatibility-report.md','src/native_hooks.cpp']){const b=fs.readFileSync(path.join(out,n));assert.ok(manifest.includes('file='+n+' size='+b.length+' fnv1a64='+C.fnv1a64Bytes(b)),n);}
+console.log('cli-trace-framework-regression: OK (host hook, current reports, manifest, completed trace)');

@@ -1,0 +1,42 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os');
+const C=require('../forja65-core'),IO=require('../tools/project-io'),Vault=require('../tools/knowledge-vault');
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'forja-vault-regression-'));
+try{
+ const raw=C.makeSyntheticRom(),rom=C.loadRom(raw,'game.sfc'),romPath=path.join(dir,'game.sfc');fs.writeFileSync(romPath,raw);
+ const home=path.join(dir,'knowledge');
+ const hintA='target=008000 from=008001 kind=FLOW e=1 m=1 x=1 c=0 observed=3';
+ const first=IO.generate({romPath,out:path.join(dir,'v1'),max:64,hints:hintA,knowledgeHome:home});
+ assert(first.vault.saved?.changed.includes('cfg'));
+ const second=IO.generate({romPath,out:path.join(dir,'v2'),max:64,knowledgeHome:home});
+ assert.equal(second.vault.restored.compatibleCfg,true,'fresh project must recover exact-compatible CFG');
+ assert.equal(second.vault.restored.hints,1,'fresh project must recover prior hints');
+ assert(C.parseRuntimeHints(fs.readFileSync(path.join(dir,'v2/analysis/runtime-hints.txt'),'utf8')).length===1);
+ assert(first.a.decoded===second.a.decoded);
+ const v=Vault.instance(rom,raw,{home});
+ const old={schema:'forja65.cfg-coverage-cache.v1',rom:C.romFingerprint(rom),version:'old-nonaudited-decoder',functions:[{start:0x808000,entryState:{emulation:true,m8:true,x8:true,carry:null},instructions:[]} ]};
+ v.save({cache:old,origin:'old-port'});
+ const available=v.load({isCompatible:IO.isAuditedCacheVersion});
+ assert(available.cache&&available.oldCache,'archive incompatible CFG but do not execute it as compatible');
+ assert.equal(Vault.seedsFromLegacyCache(available.oldCache).length,1,'legacy CFG is a candidate to re-decode');
+ const hintB='rom='+C.romFingerprint(rom)+' target=008002 from=008003 kind=FLOW e=1 m=1 x=1 c=0 observed=4';
+ v.save({hints:hintB,origin:'learned-crash'});
+ assert.equal(C.parseRuntimeHints(v.load().hints).length,2,'hints must be an accumulating union');
+ const prior=v.load().manifest.revision;v.save({hints:hintB,origin:'repeat'});
+ assert.equal(v.load().manifest.revision,prior,'idempotent import cannot create duplicate revision');
+ const other=Uint8Array.from(raw);other[0x20]^=1;
+ const different=Vault.instance(C.loadRom(other,'game.sfc'),other,{home});
+ assert.notEqual(different.folder,v.folder,'a changed ROM must never share knowledge');
+ assert.equal(different.load().manifest.revision,0);
+ const noVault=IO.generate({romPath,out:path.join(dir,'off'),max:64,knowledgeHome:home,useKnowledgeVault:false});
+ assert.equal(noVault.vault.enabled,false);
+ assert.equal(noVault.vault.restored.hints,0);
+ assert.equal(noVault.vault.restored.compatibleCfg,false);
+ assert.equal(noVault.a.decoded,first.a.decoded);
+ // Content checksum must reject silent substitution and must not apply corrupt data.
+ const m=v.load().manifest,object=path.join(v.folder,'objects',m.hints+'.json.gz');
+ fs.writeFileSync(object,Buffer.from('corrupt'));
+ const corrupt=v.load();assert(corrupt.errors.some(x=>x.startsWith('hints:')));
+ assert.equal(corrupt.hints,'');
+ console.log('knowledge-vault-v0436112: PASS (fresh recovery, union, fingerprint, legacy quarantine, idempotency, corruption)');
+}finally{fs.rmSync(dir,{recursive:true,force:true});}

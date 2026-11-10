@@ -1,0 +1,25 @@
+Forja65 REV204 - video pela placa de video (GPU)
+
+O port usa a placa de video para escalar a imagem e aplicar o filtro. O jogo (CPU 65C816, PPU, SPC700, DSP, DMA)
+continua sendo calculado do mesmo jeito; so a apresentacao muda.
+
+Backends (escolhidos ao abrir a janela, na ordem):
+  Windows: Direct3D 11 -> Vulkan -> OpenGL 3.3 -> CPU (GDI)
+  Linux:   OpenGL 3.3 -> Vulkan -> CPU (SDL2)
+Nada disso precisa de SDK para compilar: d3d11.dll, vulkan-1.dll / libvulkan.so.1 e opengl32.dll / SDL2 sao
+carregados em tempo de execucao. Se um backend falhar ao iniciar ou durante o jogo, o port passa para o proximo
+e, no fim, para a CPU. O resultado fica em forja65-video-backend.txt e no titulo da janela.
+
+forja65-video.ini (ou variaveis de ambiente):
+  backend=auto | d3d11 | vulkan | opengl | cpu        FORJA65_VIDEO_BACKEND
+  gpu=auto | dedicated | integrated                   FORJA65_VIDEO_GPU
+  vsync=0 | 1                                          FORJA65_VIDEO_VSYNC
+  gpu_software=0 | 1  (aceita llvmpipe/WARP/lavapipe no modo auto)   FORJA65_VIDEO_GPU_SOFTWARE
+
+Teclas: F7 filtro, F8 resolucao (Windows), F9 troca o backend, F10 aspecto, F11 tela cheia, F12 captura.
+No Linux: F5 pausa e F8 captura PPM do framebuffer, como na REV203.
+
+Placa integrada: funciona com Direct3D 11 (nivel 10_0 ou mais), OpenGL 3.3 ou Vulkan 1.0.
+Notebook com duas placas: gpu=dedicated escolhe a de mais memoria; o executavel tambem exporta
+NvOptimusEnablement/AmdPowerXpressRequestHighPerformance. gpu=integrated escolhe a integrada (D3D11 e Vulkan).
+Renderizador por software so e usado se escolhido de proposito: no modo auto ele nao alivia a CPU.

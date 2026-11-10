@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "first_frame": 291429,
+  "last_hashed_frame": 294739,
+  "compared_frame_records": 3311,
+  "compared": [
+    "framebuffer",
+    "WRAM",
+    "PC",
+    "WAV/PCM"
+  ],
+  "cpu_interpreted_before": 6349063,
+  "cpu_interpreted_after": 207,
+  "before_directory": "stage6-before145",
+  "after_directory": "stage6-after145b",
+  "cpu_fallback_reduction_percent": 99.99673967639005,
+  "inherited_cpu_interpreter_counter": 736731690,
+  "frame_hashes_sha256": "d655d9843575e4faaa7f5bb26045b1f9b593bcc6452ede47c7dab18b7ad10cad",
+  "wav_sha256": "3afc165c214908ec320826fe1fef502f9ae34ad909b0975e3ee7fc54d69867a0",
+  "pcm_sha256": "3d233674531ce9cd0fda04e0d05a084fb067abb9bfe9db01072169b639ea241b",
+  "scope": "REV143 Linux campaign branch, SPC reference. No new stage clear or Windows execution proved."
+}

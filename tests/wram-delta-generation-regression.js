@@ -1,0 +1,11 @@
+'use strict';
+const assert=require('assert');
+const C=require('../forja65-core');
+const r=C.loadRom(C.makeSyntheticRom());
+const project=C.generateProject(r,C.analyze(r,140));
+const src=project['src/runtime.hpp'];
+assert(src.includes('void appendWramDeltaSnapshot()'));
+assert(src.includes('appendVideoStateSnapshot();appendWramDeltaSnapshot();'));
+assert(src.includes('FORJA65_WRAM_DELTA_LIMIT'));
+assert(src.includes('wramDeltaPrevious=ram;'));
+console.log('Forja65 WRAM per-address generator regression PASS');

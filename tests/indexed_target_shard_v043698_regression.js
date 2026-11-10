@@ -1,0 +1,17 @@
+'use strict';
+const assert=require('assert');
+const {extractTargetHandlers}=require('../tools/indexed-target-shard.js');
+const fn=(name,pc)=>`void ${name}(CpuState& cpu, SnesRuntime& hw, std::uint32_t entryPc) {\n  switch(entryPc&0xFFFFFFu){\n    case 0x${pc}u: goto L_${pc};\n  }\nL_${pc}:\n  hw.traceInstruction(0x${pc}u,cpu,0xA9u);\n  return;\n}\n`;
+const a=fn('sub_B8A452_E0M0X0C0','B8A452');
+const b=fn('sub_B8A452_E0M0X0CQ','B8A452');
+const unrelated=fn('sub_B7C76D_E0M0X0CQ','B7C76D');
+const shard='#include "generated.hpp"\n'+unrelated+a+b;
+const out=extractTargetHandlers([shard],'B8A452');
+assert(out.includes('sub_B8A452_E0M0X0C0'));
+assert(out.includes('sub_B8A452_E0M0X0CQ'));
+assert(!out.includes('sub_B7C76D_'));
+assert.throws(()=>extractTargetHandlers([shard,shard],'B8A452'),/Duplicate target/);
+assert.throws(()=>extractTargetHandlers([shard],'B8A453'),/Target missing/);
+assert.throws(()=>extractTargetHandlers(['#include "generated.hpp"\n'+a.replace('goto L_B8A452','goto L_B8A454')],'B8A452'),/Malformed target handler/);
+assert.throws(()=>extractTargetHandlers(['// hidden\n'+shard],'B8A452'),/preamble/);
+console.log('INDEXED_TARGET_SHARD_V043698_PASS target_only=2 unrelated_filtered=1 rejects=4');

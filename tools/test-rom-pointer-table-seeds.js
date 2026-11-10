@@ -1,0 +1,12 @@
+'use strict';
+const assert=require('node:assert/strict'),{scan}=require('./rom-pointer-table-seeds');
+const b=Buffer.alloc(0x80000,0),set=(i,a)=>{b[i]=a&255;b[i+1]=(a>>>8)&255;b[i+2]=(a>>>16)&255;};
+[0x0da44b,0x0db5b7,0x0da44b,0x0da57b].forEach((a,n)=>set(9+n*3,a));
+set(42,0x0da71b);set(45,0x0da760);set(48,0x0da760);
+const r=scan(b,{start:0,end:100,bank:0xd});
+assert.equal(r.runs.length,2);assert.equal(r.runs[0].count,4);assert.equal(r.runs[1].count,3);
+assert.equal(r.entries.length,5);
+assert.deepEqual(r.entries.find(x=>x.address===0x0da44b).offsets,[9,15]);
+assert.throws(()=>scan(b,{start:0,end:0x80001,bank:0xd}));
+assert.throws(()=>scan(b,{start:0,end:90,bank:0x7e}));
+console.log('rom-pointer-table-seeds: PASS (aligned runs, deduplication, bounds)');

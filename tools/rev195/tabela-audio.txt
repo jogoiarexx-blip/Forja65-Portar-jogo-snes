@@ -1,0 +1,13 @@
+# Forja65 REV195 - ataques/inicio/amostras iguais vs Snes9x (1200 quadros); colunas: ROM | versao | inicio do som (port - ref) | correlacao dos ataques | amostras identicas
+| FFVIIPrelude | REV194 padrao | -359 ms | 0.514 | 0.0% |
+| FFVIIPrelude | REV195 padrao | -0 ms | 0.999 | 21.6% |
+| ItaloTest | REV194 padrao | -383 ms | 0.567 | 0.0% |
+| ItaloTest | REV195 padrao | -0 ms | 1.000 | 70.5% |
+| Twinkle | REV194 padrao | -255 ms | 0.418 | 0.0% |
+| Twinkle | REV195 padrao | +0 ms | 0.999 | 71.0% |
+| PitchMod | REV194 padrao | -272 ms | 0.880 | 0.0% |
+| PitchMod | REV195 padrao | +0 ms | 1.000 | 96.7% |
+| SpeechSynth | REV194 padrao | -284 ms | 0.434 | 0.4% |
+| SpeechSynth | REV195 padrao | +0 ms | 1.000 | 100.0% |
+| Axel-F | REV194 padrao | -337 ms | 0.317 | 0.0% |
+| Axel-F | REV195 padrao | -0 ms | 0.999 | 9.0% |

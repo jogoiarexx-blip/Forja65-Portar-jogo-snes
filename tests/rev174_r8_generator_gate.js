@@ -1,0 +1,11 @@
+'use strict';
+const assert=require('node:assert/strict');
+const F=require('../forja65-core.js');
+const rom=F.loadRom(F.makeSyntheticRom());
+const files=F.generateProject(rom,F.analyze(rom,96));
+const gate=files['tools/rev174_r8_cpu_aot_gate.py'];
+assert(gate && gate.includes('pcm_fingerprint') && gate.includes('saved_interpreter_instructions'));
+assert(gate.includes('framebuffer_hash') && gate.includes('wram_hash'));
+assert(gate.includes('min-saving') && gate.includes('rom_fallback_reads'));
+assert(files['tools/compare_spc_aot.py'],'must include PCM helper');
+console.log('REV174_R8_CPU_AOT_GENERATOR_GATE_PASS');

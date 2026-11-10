@@ -1,0 +1,1 @@
+PASS: reference training hook matches interpreter scheduler across four clock modes, dynamic IO/timer branches and SLEEP/STOP

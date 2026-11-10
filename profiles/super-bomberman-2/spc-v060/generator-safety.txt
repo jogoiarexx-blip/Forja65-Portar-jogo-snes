@@ -1,0 +1,1 @@
+PASS: fixture paths isolated; fixture evidence rejected; deterministic generation; production files unchanged; empty profile grants 32 IPL starts only

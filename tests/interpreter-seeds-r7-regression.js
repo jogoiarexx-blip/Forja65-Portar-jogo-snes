@@ -1,0 +1,30 @@
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
+const {parseReport,readRom,run}=require('../tools/interpreter-seeds-r7');
+const core=require('../forja65-core.js');
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'forja-r7-'));
+try{
+ const romFile=path.join(dir,'test.sfc'),data=Buffer.alloc(32768,0xea);
+ fs.writeFileSync(romFile,data);const rom=readRom(romFile),wrong='0'.repeat(16);
+ const header='FORJA65_CPU_INTERPRETER 1\nrom='+rom.hash+'\nblocks=12\ninstructions=200\n# entrada estado(E/M/X) origem execucoes\n';
+ const valid='008000 E1 from=008010 count=3\n008000 E1 from=008010 count=5\n018010 M0X1 from=008010 count=4\n';
+ let r=parseReport(header+valid,rom);assert.equal(r.report.selected_entries,2);
+ assert.equal(r.selected[0].count,8);assert.equal(core.parseRuntimeHints(r.hints).length,2);
+ assert.match(r.hints,/e=1 m=1 x=1 c=\?/);
+ assert.match(r.hints,/e=0 m=0 x=1 c=\?/);
+ assert.throws(()=>parseReport(header.replace(rom.hash,wrong)+valid,rom),/hash/);
+ assert.throws(()=>parseReport(header.replace('rom='+rom.hash+'\n','')+valid,rom),/audit/);
+ assert.throws(()=>parseReport(header.replace('rom='+rom.hash+'\n','')+valid,rom,{auditHash:wrong}),/mismatch/);
+ r=parseReport(header+'007000 M1X1 from=008010 count=8\n'+valid+'008001 M1X1 from=007000 count=6\n008002 M1X1 from=008010 count=0\nMALFORMED\n',rom);
+ assert.equal(r.report.rejected.length,4);assert.equal(r.report.selected_entries,2);
+ const audit=path.join(dir,'forja65-native-dependency-report.txt');
+ fs.writeFileSync(audit,'FORJA65_NATIVE_DEPENDENCY_AUDIT 1\nrom='+rom.hash+'\n');
+ const report=path.join(dir,'forja65-cpu-interpreter.txt'),out=path.join(dir,'hints.txt');
+ fs.writeFileSync(report,header.replace('rom='+rom.hash+'\n','')+valid);
+ run(['--rom',romFile,'--report',report,'--out',out,'--max','1']);
+ assert.equal(core.parseRuntimeHints(fs.readFileSync(out,'utf8')).length,1);
+ fs.writeFileSync(audit,'FORJA65_NATIVE_DEPENDENCY_AUDIT 1\nrom='+wrong+'\n');
+ assert.throws(()=>run(['--rom',romFile,'--report',report,'--out',out]),/mismatch/);
+ console.log('PASS: R7 seeds bound to ROM, deduplicated, state checked, legacy audit verified, corrupt input rejected');
+} finally {fs.rmSync(dir,{recursive:true,force:true});}

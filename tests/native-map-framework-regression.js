@@ -1,0 +1,30 @@
+'use strict';
+const assert=require('assert');
+const C=require('../forja65-core.js');
+const rom=C.loadRom(C.makeSyntheticRom(),'fixture.sfc'),a=C.analyze(rom,128);
+assert.equal(typeof C.buildNativeMap,'function','native migration API missing');
+const profile={schema:1,rom:C.romFingerprint(rom),symbols:{'008000':{name:'FixtureBoot',aliases:['Boot'],category:'MENU'}}};
+const events=[{seq:0,frame:0,routine:32768,pc:32769,kind:'write',space:'WRAM',address:16,value:0,source:'CPU'},
+ {seq:1,frame:0,routine:32768,pc:32777,kind:'write',space:'CGRAM',address:8482,value:31,source:'DMA'},
+ {seq:2,frame:0,routine:32768,pc:32777,kind:'read',space:'ROM',address:33024,value:7,source:'DMA'}];
+const csv=C.exportTrace(events,'csv',{rom:profile.rom});
+const trace=C.parseTrace(csv);
+assert.equal(trace.rom,profile.rom);assert.deepEqual(trace.events,events);
+const map=C.buildNativeMap(rom,a,trace,profile);
+assert.equal(map.routines[0].name,'FixtureBoot');assert.equal(map.routines[0].category,'MENU');
+assert.equal(map.routines[0].implementation,'TRANSLATED');
+assert.equal(map.routines[0].observed.writes.CGRAM[0],8482);
+assert.equal(map.routines[0].observed.reads.ROM[0],33024);
+assert.equal(map.metrics.cpuNativeScore,null,'unmeasured native coverage must not be invented');
+assert.equal(map.metrics.romRuntimeReads,1);assert.equal(map.metrics.hostReplacementEvents,0);
+assert.throws(()=>C.buildNativeMap(rom,a,{...trace,rom:'bad'},profile),/fingerprint|ROM/i);
+assert.throws(()=>C.buildNativeMap(rom,a,trace,{...profile,rom:'bad'}),/fingerprint|ROM/i);
+assert.throws(()=>C.normalizeProfile({...profile,symbols:{oops:{name:'bad'}}},profile.rom),/address/i);
+assert.equal(C.parseTrace(C.exportTrace(events,'json',{rom:profile.rom})).events.length,3);
+assert.ok(C.exportTrace(events,'txt',{rom:profile.rom}).includes('CGRAM'));
+const files=C.generateProject(rom,a,{profile,trace});
+for(const f of ['analysis/native-map.json','analysis/native-map.md','profiles/game_config.json','src/forja_trace.hpp','src/forja_ir.hpp','src/native_hooks.cpp','RUN-FORJA-TRACE.cmd'])assert.ok(files[f],f);
+const compat=JSON.parse(files['reports/compatibility-report.json']);
+assert.equal(compat.systems.cpu,'TRANSLATED');assert.equal(compat.systems.ppu,'EMULATED');
+assert.equal(compat.nativeScore,null);
+console.log('native-map-framework-regression: OK');

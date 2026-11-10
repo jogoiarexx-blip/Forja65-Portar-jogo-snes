@@ -1,0 +1,43 @@
+{
+  "schema": "forja65.observed-static-coverage.v1",
+  "observations": 6,
+  "unique_states": 4,
+  "covered_states": 0,
+  "missing": [
+    {
+      "pc": "EC224C",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC2270",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC2270",
+      "e": 0,
+      "m": 1,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    },
+    {
+      "pc": "EC227C",
+      "e": 0,
+      "m": 0,
+      "x": 0,
+      "reason": "missing PC/state or incomplete carry coverage"
+    }
+  ],
+  "scope": "Static dispatch coverage only; not a runtime, whole-game or equivalence certificate.",
+  "rom": {
+    "sha256": "f9dac709b2c2859f828103a0dd980716817e2bde3b9d7e2fdea36e9bb9bed7f2",
+    "fnv1a64": "0219ea8f95a4f0ed"
+  },
+  "log_sha256": "04a17cf26c3d7c979ea85716c0de38265065506f60f4be557c492846aedcd9b2",
+  "dispatch_sha256": "31692cbf31281700dd98db53c426216fb3444d9e2754a7819d1a124a90765f25"
+}

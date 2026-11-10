@@ -1,0 +1,14 @@
+Forja65 REV138 - scripts usados para levar o Super Mario World do power-on ao Donut Plains 1 NO PROPRIO PORT.
+(Linux/macOS: os savestates do modo de controle sao processos pausados via fork. Caminhos padrao apontam
+para /home/claude/...; ajuste FORJA65_PORT_GAME, FORJA65_PORT_ASSETS e FORJA65_OUT.)
+
+  portnav.py   Rec: cliente do modo de controle que grava as entradas (pkl {ev,end})
+  nav.py       navegacao no mapa: nav.py entrada.pkl saida.pkl w60 U w120 B lvl shot:nome
+  level2.py    Go-Explore de fase, retomavel (saida.arch). Progresso = X + 10000 por sala nova
+               (ponteiro $65-$67). PROG_Y=1 soma subida; BOSS=0x29 da bonus por empurrar o Iggy/Larry.
+               Ex.: PROG_Y=1 BOSS=0x29 python3 level2.py c1_start.pkl - c1q 30000
+  tomap.py     termina a fase e espera o mapa;  mktrace.py  pkl -> trace FORJA65_INPUT_REPLAY
+  archpeek.py  imagens das melhores celulas de uma busca;  bosspeek.py / trydoor.py  diagnostico
+  geref.py, joinref.py, pipeline.sh, refpeek.py  busca no Snes9x (refemu) e juncao com a rota do port
+Observacao: rotas gravadas com a fronteira padrao do modo de controle ficam 1 quadro deslocadas em relacao
+a FORJA65_CONTROL_AT=vblank (ver REV138-RELATORIO-TECNICO.md, secao 4).

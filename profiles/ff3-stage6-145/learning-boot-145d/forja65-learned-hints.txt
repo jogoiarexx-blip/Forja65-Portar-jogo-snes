@@ -1,0 +1,6 @@
+# Forja65 bootr145d: sementes aprendidas com o interpretador (rom=0219ea8f95a4f0ed)
+rom=0219ea8f95a4f0ed target=c06554 from=c052a9 kind=FLOW e=0 m=1 x=0 c=?
+rom=0219ea8f95a4f0ed target=c069c0 from=c069b3 kind=FLOW e=0 m=1 x=0 c=?
+rom=0219ea8f95a4f0ed target=c06cf4 from=c069b3 kind=FLOW e=0 m=1 x=0 c=?
+rom=0219ea8f95a4f0ed target=cc0095 from=cc018b kind=FLOW e=0 m=1 x=0 c=?
+rom=0219ea8f95a4f0ed target=cc009b from=cc0322 kind=FLOW e=0 m=1 x=0 c=?

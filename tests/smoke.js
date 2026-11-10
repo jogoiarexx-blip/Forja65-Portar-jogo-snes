@@ -1,0 +1,13 @@
+const C=require('../forja65-core.js');
+const rom=C.loadRom(C.makeSyntheticRom(),'synthetic.sfc');
+const a=C.analyze(rom,128);
+if(rom.header.mapping!=='LoROM') throw new Error('mapper');
+if(a.resetPc!==0x8000) throw new Error('reset');
+if(a.decoded<5) throw new Error('decode');
+if(a.instructions[0].mnemonic!=='SEI') throw new Error('first opcode');
+if(!a.instructions.some(x=>x.opcode===0x9C && x.mnemonic==='STZ' && x.status==='native')) throw new Error('stz 9c');
+const p=C.generateProject(rom,a);
+if(!Object.keys(p).some(k=>/^src\/generated_\d+\.cpp$/.test(k))||!p['src/dispatch.cpp']||!p['analysis.json']) throw new Error('project files');
+const z=C.buildZip(p);
+if(z.length<500) throw new Error('zip');
+console.log('PASS', {mapping:a.mapping,reset:a.resetPc,decoded:a.decoded,native:a.native,partial:a.partial,unsupported:a.unsupported,zip:z.length});

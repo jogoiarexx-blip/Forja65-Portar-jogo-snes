@@ -1,0 +1,18 @@
+'use strict';
+const assert=require('node:assert/strict');
+const C=require('../forja65-core');
+const {verifyObservedStackReturns}=require('../tools/observed-stack-return');
+const data=C.makeSyntheticRom(),rom=C.loadRom(data,'stack-test.sfc');
+const base=C.resetAddress(rom),from=base,target=base+5;
+const src=C.snesToRom(rom,from),dst=C.snesToRom(rom,target);
+assert.ok(src!==null&&dst!==null);
+rom.data[src]=0x6B;rom.data[dst]=0xEA;
+const hint={rom:C.romFingerprint(rom),from,target,kind:'STACK-RTL',state:{emulation:false,m8:false,x8:false,carry:false}};
+const evidence=from.toString(16)+' -> '+target.toString(16)+' kind=STACK-RTL s=1f9 depth=2 expected=bad long=1\n';
+assert.equal(verifyObservedStackReturns(rom,[hint],evidence),1);
+assert.throws(()=>verifyObservedStackReturns(rom,[hint],''),/exact runtime return evidence/);
+assert.throws(()=>verifyObservedStackReturns(rom,[{...hint,target:target+1}],evidence),/exact runtime return evidence/);
+rom.data[src]=0x60;
+assert.throws(()=>verifyObservedStackReturns(rom,[hint],evidence),/is not RTL/);
+assert.equal(verifyObservedStackReturns(rom,[{...hint,kind:'FLOW'}],''),0);
+console.log('OBSERVED_STACK_RETURN_V0367=PASS');

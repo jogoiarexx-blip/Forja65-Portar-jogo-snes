@@ -1,0 +1,9 @@
+{
+  "core": "Forja65 REV143 preserved generator; target checkpoint ABI kept",
+  "core_sha256": "1fee5b5629f775d66be4aa1a5590610358fc236d9983be5a12aa848bd36f9920",
+  "learning_tool_sha256": "0db71019d946fcf688eeefe6c1062b54460ba1d26307224a1996f34fee10d892",
+  "runtime_sha256": "422e3c63055a5e8ca55a2b88187f0670b308fab29b62582664c9c401dc295cc4",
+  "checkpoint_sha256": "8c84b3e6d83a54d996032a0bbd1807a52775e0276fd809fee3594bf7ed5312d8",
+  "baseline_binary_sha256": "43b0f00bb44a3ceab4662d219db4641dc3d1a33a3dbab96e6b9bdc2197382594",
+  "note": "Modern emitter compilation failed on missing legacyInterruptTiming API; discarded and regenerated with matching preserved emitter."
+}

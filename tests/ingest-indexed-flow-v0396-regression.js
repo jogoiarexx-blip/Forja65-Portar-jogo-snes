@@ -1,0 +1,35 @@
+'use strict';
+const assert=require('assert');
+const C=require('../forja65-core.js');
+const {verify}=require('../tools/ingest-indexed-flow.js');
+const rom=C.makeSyntheticRom(),r=C.loadRom(rom),pc=0x808050,base=0x8070,x=2,target=0x808090;
+const off=C.snesToRom(r,pc),ptr=C.snesToRom(r,base+x);
+r.data[off]=0x7C;r.data[off+1]=base&255;r.data[off+2]=base>>8;
+r.data[ptr]=target&255;r.data[ptr+1]=(target>>8)&255;
+const f=C.romFingerprint(r);
+const trace='808050 A=0 X=2 Y=0 S=1ff D=0 DB=80 PB=80 P=5 E=0 M=0 X8=0 C=1\n';
+const err=`fluxo CFG nao resolvido em pc=${pc} target=${target}`;
+const h=`rom=${f} target=808060 from=808000 kind=FLOW e=0 m=0 x=0 c=0 observed=1\n`;
+const output=verify(r.data,trace,err,h);
+assert.strictEqual(output.report.target,'808090');assert.strictEqual(output.report.pointer_address,'808072');
+assert(!output.report.semantic_equivalence_proven);
+assert.strictEqual(C.parseRuntimeHints(output.hints).length,2);
+assert(verify(r.data,trace,err,output.hints).report.already_present);
+assert.throws(()=>verify(r.data,trace.replace('X=2','X=4'),err,h),/target mismatch/);
+assert.throws(()=>verify(r.data,trace,err.replace(String(target),String(target+1)),h),/target mismatch/);
+assert.throws(()=>verify(r.data,trace.replace('PB=80','PB=81'),err,h),/bank\/flags mismatch/);
+const invalid=r.data.slice();invalid[off]=0xEA;
+assert.throws(()=>verify(invalid,trace,err),/opcode 7C or FC/);
+// FC is indexed JSR; the same pointer calculation must be checked,
+// but the observation needs to retain call rather than jump semantics.
+const jsrData=r.data.slice();jsrData[off]=0xFC;
+const callFingerprint=C.romFingerprint(C.loadRom(jsrData));
+const jsr=verify(jsrData,trace,err,`rom=${callFingerprint} target=808060 from=808000 kind=FLOW e=0 m=0 x=0 c=0 observed=1\n`);
+assert.strictEqual(jsr.report.opcode,'FC');assert.strictEqual(jsr.report.mnemonic,'JSR');
+assert.strictEqual(jsr.report.kind,'CALL');
+const jsrHints=C.parseRuntimeHints(jsr.hints);
+assert(jsrHints.some(x=>x.target===target&&x.kind==='CALL'));
+assert.throws(()=>verify(jsrData,trace,err.replace(String(target),String(target+2))),/target mismatch/);
+const tamperedHint=h.replace(f,'0000000000000000');
+assert.throws(()=>verify(r.data,trace,err,tamperedHint),/different ROM/);
+console.log('ingest-indexed-flow-v0396-regression: OK');

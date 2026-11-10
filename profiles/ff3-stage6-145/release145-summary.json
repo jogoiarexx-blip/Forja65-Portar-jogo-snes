@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "scope": "Two Linux CPU routes only; SPC reference; no additional stage clear or Windows validation",
+  "results": [
+    {
+      "status": "PASS",
+      "case": "boot",
+      "binary_sha256": "4c3ce5a45ee55113ae242182b838674d9c03dcb4650a04af28b8a9011a3d2e6c",
+      "cpu_interpreted_before": 5662928,
+      "cpu_interpreted_after": 0,
+      "inherited_interpreter_counter": 0,
+      "frame_hashes_sha256": "e0d513db2a701934790bf375f8d8484a47bf06b4fbe004429cb13db27a5bac7d",
+      "wav_sha256": "945041a679b8d61386495acacaa338884b2f18f9bc8c4f0108bcad2e0836fac1",
+      "spc": "reference",
+      "output": "boot-release145"
+    },
+    {
+      "status": "PASS",
+      "case": "stage6",
+      "binary_sha256": "4c3ce5a45ee55113ae242182b838674d9c03dcb4650a04af28b8a9011a3d2e6c",
+      "cpu_interpreted_before": 6349063,
+      "cpu_interpreted_after": 0,
+      "inherited_interpreter_counter": 736731690,
+      "frame_hashes_sha256": "d655d9843575e4faaa7f5bb26045b1f9b593bcc6452ede47c7dab18b7ad10cad",
+      "wav_sha256": "3afc165c214908ec320826fe1fef502f9ae34ad909b0975e3ee7fc54d69867a0",
+      "spc": "reference",
+      "output": "stage6-release145"
+    }
+  ]
+}

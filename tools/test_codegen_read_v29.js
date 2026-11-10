@@ -1,0 +1,16 @@
+'use strict';
+const assert=require('node:assert/strict');
+const path=require('node:path');
+const forge=require(path.join(__dirname,'..','forja65-core.js'));
+const rom=forge.loadRom(forge.makeSyntheticRom());
+const model=forge.analyze(rom,120);
+assert(model.functions.length>0,'synthetic test must contain translated routines');
+const files=forge.generateProject(rom,model,{romInventory:false});
+const rt=files['src/runtime.hpp'];
+assert(rt&&rt.includes('void traceWramRead('),'missing consumer read observer');
+assert(rt.includes('traceWramRead(wo,v,"bus")'),'missing direct/aliased WRAM consumer path');
+assert(rt.includes('traceWramRead(io.wramPortAddr&0x1FFFFu,v,"2180")'),'missing $2180 port path');
+assert(rt.includes('FORJA65_WRAM_READ_MAX'),'missing bounded log cap');
+assert(rt.includes('wramReadTraceMask'),'missing mandatory address filter');
+assert(rt.includes('frame,address,value,reader_pc,via,joy1,nmi\\n'),'missing escaped newline in header');
+console.log('REV174_WRAM_READ_CODEGEN_V29_PASS generated_runtime_bytes='+rt.length);

@@ -1,0 +1,15 @@
+'use strict';
+const assert=require('node:assert/strict');const {parseTrace,analyze}=require('../tools/dialogue-input-audit.js');
+const rows=(a,b)=>Array.from({length:12},(_,frame)=>({frame,framebuffer:frame>=a&&frame<b?'v':'same',wram:frame===4?'w':'same'}));
+const trace=parseTrace('# ROM-bound\nframe=3 joy1=0080 joy2=0000\nframe=5 joy1=0000 joy2=0000\n');
+assert.equal(trace.length,2);
+const base=rows(100,100),variant=rows(4,9),r=analyze(base,variant,trace,3);
+assert.equal(r.status,'VISUAL_DIFFERENCE_DURING_DIALOGUE');assert.equal(r.first_visual_divergence,4);
+assert.equal(r.differing_visual_frames,5);assert.equal(r.longest_visual_difference_run,5);assert.equal(r.gameplay_validated,false);
+let t=rows(100,100);t[5]={...t[5],wram:'changed'};
+assert.equal(analyze(base,t,trace,3).status,'WRAM_ONLY');
+t=rows(1,3);assert.equal(analyze(base,t,trace,3).status,'INVALID_PREFIX');
+assert.throws(()=>parseTrace('frame=2 joy1=0080 joy2=0000\nframe=1 joy1=0000 joy2=0000\n'));
+assert.throws(()=>analyze(base.slice(1),variant,trace,3));
+assert.throws(()=>analyze(base,variant,trace,11));
+console.log('PASS dialogue-input-audit-v09-regression');

@@ -1,0 +1,15 @@
+'use strict';
+const assert=require('node:assert/strict');
+const {merge}=require('../analysis/cfg-coverage');
+const i=(raw,size)=>({pc:0x808000,stateKey:'808000:E1:M1:X1:C0',raw,size,status:'native'});
+const fn=(instructions)=>({functionKey:'fn0',start:0x808000,entryState:{e:1},instructions,calls:[],edges:[],blocks:[],blockCount:0});
+const analysis=(instructions)=>({functions:[fn(instructions)],instructions:[],staticReturnTargets:[],syntheticReturnTargets:[]});
+const previous={rom:'same-rom',functions:[fn([i('A9 01',2),i('A9 02',2)])]};
+const current=analysis([i('A9 01',2)]);
+const {a}=merge(current,previous,'same-rom');
+assert.equal(a.functions[0].instructions.length,2,'distinct decodes with equal stateKey must survive');
+assert.equal(a.cfgCacheUniqueInstructionVariants,2);
+assert.equal(a.instructionVariants,2);
+assert.equal(merge(analysis([i('A9 01',2)]),{rom:'same-rom',functions:[fn([i('A9 01',2)])]},'same-rom').a.functions[0].instructions.length,1,'identical records must not duplicate');
+assert.throws(()=>merge(analysis([i('A9 01',2)]),previous,'different-rom'),/ROM mismatch/);
+console.log('REV208 CFG variant preservation: PASS');

@@ -1,0 +1,1 @@
+PASS: 256 opcode forms / 288 PC/opcode sites / 32800 differential states, 20000 scheduler/DSP/non-silent PCM slices across four clock modes, fail-closed guards

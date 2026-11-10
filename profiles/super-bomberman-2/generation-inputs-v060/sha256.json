@@ -1,0 +1,16 @@
+{
+  "tools/compile-legacy-observed-aot.py": "ad899d3d36f7802708042a06bbecbacb419294af7fa63e3ac0da19a7feccd455",
+  "tools/export-legacy-observed-analysis.js": "bb13805d7f3fa1cc7c3e51ffe0d3d7b225594f8c1fc4eb734493999df3ca70b2",
+  "tools/forja65-core.js": "1da2d934726aee51a2c81f946b1d6ef25f7c09b5b5bcb08f2cf4f497663b0191",
+  "src/forja_cpu_interpreter.cpp": "9d6a696fac1d811e11da8ee8250ff9666de92caf5d897013c480de0f2e4caf7a",
+  "reports/v0.60/generation-inputs/legacy-observed-base-analysis.json": "ae787dcc239ed81aa3dc93558e472134a232f21e0c1ecfd8649234ec74826adc",
+  "reports/v0.60/generation-inputs/dispatch.cpp": "f98dfd9e9010ee69d7836f98b950db3e5026a2f1c2ed0366ce096c4848832af5",
+  "tools/regenerate-cpu-v060.py": "6fa9d8d848f599d9a9e2c581a12f773303148ef29a2cb3aad40f2db9068268a7",
+  "analysis/cpu-executed-profiles/original-24000.json": "5a9c06cf35020439633941b43b4c3564337b46889308a711d0f597137e7fd1f9",
+  "analysis/legacy-observed-aot.json": "bc72aca2984f88c0ccac9e3475a86def91b029497704668fa74c7be65af35af7",
+  "analysis/legacy-observed-aot-manifest.json": "a2ef7dd1d24bba8e31860bf8ae4550f2114f68ca71a167a454a028837523c151",
+  "src/forja_cpu_profile_reference_v060.cpp": "e062de4b5a2a0af1b4726bf6da7f7df73370520a82b71581a3cbe665cbdb3258",
+  "tests/test_cpu_generation_v060.py": "7ad636a9d78397231afca8dd2aaa949c25abef272b1062f0118125867b040579",
+  "tests/cpu_observed_resolver_v059.cpp": "9f7cb80a7673a1e746509ddc316543125ecdb921408e1472bb640233fba37280",
+  "tests/cpu_observed_differential_v059.cpp": "29d2640dc07b4e9b26fdc2f8ab05120e22e86ca950d4ce55dd639134e29075b2"
+}

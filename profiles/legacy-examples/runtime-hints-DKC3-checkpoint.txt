@@ -1,0 +1,4 @@
+# Hints observados durante diagnostico do DKC3. Linhas iniciadas por # sao apenas comentario para humanos.
+target=B28FD0 from=BBB8EB kind=STACK-RTL e=0 m=0 x=0 c=0
+target=B290F8 from=BBB8EB kind=STACK-RTL e=0 m=0 x=0 c=0
+target=00825E from=008257 kind=STACK-RTS e=0 m=0 x=0 c=1

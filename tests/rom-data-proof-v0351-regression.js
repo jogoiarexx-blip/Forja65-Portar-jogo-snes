@@ -1,0 +1,23 @@
+'use strict';
+const assert=require('assert'),C=require('../forja65-core.js');
+const d=C.makeSyntheticRom();d.fill(0xEA,0,0x200);d.set([0xC2,0x30,0x29,0x7F,0,0x0A,0xAA,0x7C,0x0A,0x80],0);d.set([0x10,0x80,0x20,0x80,0x30,0x80],10);d[16]=0x60;d[32]=0x60;d[48]=0x60;d.set([3,0x34,0x12,0xFF,0x78,0x56],0x40);
+const rom=C.loadRom(d,'data-proof.sfc'),fp=(a,b)=>C.fnv1a64Bytes(d.slice(a-0x8000,b-0x8000));
+const pack={schema:'forja65.knowledge.v1',rom:{fnv1a64:C.romFingerprint(rom)},entries:[],dataRegions:[{start:0x800A,end:0x8010}],dispatch:[{site:0x8007,targets:[0x8010,0x8020,0x8030],resolution:{kind:'inline-structural-table',entries:3,script_domain:{complete:true,index_bounds_proven:true,observed_ids_in_closed_entries:[0],table_entries:3}}}],limits:[]};
+const data=[{start:0x8040,end:0x8046,fingerprint:fp(0x8040,0x8046)}];
+const proofs={schema:'forja65.handler-equivalence.v1',rom:C.romFingerprint(rom),dispatcher_site:0x8007,proofs:[{target:0x8010,status:'equivalent',scope:'handler-abi',span:{start:0x8010,end:0x8011},span_fingerprint:fp(0x8010,0x8011),contract:{read_only_data:data},verification:{result:'PASS',cases:4,read_only_data:data},dependencies:[]}]};
+const plan=q=>C.nativeDispatchPlan(rom,0x8007,pack,{handlerProofs:q,handlerMax:32});
+assert(plan(proofs).handlers[0].equivalence_proven);
+const mutate=fn=>{const q=JSON.parse(JSON.stringify(proofs));fn(q.proofs[0]);return q;};
+assert.throws(()=>plan(mutate(p=>p.contract.read_only_data[0].fingerprint='deadbeefdeadbeef')),/read-only data.*mismatch/i);
+assert.throws(()=>plan(mutate(p=>delete p.verification.read_only_data)),/read-only data.*mismatch/i);
+assert.throws(()=>plan(mutate(p=>{delete p.contract.read_only_data[0].fingerprint;delete p.verification.read_only_data[0].fingerprint;})),/read-only data.*fingerprint/i);
+assert.throws(()=>plan(mutate(p=>{p.contract.read_only_data[0].end=0x1800046;p.verification.read_only_data[0].end=0x1800046;})),/read-only data.*span/i);
+// The exclusive 24-bit end must not wrap to zero and verify an empty array.
+assert.throws(()=>plan(mutate(p=>{const spans=[{start:0xFFFFFF,end:0x1000000,fingerprint:C.fnv1a64Bytes([])}];p.contract.read_only_data=spans;p.verification.read_only_data=spans;})),/read-only data.*mismatch/i);
+const expanded=new Uint8Array(0x400000);expanded.fill(0xEA);expanded.set(d);expanded[0x3FFFFF]=0x5A;
+const largeRom=C.loadRom(expanded,'last-byte.sfc'),largePack=JSON.parse(JSON.stringify(pack));largePack.rom.fnv1a64=C.romFingerprint(largeRom);
+const lastProofs=mutate(p=>{const spans=[{start:0xFFFFFF,end:0x1000000,fingerprint:C.fnv1a64Bytes([0x5A])}];p.contract.read_only_data=spans;p.verification.read_only_data=spans;});lastProofs.rom=C.romFingerprint(largeRom);
+assert(C.nativeDispatchPlan(largeRom,0x8007,largePack,{handlerProofs:lastProofs,handlerMax:32}).handlers[0].equivalence_proven);
+lastProofs.proofs[0].contract.read_only_data[0].fingerprint=C.fnv1a64Bytes([]);lastProofs.proofs[0].verification.read_only_data[0].fingerprint=C.fnv1a64Bytes([]);
+assert.throws(()=>C.nativeDispatchPlan(largeRom,0x8007,largePack,{handlerProofs:lastProofs,handlerMax:32}),/read-only data.*mismatch/i);
+console.log('rom-data-proof-v0351-regression: OK');

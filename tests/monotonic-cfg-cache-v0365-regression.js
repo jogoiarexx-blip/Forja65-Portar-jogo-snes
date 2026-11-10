@@ -1,0 +1,17 @@
+'use strict';
+const assert=require('node:assert/strict');
+const C=require('../forja65-core.js');
+const {makeCfgCache,mergeCfgCoverage}=require('../tools/project-io.js');
+const rom=C.loadRom(C.makeSyntheticRom(),'fixture.sfc');
+const hash=C.romFingerprint(rom),all=C.analyze(rom,400),partial=C.analyze(rom,400);
+assert.ok(all.functions.length>0);
+const cache=makeCfgCache(all,hash);
+partial.functions=[];
+const result=mergeCfgCoverage(partial,cache,hash);
+assert.equal(result.a.cfgFunctionVariants,all.functions.length);
+assert.equal(result.a.decoded,all.decoded);
+assert.equal(result.a.functions[0].functionKey,all.functions[0].functionKey);
+assert.throws(()=>mergeCfgCoverage(C.analyze(rom,100),cache,'0000000000000000'),/incompatible/);
+assert.throws(()=>mergeCfgCoverage(C.analyze(rom,100),{...cache,version:'unknown'},hash),/incompatible/);
+assert.throws(()=>mergeCfgCoverage(C.analyze(rom,100),cache,hash,1),/ceiling/);
+console.log('MONOTONIC_CFG_CACHE_V0365_PASS preserved='+all.decoded+' ROM='+hash);

@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+'use strict';
+const assert=require('node:assert/strict');
+const A=require('../tools/dispatch-frontier-audit.js');
+const rom='1234567890abcdef';
+const hint=(target,from='81812c',r=rom)=>`rom=${r} target=${target} from=${from} kind=FLOW e=0 m=0 x=0 c=1`;
+const learned=hint('81c005');
+const runtime=[learned,hint('81c29d'),hint('81c29d'),hint('81c2a0'),hint('808000','818151','aaaaaaaaaaaaaaaa'),'rom='+rom+' target=3e from=82fa6a kind=FLOW e=0 m=0 x=0 c=1','malformed'].join('\n');
+const d=A.parseDispatch('{0x81C005u,false,false,false,true,true,&sub,0x81C005u},\n{0x81C29Du,false,false,false,true,true,&sub,0x81C29Du},');
+const r=A.auditRuntimeEvidence(runtime,learned,d,rom);
+assert.equal(r.unique_observed,3);
+assert.equal(r.unlearned,2);
+assert.equal(r.uncompiled,1);
+assert.equal(r.stale_rom_hints,1);
+assert.deepEqual(r.malformed_lines,[7]);
+assert.deepEqual(r.excluded_non_rom,[{line:6,target:'$00003E'}]);
+assert.equal(r.pending[0].target,'$81C29D');
+assert.equal(r.missing_compiled_variants[0].target,'$81C2A0');
+const clean=A.auditRuntimeEvidence(learned,learned,d,rom);
+assert.equal(clean.unlearned,0);assert.equal(clean.uncompiled,0);
+const badVariant=A.parseDispatch('{0x81C005u,false,true,false,true,true,&sub,0x81C005u},');
+assert.equal(A.auditRuntimeEvidence(learned,learned,badVariant,rom).uncompiled,1);
+console.log('dispatch-runtime-evidence-v07-regression: PASS');

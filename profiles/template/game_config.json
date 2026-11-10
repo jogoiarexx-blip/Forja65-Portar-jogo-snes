@@ -1,0 +1,6 @@
+{
+  "schema": 1,
+  "rom": "SET_TO_ROM_FINGERPRINT_FROM_NATIVE_MAP",
+  "symbols": {},
+  "heuristics": {"render": true, "audio": true, "save": true}
+}

@@ -1,0 +1,4 @@
+'use strict';
+const C=require('../forja65-core'),fs=require('node:fs'),os=require('node:os'),path=require('node:path'),cp=require('node:child_process');
+const r=C.loadRom(C.makeSyntheticRom());r.data[0]=0xdb;const p=C.generateProject(r,C.analyze(r,128)),dir=fs.mkdtempSync(path.join(os.tmpdir(),'forja-dp-wrap-'));
+try{for(const name of ['runtime.hpp','pcm_audio_output.hpp'])fs.writeFileSync(path.join(dir,name),p['src/'+name]);fs.copyFileSync(path.join(__dirname,'fixtures/cpu_dp_wrap_v043616.cpp'),path.join(dir,'test.cpp'));const bin=path.join(dir,process.platform==='win32'?'test.exe':'test');cp.execFileSync(process.env.CXX||'g++',['-std=c++20','-O0','test.cpp','-o',bin],{cwd:dir,stdio:'inherit'});cp.execFileSync(bin,[],{cwd:dir,stdio:'inherit'});}finally{fs.rmSync(dir,{recursive:true,force:true});}

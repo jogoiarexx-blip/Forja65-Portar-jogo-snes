@@ -1,0 +1,38 @@
+'use strict';
+const assert=require('assert/strict'), fs=require('fs'),crypto=require('crypto'),Core=require('../forja65-core');
+const {audit}=require('../tools/audit-rtl-indexed-chain');
+// Tiny artificial HiROM; this test can run without any copyrighted game ROM.
+const raw=Buffer.alloc(0x10000,0xff);
+raw[0xFFD5]=0x31;raw[0xFFD6]=0;raw[0xFFD7]=0x0C;
+raw[0xFFFC]=0;raw[0xFFFD]=0x80;raw[0xFFDC]=0;raw[0xFFDD]=0;raw[0xFFDE]=0xff;raw[0xFFDF]=0xff;
+raw[0xB8EB]=0x6B;
+raw[0xE64F]=0x7C;raw[0xE650]=0x52;raw[0xE651]=0xE6;
+raw[0xE652]=0x56;raw[0xE653]=0xE6;raw[0xE656]=0xA9;
+const f=Core.romFingerprint(Core.loadRom(new Uint8Array(raw)));
+const hint=`rom=${f} target=bee64f from=bbb8eb kind=FLOW e=0 m=0 x=0 c=0`;
+const trace='FORJA65 TRACE\nbbb8eb A=0 X=0 Y=b7a S=1f9 D=0 DB=be PB=bb P=6 E=0 M=0 X8=0 C=0\n';
+const error='fluxo CFG nao resolvido em pc=12302571 target=12510799';
+const tested=audit(raw,trace,hint,error,0xbbb8eb,0xbee64f);
+assert.equal(tested.indexed.candidate,'BEE656');assert.equal(tested.indexed.status,'STATIC_CANDIDATE_NOT_RUNTIME_OBSERVED');
+assert.equal(tested.indexed.pointer_at,'BEE652');assert.equal(tested.indexed.bytes,'56 E6');
+assert.equal(tested.observed.stack,'01F9');
+assert.equal(tested.indexed_generator_proof.schema,'forja65.rom-indexed-jmp-audit.v1');
+assert.equal(tested.indexed_generator_proof.routes[0].target,'BEE656');
+assert.equal(tested.indexed_generator_proof.routes[0].target_first_opcode,'A9');
+const rejects=(fn)=>assert.throws(fn);
+rejects(()=>audit(raw,trace,hint.replace('rom='+f,'rom=0000000000000000'),error,0xbbb8eb,0xbee64f));
+rejects(()=>audit(raw,trace,hint,error.replace('12302571','12302570'),0xbbb8eb,0xbee64f));
+rejects(()=>audit(raw,trace.replace('X=0 ','X=some '),hint,error,0xbbb8eb,0xbee64f));
+rejects(()=>audit(raw,trace.replace('C=0','C=1'),hint,error,0xbbb8eb,0xbee64f));
+const mut=Buffer.from(raw);mut[Core.snesToRom(Core.loadRom(raw),0xbee64f)]=0x60;
+rejects(()=>audit(mut,trace,hint,error,0xbbb8eb,0xbee64f));
+const mut2=Buffer.from(raw);mut2[Core.snesToRom(Core.loadRom(raw),0xbee653)]=0xEA;
+rejects(()=>audit(mut2,trace,hint,error,0xbbb8eb,0xbee64f));
+
+rejects(()=>audit(raw,trace+'bee64f A=0 X=0 S=1fc PB=be E=0 M=0 X8=0 C=0\n',hint,error,0xbbb8eb,0xbee64f));
+rejects(()=>audit(raw,trace,hint,error+'\nfluxo CFG nao resolvido em pc=1 target=2',0xbbb8eb,0xbee64f));
+rejects(()=>audit(raw,trace.replace('E=0','E=1'),hint.replace('e=0','e=1'),error,0xbbb8eb,0xbee64f));
+rejects(()=>audit(raw,trace.replace('PB=bb','PB=be'),hint,error,0xbbb8eb,0xbee64f));
+rejects(()=>audit(raw,trace.replace('X=0 ','X=100 ').replace('X8=0','X8=1'),hint.replace('x=0','x=1'),error,0xbbb8eb,0xbee64f));
+rejects(()=>audit(raw,trace,hint+'\n'+hint.replace('c=0','c=1'),error,0xbbb8eb,0xbee64f));
+console.log('RTL_INDEXED_CHAIN_STRICT_PASS 12_rejections terminal_trace_error_cpu_consistency');

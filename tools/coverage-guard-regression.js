@@ -1,0 +1,12 @@
+'use strict';
+const assert=require('assert');const {dispatchEntryCount,assertNonDestructive}=require('./coverage-guard');
+const good='{0x001234u,false,false,false,false,false,&f,0x001234u},\n';
+const bad='{0x009999u,false,false,false,true,false,&g,0x009999u},\n';
+assert.equal(dispatchEntryCount(good),1);
+assert.throws(()=>assertNonDestructive({dispatch:good+bad,runtime:Buffer.from('new PPU')},{dispatch:good,runtime:Buffer.from('new PPU')}),/shrink from 2 to 1/);
+assert.throws(()=>assertNonDestructive({dispatch:good,runtime:Buffer.from('new PPU')},{dispatch:good+bad,runtime:Buffer.from('old PPU')}),/runtime.hpp differs/);
+assert.deepEqual(assertNonDestructive({dispatch:good,runtime:Buffer.from('new PPU')},{dispatch:good+bad,runtime:Buffer.from('new PPU')}),{oldCount:1,newCount:2});
+assert.throws(()=>assertNonDestructive({dispatch:good,runtime:Buffer.from('new PPU')},{dispatch:bad,runtime:Buffer.from('new PPU')}),/removed or replaced/);
+assert.deepEqual(assertNonDestructive({dispatch:good+good,runtime:Buffer.from('new PPU')},{dispatch:good+good+bad,runtime:Buffer.from('new PPU')}),{oldCount:2,newCount:3});
+assert.throws(()=>assertNonDestructive({dispatch:good+good,runtime:Buffer.from('new PPU')},{dispatch:good+bad,runtime:Buffer.from('new PPU')}),/removed or replaced/);
+console.log('AOT COVERAGE GUARD PASS 6 scenarios');

@@ -1,0 +1,23 @@
+FORJA65_BOOT_PROBE 1
+last_cpu_pc=0xec0241
+spc_pc=0x12af
+spc_sp=0x3b
+spc_psw=0xc8
+spc_control=0x03
+cpu_to_spc_0=0xf2
+spc_to_cpu_0=0xf2
+cpu_to_spc_1=0xff
+spc_to_cpu_1=0x55
+cpu_to_spc_2=0x3c
+spc_to_cpu_2=0x00
+cpu_to_spc_3=0x00
+spc_to_cpu_3=0x00
+frames=221998
+apu_reads=17581927
+apu_writes=3352500
+spc_upload_writes=1662094
+nmi_enabled=1
+nmi_services=217837
+forced_blank=0
+apu_handshake_stall_suspected=NO
+classification=DIAGNOSTIC_HEURISTIC_NOT_RUNTIME_EQUIVALENCE

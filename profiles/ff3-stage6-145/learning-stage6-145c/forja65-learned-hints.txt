@@ -1,0 +1,5 @@
+# Forja65 stage6r145c: sementes aprendidas com o interpretador (rom=0219ea8f95a4f0ed)
+rom=0219ea8f95a4f0ed target=c064a4 from=c054f5 kind=FLOW e=0 m=1 x=0 c=?
+rom=0219ea8f95a4f0ed target=c06554 from=c052a9 kind=FLOW e=0 m=1 x=0 c=?
+rom=0219ea8f95a4f0ed target=c0eb35 from=c0eb57 kind=FLOW e=0 m=0 x=0 c=?
+rom=0219ea8f95a4f0ed target=c0eb35 from=c0eb65 kind=FLOW e=0 m=0 x=0 c=?

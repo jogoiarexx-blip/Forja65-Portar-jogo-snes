@@ -1,0 +1,14 @@
+{
+  "schema": "forja65.observed-static-coverage.v1",
+  "observations": 2,
+  "unique_states": 2,
+  "covered_states": 2,
+  "missing": [],
+  "scope": "Static dispatch coverage only; not a runtime, whole-game or equivalence certificate.",
+  "rom": {
+    "sha256": "f9dac709b2c2859f828103a0dd980716817e2bde3b9d7e2fdea36e9bb9bed7f2",
+    "fnv1a64": "0219ea8f95a4f0ed"
+  },
+  "log_sha256": "e643d8a342a6bb9fd06cf9b1e0fccab7675450d013b0c30dd83803e0058a091e",
+  "dispatch_sha256": "31692cbf31281700dd98db53c426216fb3444d9e2754a7819d1a124a90765f25"
+}

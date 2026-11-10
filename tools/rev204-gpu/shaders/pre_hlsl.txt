@@ -1,0 +1,10 @@
+#define vec2 float2
+#define vec3 float3
+#define vec4 float4
+#define mix lerp
+#define fract frac
+cbuffer FjParams:register(b0){float4 P0;float4 P1;float4 P2;float4 P3;};
+Texture2D gTex:register(t0);
+SamplerState gSamp:register(s0);
+#define SAMPLE(uv) gTex.SampleLevel(gSamp,(uv),0.0)
+#define LOOP [loop]

@@ -1,0 +1,17 @@
+'use strict';
+const assert=require('node:assert/strict');
+const F=require('../forja65-core');
+const rom=F.loadRom(F.makeSyntheticRom());
+const files=F.generateProject(rom,F.analyze(rom,96));
+assert(files['BUILD-WINDOWS.cmd'].includes('call VERIFY-SPC-AOT-BUILD.cmd'),'generated build must verify AOT candidate');
+assert(files['BUILD-WINDOWS.cmd'].indexOf('ctest --test-dir')<files['BUILD-WINDOWS.cmd'].indexOf('copy /Y build-win\\Release\\game.exe'),'CTest must pass before replacing user executable');
+assert(files['src/main.cpp'].includes('FORJA65_SPC_AOT_OFF'),'A/B backend switch must be emitted');
+assert(files['CMakeLists.txt'].includes('spc_aot_link_smoke'),'generated CMake must link real SPC AOT');
+assert(files['tests/spc_aot_link_smoke.cpp'].includes('0xFFC0'),'native IPL must be tested');
+assert(files['VERIFY-SPC-AOT-BUILD.cmd'].includes('apu_aot_instructions='),'generated build requires runtime AOT evidence');
+assert(files['tools/compare_spc_aot.py'].includes('--require-audio'),'generated ports must include PCM bitexact comparator');
+assert(files['tools/run_spc_pcm_ab.py'].includes('FORJA65_AUDIO_DUMP'),'generated ports must capture audio in two separate runs');
+assert(files['tests/spc_pcm_comparator_test.py'].includes('PCM SHA256'),'generated tests must check altered WAV data');
+assert(files['RUN-SPC-PCM-AB.cmd'].includes('run_spc_pcm_ab.py'),'Windows entrypoint must exist');
+assert(files['CMakeLists.txt'].includes('spc_pcm_comparator_regression'),'CTest must enforce PCM comparator regression when Python is present');
+console.log('SPC_AOT_BUILD_GUARD_REV144_R2_PASS');

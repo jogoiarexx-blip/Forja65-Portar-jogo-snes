@@ -1,0 +1,11 @@
+'use strict';
+const assert=require('node:assert/strict');
+const C=require('../forja65-core.js');
+const rom=C.loadRom(C.makeSyntheticRom(),'synthetic.sfc');
+const analysis=C.analyze(rom,350);
+const emitted=C.generateProject(rom,analysis);
+assert.match(emitted['src/runtime.hpp'],/frameCounter>=limit\)\{stopped=true;throw std::runtime_error\("FORJA65_HEADLESS_COMPLETE"\)/);
+assert.match(emitted['src/main.cpp'],/while\(!hw.stopped\)\{try\{[\s\S]*?forja65_wait/);
+assert.match(emitted['tests/headless_budget_smoke.cpp'],/FORJA65_HEADLESS_BUDGET_PASS/);
+assert.match(emitted['CMakeLists.txt'],/add_test\(NAME headless_budget_smoke/);
+console.log('HEADLESS_BUDGET_V0369_GENERATOR_PASS');

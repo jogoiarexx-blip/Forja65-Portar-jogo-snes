@@ -1,0 +1,12 @@
+'use strict';
+const a=require('node:assert/strict'),{parse,audit}=require('../tools/input-trace-prefix-audit.js');
+const header='# FORJA65_INPUT_TRACE 1 rom=278768332a4ffc4a\n';
+const events='frame=770 joy1=1000 joy2=0000\nframe=774 joy1=0000 joy2=0000\n';
+const v=events+'frame=4250 joy1=0200 joy2=0000\n';
+const b=events+'frame=4250 joy1=0000 joy2=0000\n';
+a.equal(audit(header+b,header+v,4250).status,'PREFIX_IDENTICAL');
+a.equal(audit(header+b,header+v,4251).status,'PREFIX_MISMATCH');
+a.throws(()=>audit(header+b,header.replace('278768332a4ffc4a','aaaaaaaaaaaaaaaa')+v,4250),/Different ROM/);
+a.throws(()=>parse(header+'frame=8 joy1=0000 joy2=0000\nframe=7 joy1=0100 joy2=0000\n'),/increasing/);
+a.throws(()=>parse(header+'frame=8 joy1=FF joy2=0000\n'),/Invalid input/);
+console.log('input trace prefix v11: 5/5 tests passed');

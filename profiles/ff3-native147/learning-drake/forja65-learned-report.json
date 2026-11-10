@@ -1,0 +1,74 @@
+{
+  "schema": "forja65.interpreter-learning.v1",
+  "tag": "drake147",
+  "emitter": {
+    "file": "cpu-resume143-core.js",
+    "sha256": "1fee5b5629f775d66be4aa1a5590610358fc236d9983be5a12aa848bd36f9920",
+    "explicit": true
+  },
+  "rom": {
+    "fnv1a64": "0219ea8f95a4f0ed",
+    "sha256": "f9dac709b2c2859f828103a0dd980716817e2bde3b9d7e2fdea36e9bb9bed7f2"
+  },
+  "log": {
+    "sha256": "e643d8a342a6bb9fd06cf9b1e0fccab7675450d013b0c30dd83803e0058a091e",
+    "entradas": 2,
+    "execucoes": 4
+  },
+  "aceitas": 2,
+  "rejeitadas": 0,
+  "classes": {
+    "CHAMADA-DIRETA-NAO-ANALISADA": 2
+  },
+  "locais_de_despacho": 2,
+  "tabelas": [],
+  "sites": [
+    {
+      "from": "C0D6BB",
+      "origem": "JSL AbsoluteLong",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 3
+    },
+    {
+      "from": "C0D7D9",
+      "origem": "JSR Absolute",
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "alvos": 1,
+      "execucoes": 1
+    }
+  ],
+  "entradas": [
+    {
+      "target": "C03718",
+      "state": "M0X0",
+      "from": "C0D7D9",
+      "count": 1,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSR Absolute"
+    },
+    {
+      "target": "C0E087",
+      "state": "M0X0",
+      "from": "C0D6BB",
+      "count": 3,
+      "classe": "CHAMADA-DIRETA-NAO-ANALISADA",
+      "origem": "JSL AbsoluteLong"
+    }
+  ],
+  "rejeitados": [],
+  "analise": {
+    "ms": 80108,
+    "funcoes": 595,
+    "alvos_incluindo_tabelas": 2
+  },
+  "integracao": {
+    "rotinas": 2,
+    "funcoes": 2,
+    "linhas": 68,
+    "aliases": 68,
+    "arquivos": [
+      "src/forja_learned_drake147_000.cpp"
+    ]
+  }
+}

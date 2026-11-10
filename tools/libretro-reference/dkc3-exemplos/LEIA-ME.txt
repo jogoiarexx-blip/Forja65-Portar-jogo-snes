@@ -1,0 +1,54 @@
+EXEMPLOS DKC3 (REV134) - scripts usados para gerar o trace do DKC3-ZERO v0.44.0
+==============================================================================
+
+São os scripts exatos desta sessão, com os caminhos absolutos do ambiente de
+trabalho. Para usar, ajuste os caminhos (ROM, executável do port, assets, .ckpt).
+
+Endereços de RAM do DKC3 (WRAM 7E):
+  $047B/$047F  X/Y do Kong ativo
+  $05D3        contador do bônus (BCD: estrelas/bananas que faltam)
+  $05D5        vidas
+  $05CD        Banana Birds libertados (0 -> 1 ao terminar a caverna)
+  $05B0 bit $40  equipe com os dois Kongs
+  $0AB0/$0AB4  X/Y da banana ativa no bônus "Collect 15 bananas" (Lakeside Limbo)
+  $0CD6/$0CDA  X/Y da 2a alavanca (handle) da Doorstop Dash
+  $088A/$088E  X/Y do Kong arremessado (team-up)
+
+Fluxo usado (tudo no PRÓPRIO port, modo FORJA65_CONTROL=1, via recport.py):
+  1. lakeside: bonus 1 com follow.py (referência Snes9x), bonus 2 com
+     bonus_bananas_no_port.py (busca guiada pela posição da banana; o RNG do
+     port difere do Snes9x, então as bananas aparecem em outros lugares),
+     lakeside_fim_no_port.py (moeda + resto da fase + bandeira).
+  2. caverna_resolver_adaptativo.py descobre a sequência de cristais no port
+     (no port saiu Y,B,Y,X; no Snes9x saiu Y,Y,Y,B) e caverna_passaro_no_port.py
+     reaplica a sequência e confirma $05CD=1.
+  3. mapa_ate_doorstop_no_port.py: barco, doca, mapa da região, entra na fase 2.
+  4. doorstop_referencia_snes9x.py monta a trajetória de referência no Snes9x
+     (Go-Explore + rota manual da 2a porta + Warp Barrel escondido) e
+     doorstop_seguir_no_port.py segue essa trajetória no port com follow.py.
+
+goexplore.py: Go-Explore com savestates (refemu/Snes9x); descarta caminhos que
+perdem vida ($05D5) e para quando a fase termina.
+
+REV135 / DKC3-ZERO v0.45.0 - fases 3 a 5 e entrada do chefe:
+  $05E7        no atual do mapa (1 Lakeside, 2 Doorstop, 3 Wrinkly, 4 Tidal, 5 Skidda's,
+               6 Murky, 7 caminho, 8 Belcha's Barn, 9 Barnacle, 10 Smuggler's Cove; 0 = andando/nadando)
+  $08F8/$08FC  X/Y do Kong no mapa da regiao
+  $0632+id     estado de cada fase (bit0 liberada, bit1 concluida); Tidal $0659, Skidda's $065D,
+               Murky $065C, Belcha $064F
+  $0966        X do Belcha (chefe)
+  mapnav.py / mapa_entrada_*.py  navegacao no mapa (no Lake Orangatanga a Tidal Trouble e
+               alcancada NADANDO: da Wrinkly's Save Cave para cima e depois para o canto noroeste)
+  fase_referencia_goexplore_snes9x.py  monta a trajetoria de uma fase a partir do Go-Explore
+  skiddas_referencia_snes9x.py / murky_referencia_warp_snes9x.py  ajuste fino do mastro e o
+               Warp Barrel da Murky Mill (trocar o lider com SELECT antes do elevador; Kiddy lanca a Dixie)
+  belcha_entrada_snes9x.py  Kiddy pula no alcapao do celeiro e cai na arena do chefe
+  fase_seguir_no_port.py    segue a referencia no port (desvio 0-2 px em todas as fases)
+
+Chefe Belcha (Belcha's Barn) - DERROTADO:
+  belcha_vencer_snes9x.py   busca em malha fechada: pular nos barris ate sair um Knik-Knak, cair nele (vira),
+               sair ~16 quadros para a esquerda, aterrissar e apertar Y (segurar = carregar), andar ate
+               ~240 px do Belcha e PULAR soltando Y no ar (acerta a boca). 4 acertos = Belcha no buraco.
+  bslots.py    tabela de objetos (slots de 0x6E bytes a partir de $088A-0x12): '27d2' Knik-Knak,
+               'b5cc' corpo do Belcha, '24d4' dentes (abertura da boca), '76d1' barril
+  fase_reproduzir_no_port.py  reproduz uma referencia sem savestates e confere o desvio no fim

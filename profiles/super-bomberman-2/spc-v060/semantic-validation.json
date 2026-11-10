@@ -1,0 +1,28 @@
+{
+  "scope": "isolated semantic and reference-hook verification; fixture pairs are never production training",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "fixture": {
+    "opcode_forms": 256,
+    "pc_opcode_sites": 288,
+    "randomized_states": 32800,
+    "scheduler_slices": 20000,
+    "clock_modes": 4,
+    "non_silent_pcm": true
+  },
+  "reference_hook": {
+    "scheduler_slices": 20000,
+    "sleep_stop_slices": 1000,
+    "actual_fixture_pairs": 10,
+    "profile_contains_only_executed_fixture_addresses": true
+  },
+  "generator_safety": "passed explicit fixture-path protection, fixture training rejection, production file preservation, deterministic empty-profile regeneration",
+  "hashes": {
+    "tools/spc-aot/generate.py": "39e21468c3feec5fd5643464607a7fd9332f64b264fdaa057a589c973e49b436",
+    "tools/spc-aot/test_generator.py": "82a9f071fffbb6d480b04e197de005ab37ced97fa84a7a237d8e7ee83cb29dd6",
+    "src/spc700_profile.cpp": "bb0ac8acabad62597cd3a579a695f2d1b0ed8cede0d69acf17359f5fea10ec85",
+    "tests/spc_aot_v060.cpp": "37e23d8669ad7d14d387ce5ef4b75f35918693b700ec93329677529d19b81a34",
+    "tests/spc_profile_v060.cpp": "18f9259f866c54547dc34c8b54a2263de3dddf1f5a7ac4e9c87ed1db0d847b3c",
+    "tests/spc_aot_test_common.hpp": "1b799e65b2f211b4fd9fd45debc0933a7efc5857808fa744e7046f40845f72fa",
+    "src/runtime.hpp": "e72e5e1428a8cf7e8abc8b1232ee7b8139343f7cc42a1aa501c9441056dbce01"
+  }
+}

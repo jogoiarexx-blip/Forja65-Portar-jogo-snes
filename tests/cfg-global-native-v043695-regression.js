@@ -1,0 +1,13 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os'),cp=require('node:child_process'),C=require('../forja65-core');
+const bytes=C.makeSyntheticRom();bytes[0]=0xdb;bytes.set([0x08,0xe2,0x30,0x48,0xda,0xa9,0x42,0x8d,0x10,0x00,0xfa,0x68,0x28,0x40],0x100);bytes[0x200]=0xdb;
+for(const vector of [0x7fe4,0x7ff4]){bytes[vector]=0;bytes[vector+1]=0x81;}
+const states=[{emulation:true,m8:true,x8:true,carry:null}];for(const m8 of [true,false])for(const x8 of [true,false])states.push({emulation:false,m8,x8,carry:null});
+const rom=C.loadRom(bytes),knowledge={schema:'forja65.knowledge.v1',entries:states.map(state=>({address:0x8200,state}))},a=C.analyze(rom,2048,[],{knowledge});assert(a.functions.some(f=>f.start===0x8100));const files=C.generateProject(rom,a),dir=fs.mkdtempSync(path.join(os.tmpdir(),'forja-global-native-'));
+try{
+ for(const [n,v]of Object.entries(files))if(n.startsWith('src/')||n==='assets/cart-data.bin'){const p=path.join(dir,n);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,v);}
+ const cases=states.map(s=>`{${s.emulation},${s.m8},${s.x8}}`).join(',');
+ fs.writeFileSync(path.join(dir,'probe.cpp'),`#include "generated.hpp"\n#include <iostream>\nstruct Mode{bool e,m,x;};\nint main(){try{const Mode modes[]={${cases}};for(const Mode mode:modes){SnesRuntime hw("assets/cart-data.bin",MapperKind::LoROM);CpuState c;c.e=mode.e;c.m8=mode.m;c.x8=mode.x;c.c=true;c.pb=0;c.db=0x7e;c.a=0x1234;c.x=0x56;c.s=0x1ff;const auto stack=c.s;c.enterInterrupt(hw,0x008200,true);forja65_dispatch(c,hw,0x008100,0xffffff);if(!hw.stopped||hw.ram[0x10]!=0x42||c.s!=stack||c.e!=mode.e||c.m8!=mode.m||c.x8!=mode.x||!c.c||c.a!=0x1234||c.x!=0x56||c.db!=0x7e)return 3;}std::cout<<"CFG_GLOBAL_NATIVE_5_MODES_STACK_DB_PASS\\n";return 0;}catch(const std::exception&e){std::cerr<<e.what();return 2;}}\n`);
+ const flags=['-std=c++20','-O0','-DFORJA65_ENABLE_TRACE=0'];cp.execFileSync('g++',[...flags,'-x','c++-header','src/runtime.hpp','-o','src/runtime.hpp.gch'],{cwd:dir,stdio:'pipe'});
+ const sources=Object.keys(files).filter(n=>/^src\/generated_.*\.cpp$/.test(n)||n==='src/dispatch.cpp'||n==='src/native_hooks.cpp');const args=[...flags,'-Isrc','-include','src/runtime.hpp','probe.cpp',...sources,'-o','probe'];if(process.platform==='win32')args.push('-luser32','-lgdi32','-lxinput9_1_0','-lwinmm');cp.execFileSync('g++',args,{cwd:dir,stdio:'pipe'});const q=cp.spawnSync(path.join(dir,'probe'),[],{cwd:dir,encoding:'utf8',timeout:20000});assert.equal(q.status,0,q.stdout+q.stderr);process.stdout.write(q.stdout);
+}finally{fs.rmSync(dir,{recursive:true,force:true});}

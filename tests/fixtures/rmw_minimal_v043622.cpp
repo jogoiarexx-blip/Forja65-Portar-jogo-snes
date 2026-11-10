@@ -1,0 +1,5 @@
+#include "generated.hpp"
+#include <fstream>
+#include <iostream>
+#include <memory>
+int main(){auto h=std::make_unique<SnesRuntime>();h->loadCart("assets/cart-data.bin");CpuState c;h->trace.start("rmw-minimal-native.csv",h->cartHashHex(),1000);forja65_dispatch(c,*h,0x8000,0);h->trace.close();unsigned result=h->ram[0x100]|(unsigned(h->ram[0x101])<<8);bool passed=result==1&&h->ram[0x1200]==1&&h->ram[0x1235]==0&&h->io.wramPortAddr==0x1201&&!c.e&&!c.m8&&h->stopped;std::ofstream f("rmw-minimal-results.json");f<<"{\"passed\":"<<(passed?"true":"false")<<",\"result_word\":"<<result<<",\"expected_location_1200\":"<<unsigned(h->ram[0x1200])<<",\"wrong_location_1235\":"<<unsigned(h->ram[0x1235])<<",\"port_address\":"<<h->io.wramPortAddr<<",\"native_mode\":"<<(!c.e?"true":"false")<<",\"memory_width\":"<<(c.m8?8:16)<<",\"stopped\":"<<(h->stopped?"true":"false")<<",\"gameplay_verified\":false}\n";std::cout<<"RMW_MINIMAL_"<<(passed?"PASS":"FAIL")<<" result="<<result<<" port="<<std::hex<<h->io.wramPortAddr<<std::dec<<'\n';return passed?0:1;}

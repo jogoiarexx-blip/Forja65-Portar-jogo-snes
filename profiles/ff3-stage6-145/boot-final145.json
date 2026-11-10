@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "frames": 5000,
+  "backend": "SPC reference in both",
+  "after": "boot-after145b",
+  "forja65-frame-hashes.txt_sha256": "e0d513db2a701934790bf375f8d8484a47bf06b4fbe004429cb13db27a5bac7d",
+  "forja65-native-audio.wav_sha256": "945041a679b8d61386495acacaa338884b2f18f9bc8c4f0108bcad2e0836fac1"
+}
