@@ -1,0 +1,13 @@
+Native oracle build (development only)
+
+Use CMake >=3.20 and Python 3.9+ for a separate candidate-library build. No g++ dependency is imposed on Visual Studio users. CMake chooses MSVC, GCC or Clang using its normal toolchain configuration. The game does not depend on this Python tool.
+
+Write a JSON spec with sources (C++ candidate/shim files), include_dirs and optional name. Paths are relative to the JSON spec. Example:
+{"sources":["bridge.cpp","candidate.cpp"],"include_dirs":["src"],"name":"candidate_oracle"}
+python tools/native_oracle_build.py oracle-spec.json --build-dir build-oracle
+
+The result contains the exact .dll/.so/.dylib path selected by CMake. C ABI bridge functions should use extern "C" and __declspec(dllexport) on Windows; WINDOWS_EXPORT_ALL_SYMBOLS is enabled too. Configure Python and the bridge with matching architecture (x64). CMAKE_COMMAND may name the cmake executable; CXX and CMAKE_GENERATOR retain their usual CMake meanings.
+
+For a CTest-owned bridge, build it as a SHARED target and pass $<TARGET_FILE:target> in the test environment. load_native_library(..., prebuilt_env=...) reuses that exact absolute path without searching for a compiler. Invalid paths/load errors fail explicitly. close_native_library releases a finished DLL before removing temporary files on Windows. Do not call the library after closing.
+
+Library build success does not prove semantics. Original-ROM cases, bounded contracts, state comparisons and ROM fingerprints remain required before authorizing cutover. No automatic candidate promotion occurs.
