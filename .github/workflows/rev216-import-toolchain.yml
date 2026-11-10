@@ -1,0 +1,103 @@
+name: Forja65 REV216 - importar ferramentas e testes
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'source-batches/rev216-toolchain-*.tar.gz'
+      - '.github/workflows/rev216-import-toolchain.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: forja65-rev216-toolchain-import
+  cancel-in-progress: false
+jobs:
+  import-toolchain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar hashes e extrair arquivos sem sobrescrever o repositório
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path, PurePosixPath
+          import hashlib, json, tarfile
+          bundles = sorted(Path("source-batches").glob("rev216-toolchain-*.tar.gz"))
+          if len(bundles) != 12:
+              raise RuntimeError(f"Esperados 12 lotes, encontrados {len(bundles)}")
+          encountered = set()
+          additions = unchanged = 0
+          for number, bundle in enumerate(bundles, start=1):
+              with tarfile.open(bundle, "r:gz") as archive:
+                  members = archive.getmembers()
+                  if len(members) < 2 or any(not m.isfile() for m in members):
+                      raise RuntimeError(f"Entradas invalidas em {bundle}")
+                  metadata = [m for m in members if m.name == "__forja_manifest__.json"]
+                  if len(metadata) != 1:
+                      raise RuntimeError(f"Manifesto ausente ou duplicado em {bundle}")
+                  manifest = json.loads(archive.extractfile(metadata[0]).read())
+                  if manifest.get("format") != "forja65-rev216-toolchain-v1" or manifest.get("batch") != number:
+                      raise RuntimeError(f"Manifesto incompativel: {bundle}")
+                  entries = [m for m in members if m.name != "__forja_manifest__.json"]
+                  actual = [m.name for m in entries]
+                  wanted = manifest["files"]
+                  if len(actual) != len(set(actual)) or set(actual) != set(wanted):
+                      raise RuntimeError(f"Conteudo ou duplicatas invalidos: {bundle}")
+                  for m in entries:
+                      path = m.name
+                      pure = PurePosixPath(path)
+                      if (pure.is_absolute() or ".." in pure.parts or "." in pure.parts
+                          or "\\" in path or str(pure) != path):
+                          raise RuntimeError(f"Caminho inseguro: {path}")
+                      if not (path.startswith(("tools/", "tests/", "profiles/")) or
+                              path == "reports/bomberman-catalog-provenance-v043691.json"):
+                          raise RuntimeError(f"Caminho fora do escopo: {path}")
+                      if path in encountered or m.size > 1_000_000:
+                          raise RuntimeError(f"Duplicata ou arquivo enorme: {path}")
+                      encountered.add(path)
+                      data = archive.extractfile(m).read()
+                      if len(data) != m.size or hashlib.sha256(data).hexdigest() != wanted[path]:
+                          raise RuntimeError(f"SHA-256 divergente: {path}")
+                      data.decode("utf-8")
+                      target = Path(path)
+                      if target.exists():
+                          if not target.is_file() or target.is_symlink() or target.read_bytes() != data:
+                              raise RuntimeError(f"Conflito com arquivo existente: {path}")
+                          unchanged += 1
+                      else:
+                          target.parent.mkdir(parents=True, exist_ok=True)
+                          target.write_bytes(data)
+                          additions += 1
+          if len(encountered) != 1501:
+              raise RuntimeError(f"Total divergente: {len(encountered)} != 1501")
+          print(f"FORJA216_TOOLCHAIN_INTEGRITY_PASS total={len(encountered)} novos={additions} iguais={unchanged}")
+          PY
+      - name: Validar sintaxe do CLI e GUI
+        run: |
+          node --check tools/forja65.js
+          node --check tools/gui-server.js
+      - name: Executar regressões reproduzíveis sem ROM comercial
+        run: |
+          node tests/rev216-observed-cfg-catalog.js
+          node tests/bomberman-timed-state-v043693-regression.js
+          node tests/bomberman-cfg-catalog-v043691-regression.js
+          node tests/cfg-global-v043695-regression.js
+          node tests/rev215-dma-refresh-alignment-regression.js
+      - name: Publicar os fontes validados
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- tools tests profiles reports/bomberman-catalog-provenance-v043691.json
+          if ! git diff --cached --quiet; then
+            git commit -m "REV216: sincronizar 1501 fontes tecnicos validados"
+            git push origin HEAD:main
+          else
+            echo "Nenhuma alteracao necessaria"
+          fi
