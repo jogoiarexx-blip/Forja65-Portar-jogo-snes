@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "rom": "2f095d162726b5ea",
+  "pending": "C09DA6",
+  "caller": "C09D34",
+  "execution_state": {
+    "emulation": false,
+    "m8": false,
+    "x8": false,
+    "carry": false
+  },
+  "reason": "ROM-backed generated candidate overlaps existing dispatcher PCs; integration was refused rather than silently replacing states",
+  "generated_unique_pcs": 393,
+  "already_covered_unique_pcs": 154,
+  "new_unique_pcs_if_proven_safe": 239,
+  "status": "not_integrated",
+  "verified_gameplay": false
+}

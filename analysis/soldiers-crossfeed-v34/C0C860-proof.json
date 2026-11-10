@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "rom": "2f095d162726b5ea",
+  "observed": [
+    {
+      "target": 12634208,
+      "from": 12634113,
+      "kind": "FLOW",
+      "state": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": false
+      }
+    }
+  ],
+  "routine": "C0C860",
+  "variants": 2,
+  "decoded": [
+    {
+      "entryState": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": null
+      },
+      "entryPc": 12634208,
+      "pcs": [
+        12634208,
+        12634210,
+        12634211,
+        12634213,
+        12634214,
+        12634216,
+        12634219
+      ],
+      "decodedNative": 7
+    },
+    {
+      "entryState": {
+        "emulation": false,
+        "m8": false,
+        "x8": false,
+        "carry": false
+      },
+      "entryPc": 12634208,
+      "pcs": [
+        12634208,
+        12634210,
+        12634211,
+        12634213,
+        12634214,
+        12634216,
+        12634219
+      ],
+      "decodedNative": 7
+    }
+  ]
+}
