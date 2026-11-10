@@ -1,0 +1,36 @@
+name: Forja65 REV216 - CFG and DMA smoke tests
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'forja65-core.js'
+      - 'profiles/super-bomberman-2/cfg-knowledge.json'
+      - 'tests/**'
+      - '.github/workflows/forja216-smoke.yml'
+  pull_request:
+    paths:
+      - 'forja65-core.js'
+      - 'profiles/super-bomberman-2/cfg-knowledge.json'
+      - 'tests/**'
+      - '.github/workflows/forja216-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: node --check forja65-core.js
+      - name: Bundled Bomberman CFG equals profile
+        run: |
+          node -e "const a=require('node:assert/strict');const c=require('./forja65-core.js');const p=require('./profiles/super-bomberman-2/cfg-knowledge.json');a.deepEqual(c.bundledCfgKnowledge(p.rom.fnv1a64),c.normalizeKnowledgePack(p,p.rom.fnv1a64));console.log('CFG_PROFILE_REV216_PASS',p.entries.length)"
+      - name: Bomberman timed states
+        run: node tests/bomberman-timed-state-v043693-regression.js
+      - name: DMA/WRAM refresh alignment
+        run: node tests/rev215-dma-refresh-alignment-regression.js
