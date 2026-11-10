@@ -1,0 +1,4 @@
+Forja65 — REV216 — pacote de fontes, ferramentas e evidências.
+Identidade interna do motor/gerador: 0.4.36.121-rev210-rev208-hw-timing
+Base de runtime: REV215.
+Para o pacote completo, consultar o ZIP Forja65-REV216-FONTE-ORGANIZADO.zip.

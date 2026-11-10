@@ -1,0 +1,17 @@
+{
+  "exe_sha256": "63e35011665d63fffddfd1bb3d640ca62ae7eeb3d4b1979cede7729486d2e914",
+  "exe_bytes": 70828032,
+  "system_dll_imports": [
+    "GDI32.dll",
+    "KERNEL32.dll",
+    "msvcrt.dll",
+    "USER32.dll",
+    "WINMM.dll",
+    "XINPUT9_1_0.dll"
+  ],
+  "cpu_interpreter_linked": false,
+  "reference_hooks_linked": false,
+  "spc_native_hook_linked": true,
+  "windows_execution_tested": false,
+  "linux_execution_tested": true
+}
